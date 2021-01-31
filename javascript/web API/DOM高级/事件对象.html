@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>事件对象</title>
+    <style>
+        div {
+            width: 200px;
+            height: 200px;
+            margin: 20px;
+            background: pink;
+        }
+    </style>
+</head>
+
+<body>
+    <div></div>
+    <div class="div2">
+        div2
+    </div>
+    <ul>
+        <li>abc</li>
+        <li>abc</li>
+        <li>abc</li>
+        <li>abc</li>
+    </ul>
+    <script>
+        var div = document.querySelector('div');
+        div.onclick = function(event) {
+                // 1. event 就是一个事件对象 写到侦听函数中小括号中 当形参来看
+                // 2. 事件对象只有有了事件才会存在，是系统自动创建的
+                // 3. 是事件一系列相关数据的集合、跟数据相关的 比如鼠标点击里面包含鼠标的坐标，键盘事件中包含键盘信息、
+                // 4. ie678 通过window.event获取
+                console.log(event);
+                // 兼容性写法
+                e = e || window.event;
+            }
+            // 常见属性和方法
+            // 1. e.target 返回触发事件的对象  this返回的是绑定事件的对象
+        var div2 = document.querySelector('.div2');
+        div2.addEventListener('click', function(e) {
+            console.log(e.target);
+        })
+        var ul = document.querySelector('ul');
+        ul.addEventListener('click', function(e) {
+            // 给ul绑定事件 this指向ul
+            console.log(this);
+            // e.target 指向我们点击的对象
+            console.log(e.target);
+        })
+
+        // 兼容ie678
+        // div2.onclick = function(e) {
+        //     e = e || window.event;
+        //     var target = e.target || window.srcElement;
+        // }
+        // e.type 返回事件类型
+    </script>
+</body>
+
+</html>

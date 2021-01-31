@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>键盘事件</title>
+</head>
+
+<body>
+    <script>
+        // 键盘弹起时触发
+        document.addEventListener('keyup', function() {
+                console.log('up');
+            })
+            // 按下时触发
+        document.addEventListener('keydown', function() {
+                console.log('down');
+            })
+            // onkeypress 鼠标按下时触发 不支持功能键 ctrl shift 箭头等
+        document.addEventListener('keypress', function() {
+                console.log('press');
+            })
+            // 执行顺序：keydown---keypress---keyup
+    </script>
+</body>
+
+</html>

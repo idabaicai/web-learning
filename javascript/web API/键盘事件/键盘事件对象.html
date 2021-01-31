@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        document.addEventListener('keyup', function(e) {
+            // keyup和keydown事件不区分字母大小写
+            console.log('keyup:' + e.keyCode); // 返回键盘对应的ascii代码
+        })
+        document.addEventListener('keypress', function(e) {
+            console.log('keydown' + e.keyCode);
+        })
+    </script>
+</body>
+
+</html>

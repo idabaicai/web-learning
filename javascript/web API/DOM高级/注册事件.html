@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>注册事件</title>
+</head>
+
+<body>
+    <h3>注册事件的两种方式</h3>
+    <ul>
+        <li>传统方式：利用on开头的事件，如onclick</li>
+        <li>方法监听注册方式：w3c标准推荐方式 addEventListener() IE9之前不支持，同一个元素同一个事件可以注册多个监听器</li>
+    </ul>
+    <button>传统注册事件</button>
+    <button>方法监听注册事件</button>
+    <button>兼容IE9</button>
+    <script>
+        // 1. 传统注册
+        var btn = document.querySelectorAll('button');
+        btn[0].onclick = function() {
+            alert('hello')
+        }
+        btn[0].onclick = function() {
+                alert('hi'); // 后边事件覆盖前面事件
+            }
+            // 2. 监听注册事件 
+        btn[1].addEventListener('click', function() {
+            alert('监听注册的事件');
+        })
+        btn[1].addEventListener('click', function() {
+                alert('监听注册事件可以重复注册事件，按注册顺序执行。')
+            })
+            // attachEvent IE9以前用这个方法
+            // 封装函数解决兼容性
+
+        // btn[2].attachEvent('onclick', function() {
+        //     alert('IE 7,8可以显示的哦')
+        // })
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>显示隐藏密码</title>
+    <style>
+        .box {
+            position: relative;
+            width: 300px;
+            height: 30px;
+            /* margin: 200px auto; */
+            border-bottom: 1px solid #0ff;
+        }
+        
+        .box input {
+            width: 270px;
+            height: 28px;
+            border: 0;
+            outline: none;
+        }
+        
+        .box img {
+            position: absolute;
+            top: 5px;
+            right: 5px;
+            width: 20px;
+        }
+        
+        .box img:hover {
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+    <h4>方法一</h4>
+    <div class="box">
+        <label for="">
+            <img src="./image/hide.png" alt="" id="hide" style="display: block;">
+            <img src="./image/browse.png" alt="" id="browse" style="display: none;">
+        </label>
+        <input type="password" name="" id="pwd">
+    </div>
+    <h4>方法二</h4>
+    <div class="box">
+        <label for="">
+            <img src="./image/hide.png" alt="" id="hide1" >
+        </label>
+        <input type="password" name="" id="pwd1">
+    </div>
+
+    <script>
+        var hide = document.getElementById('hide');
+        var browse = document.getElementById('browse');
+        var pwd = document.getElementById('pwd');
+        hide.onclick = function() {
+            browse.style.display = 'block';
+            hide.style.display = 'none';
+            pwd.type = 'text';
+        }
+        browse.onclick = function() {
+                hide.style.display = 'block';
+                browse.style.display = 'none';
+                pwd.type = 'password';
+            }
+            // 方法二
+        var img = document.getElementById('hide1');
+        var pwd1 = document.getElementById('pwd1')
+        var flag = 0; // 0=>password  1=>text
+        img.onclick = function() {
+            if (flag === 0) {
+                img.src = './image/browse.png';
+                pwd1.type = 'text';
+                flag = 1;
+            } else {
+                img.src = './image/hide.png';
+                pwd1.type = 'password';
+                flag = 0;
+            }
+        }
+    </script>
+</body>
+
+</html>

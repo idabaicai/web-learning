@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>查询商品</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="goods">
+        <div class="search">
+            <div class="search-price">
+                按价格查询：<input type="number" id="min-price"> - <input type="number" id="max-price"> <button>搜索</button>
+            </div>
+            <div class="search-name">
+                按商品名称查询：<input type="text" id="name"> <button>查询</button>
+            </div>
+        </div>
+        <table class="items">
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>产品名称</th>
+                    <th>价格</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- <tr>
+                    <td>1</td>
+                    <td>小米</td>
+                    <td>3999</td>
+                </tr> -->
+            </tbody>
+        </table>
+    </div>
+    <script src="main.js"></script>
+</body>
+
+</html>

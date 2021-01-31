@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        form {
+            position: relative;
+            margin-top: 50px;
+        }
+        
+        .con {
+            position: absolute;
+            top: -40px;
+            display: none;
+            width: 172px;
+            height: 30px;
+            margin-bottom: 5px;
+            border: 1px solid #ccc;
+            line-height: 30px;
+            font-size: 22px;
+        }
+    </style>
+</head>
+
+<body>
+    <form action="">
+        <div class="con"></div>
+        <input type="text">
+    </form>
+    <h3>知识点</h3>
+    <ul>
+        <li>输入内容时，上面的大号字体盒子显示</li>
+        <li>表单检测用户输入：给表单添加键盘事件。</li>
+    </ul>
+    <script>
+        var con = document.querySelector('.con');
+        var input = document.querySelector('input');
+        // keydown和keypress：事件触发的时候文字还没落入框中。
+        input.addEventListener('keyup', function(e) {
+                if (this.value == '') {
+                    con.style.display = 'none';
+                } else {
+                    con.style.display = 'block';
+                    con.innerHTML = this.value;
+                }
+            })
+            // 失去焦点 隐藏提示框
+        input.addEventListener('blur', function() {
+                con.style.display = 'none';
+            })
+            // 获得焦点，显示提示框
+        input.addEventListener('focus', function() {
+            if (this.value !== '') {
+                con.style.display = 'block';
+            }
+        })
+    </script>
+</body>
+
+</html>

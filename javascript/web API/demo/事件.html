@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>事件基础</title>
+</head>
+
+<body>
+    <button id="btn">日拱一卒</button>
+    <script>
+        //  1. 事件源，在这里是button
+        var btn = document.getElementById('btn');
+        // 2. 事件类型 onclick
+        // 3. 处理程序，通过函数赋值的方式
+        btn.onclick = function() {
+            alert('功不唐捐');
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>严格模式</title>
+    <style>
+        .red,
+        span {
+            color: red;
+        }
+    </style>
+</head>
+
+<body>
+    <p>IE10以上版本支持，旧版本会忽略</p>
+    <h4>一些更改：</h4>
+    <ol>
+        <li>消除javascript语法中一些不合理，不严谨之处，较少怪异行为</li>
+        <li>消除代码运行的一些不安全之处</li>
+        <li>提高编译器效率，增加运行速度</li>
+        <li>禁用ES未来版本可能会定义的一些语法</li>
+    </ol>
+    <h4>开启严格模式</h4>
+    <p>可以应用到<span>整个脚本</span>或<span>个别函数</span></p>
+    <script>
+        // 为整个脚本开启严格模式
+        'use strict';
+        // 如果变量没声明就复制，会报错
+        // num = 666;
+        // console.log(num);  error
+        var num = 666;
+        console.log(num);
+        // 1. 不能删除变量 
+        // delete num;  Syntax error
+
+        // 2. 全局作用域中函数this不再指向window，而是undefined
+        function fn() {
+            console.log('严格模式下this指向');
+            console.log(this);
+        }
+        fn();
+
+        // 3. 普通模式下 构造函数不加new也可以调用，当普通函数。this指向全局对象 
+        // 严格模式下要加new
+
+        // function Star() {
+        //     this.h = 1200;
+        // }
+        // Star();  
+        // console.log(window.h);  //1200  严格模式下报错
+
+        // 5. 定时器this还是指向window
+        setTimeout(function() {
+                console.log(this);
+            }, 1000)
+            // 6. 事件，对象还是指向调用者
+            // 7. 函数中不能有重名的参数
+            // 8. 不允许在非函数的代码块内声明函数
+    </script>
+    <script>
+        // 创建独立的作用域
+        (function() {
+            'use strict';
+            // 下边代码按照严格模式执行
+
+
+        })();
+    </script>
+    <!-- 为某个函数开启严格模式 -->
+    <script>
+        function fn1() {
+            'use strict'; // 为此函数开启严格模式
+        }
+    </script>
+
+
+</body>
+
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>对象方法</title>
+</head>
+
+<body>
+    <script>
+        // Object.keys() 获取对象自身所有属性
+        const obj = {
+            name: '打工人',
+            age: 22,
+            height: 170
+        };
+        const res = Object.keys(obj);
+        console.log(res);
+        // Object.defineProperty(obj, prop, descriptor) 定义新属性或修改原有的属性
+        let Div = {
+            width: 500,
+            height: 600,
+            color: 'red'
+        };
+        // 之前给属性添加方法
+        Div.margin = 20;
+        console.log(Div);
+        // ES5新增定义属性或修改原有的属性
+        Object.defineProperty(Div, 'padding', {
+            value: 100, //相当于 Div.padding = 100
+            writable: false, //是否能修改
+            enumerable: true, //是否可枚举
+            configurable: false // 是否可删除
+        });
+        console.log(Div);
+        console.log(Div.padding);
+        Div.padding = 300; // 不能修改
+
+        delete Div.padding; // writable false 不能删
+
+        console.log(Div.padding);
+    </script>
+</body>
+
+</html>

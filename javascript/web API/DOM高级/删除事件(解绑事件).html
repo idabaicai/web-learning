@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <button>事件1</button>
+    <button>事件2</button>
+    <script>
+        var btn = document.querySelectorAll('button');
+        btn[0].onclick = function() {
+                alert('hello')
+                    // 解绑
+                btn[0].onclick = null;
+            }
+            // 函数
+        function fn() {
+            alert('hello event 2!');
+            // 解绑
+            btn[1].removeEventListener('click', fn);
+        }
+        btn[1].addEventListener('click', fn);
+    </script>
+</body>
+
+</html>

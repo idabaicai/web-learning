@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>函数的调用</title>
+</head>
+
+<body>
+    <button>点击1</button>
+    <button id="btn2">点击2</button>
+    <h3>改变this执行的3中方法</h3>
+    <ul>
+        <li>call()</li>
+        <li>bind()</li>
+        <li>apply()</li>
+    </ul>
+    <script>
+        // 1. call() 可以调用函数 还可以改变函数内this的指向
+        var obj = {
+            a: 2,
+            b: 3,
+            name: '打工人'
+        };
+
+        function fn1(a, b) {
+            console.log('fn1');
+            console.log(this);
+            console.log(a * b);
+        }
+        fn1(); // this指向window
+        // 让this指向o
+        fn1.call(obj, obj.a, obj.b);
+        // call 的主要作用可以实现继承
+        function Star(uname, age) {
+            this.name = uname;
+            this.age = age;
+        }
+
+        function subStar(uname, age) {
+            Star.call(this, name, age); //继承Star的属性，并且让this指向subStar
+        }
+        var lxh = new subStar('刘小华', 17);
+        console.log(lxh);
+    </script>
+</body>
+
+</html>

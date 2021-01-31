@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        button {
+            width: 50px;
+            height: 24px;
+            /* line-height: 30px; */
+            text-align: center;
+        }
+        
+        input {
+            height: 20px;
+            vertical-align: bottom;
+        }
+    </style>
+</head>
+
+<body>
+    <input type="number">
+    <button>发送</button>
+    <script>
+        var btn = document.querySelector('button');
+
+        var m = 3; //间隔秒数
+        btn.addEventListener('click', function() {
+            // btn.disabled = true;
+            var timer = setInterval(function() {
+                var now = +new Date();
+                now /= 1000;
+                // 获得秒数
+                var start_time = now + m;
+                // return start_time - now;
+                var cutdown_time = start_time - now; //剩余时间
+                if (cutdown_time > 0) {
+                    m--;
+                    btn.disabled = true;
+                    // this.disabled = true;  此时this指向的是windown，因此不能用this
+                    btn.innerHTML = cutdown_time;
+                } else {
+                    btn.disabled = false;
+                    btn.innerHTML = '发送';
+                    // 清除定时器
+                    clearInterval(timer);
+                    m = 3;
+                }
+            }, 1000)
+        })
+    </script>
+</body>
+
+</html>

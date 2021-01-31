@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>新浪导航栏</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+        
+        a {
+            display: block;
+            width: 100%;
+            height: 100%;
+            line-height: 40px;
+            text-align: center;
+            text-decoration: none;
+            color: #000;
+        }
+        
+        li {
+            list-style: none;
+        }
+        
+        li a:hover {
+            background: #ddd;
+        }
+        
+        .nav {
+            margin: 100px 20px;
+        }
+        
+        .nav>ul>li {
+            position: relative;
+            float: left;
+            width: 80px;
+            height: 40px;
+        }
+        
+        .menu {
+            display: none;
+            position: absolute;
+            width: 80px;
+            top: 40px;
+            left: 0;
+            border-left: 1px solid #0ee;
+            border-right: 1px solid #0ee;
+            text-align: center;
+        }
+        
+        .menu li {
+            padding-bottom: 10px;
+            height: 30px;
+            line-height: 30px;
+            border-bottom: 1px solid #0ee;
+        }
+        
+        .menu li:hover {
+            cursor: pointer;
+            background: #ddd;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="nav">
+        <ul class="sub_nav">
+            <li>
+                <a href="">微博1</a>
+                <ul class="menu">
+                    <li>私信</li>
+                    <li>评论</li>
+                    <li>@我</li>
+                </ul>
+            </li>
+            <li>
+                <a href="">微博2</a>
+                <ul class="menu">
+                    <li>私信</li>
+                    <li>评论</li>
+                    <li>@我</li>
+                </ul>
+            </li>
+            <li>
+                <a href="">微博3</a>
+                <ul class="menu">
+                    <li>私信</li>
+                    <li>评论</li>
+                    <li>@我</li>
+                </ul>
+            </li>
+            <li>
+                <a href="">微博4</a>
+                <ul class="menu">
+                    <li>私信</li>
+                    <li>评论</li>
+                    <li>@我</li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+    <script>
+        var lis = document.querySelector('.sub_nav').children;
+        for (var i = 0; i < lis.length; i++) {
+            // 鼠标经过显示当前
+            lis[i].onmouseover = function() {
+                    this.children[1].style.display = 'block';
+                }
+                // 鼠标离开隐藏所有
+            lis[i].onmouseleave = function() {
+                this.children[1].style.display = 'none';
+            }
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>表格隔行变色</title>
+    <style>
+        table {
+            width: 500px;
+            margin: 200px auto;
+            text-align: center;
+            border-collapse: collapse;
+            font-size: 16px;
+        }
+        
+        thead tr {
+            height: 30px;
+            background: #ddd
+        }
+        
+        th,
+        td {
+            height: 30px;
+            border-collapse: collapse;
+        }
+        
+        tbody td {
+            border-bottom: 1px solid #ccc;
+            color: blue;
+        }
+        
+        .bg {
+            background: aqua;
+        }
+    </style>
+</head>
+
+<body>
+    <table>
+        <thead>
+            <tr>
+                <th>代码</th>
+                <th>名称</th>
+                <th>最新净值</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>001</td>
+                <td>2021牛气冲天基金</td>
+                <td>1.22</td>
+            </tr>
+            <tr>
+                <td>001</td>
+                <td>2021牛气冲天基金</td>
+                <td>1.22</td>
+            </tr>
+            <tr>
+                <td>001</td>
+                <td>2021牛气冲天基金</td>
+                <td>1.22</td>
+            </tr>
+            <tr>
+                <td>001</td>
+                <td>2021牛气冲天基金</td>
+                <td>1.22</td>
+            </tr>
+        </tbody>
+    </table>
+    <script>
+        // 鼠标经过时改变 tbody中的 tr 颜色
+        var tr = document.querySelector('tbody').querySelectorAll('tr');
+        for (var i = 0; i < tr.length; i++) {
+            tr[i].onmouseover = function() {
+                this.className = 'bg';
+            }
+
+            tr[i].onmouseleave = function() {
+                this.className = '';
+            }
+        }
+    </script>
+</body>
+
+</html>

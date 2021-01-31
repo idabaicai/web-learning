@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>鼠标事件对象</title>
+    <style>
+        body {
+            height: 3000px;
+        }
+    </style>
+</head>
+
+<body>
+    <script>
+        document.addEventListener('click', function(e) {
+            // client 返回可视范围内的坐标
+            console.log(e.clientX);
+            console.log(e.clientY);
+            // page 相对于文档页面的 x y 坐标
+            console.log('---------------');
+            console.log(e.pageX);
+            console.log(e.pageY);
+            console.log('---------------');
+            //  screen 鼠标在电脑屏幕的x和y坐标
+        })
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,114 @@
+/* 字体图标 */
+
+* {
+    padding: 0;
+    margin: 0;
+}
+
+.clearfix {
+    clear: both;
+}
+
+li {
+    list-style: none;
+}
+
+@font-face {
+    font-family: 'icomoon';
+    src: url('../fonts/icomoon.eot?ojad1p');
+    src: url('../fonts/icomoon.eot?ojad1p#iefix') format('embedded-opentype'), url('../fonts/icomoon.ttf?ojad1p') format('truetype'), url('../fonts/icomoon.woff?ojad1p') format('woff'), url('../fonts/icomoon.svg?ojad1p#icomoon') format('svg');
+    font-weight: normal;
+    font-style: normal;
+    font-display: block;
+}
+
+.main {
+    width: 1000px;
+    height: 800px;
+    margin: 100px auto;
+}
+
+.main h4 {
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+.tabbox {
+    position: relative;
+    height: 400px;
+    border: 1px solid skyblue;
+    text-align: center;
+}
+
+.firstnav {
+    width: 100%;
+    height: 40px;
+    border-bottom: 1px solid #ccc;
+}
+
+.firstnav li {
+    position: relative;
+    float: left;
+    width: 80px;
+    height: 40px;
+    line-height: 40px;
+    border-right: 1px solid #ccc;
+}
+
+
+/* 图标 */
+
+.icomoon {
+    font-family: 'icomoon';
+}
+
+.del {
+    position: absolute;
+    top: -13px;
+    right: -2px;
+    font-size: 12px;
+    cursor: pointer;
+}
+
+.tabadd {
+    float: right;
+    width: 50px;
+    height: 40px;
+    line-height: 40px;
+    font-size: 24px;
+}
+
+.add {
+    position: absolute;
+    right: 8px;
+    cursor: pointer;
+}
+
+.tabscon section {
+    display: none;
+    margin-top: 12px;
+    text-align: left;
+    text-indent: 2em;
+}
+
+.li-current {
+    border-bottom: 2px solid #fff;
+}
+
+.tabscon .sec-current {
+    display: block;
+}
+
+.item {
+    display: inline-block;
+}
+
+.item input {
+    width: 56px;
+    height: 24px;
+}
+
+.tabscon input {
+    width: 300px;
+    height: 200px;
+}

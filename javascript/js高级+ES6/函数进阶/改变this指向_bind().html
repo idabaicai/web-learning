@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>函数的调用</title>
+</head>
+
+<body>
+    <button id="btn1">点击1</button>
+    <button id="btn2">点击2</button>
+    <h3>改变this执行的3中方法</h3>
+    <ul>
+        <li>call()</li>
+        <li>bind()</li>
+        <li>apply()</li>
+    </ul>
+    <script>
+        // 1. call() 可以调用函数 还可以改变函数内this的指向
+        var obj = {
+            a: 2,
+            b: 3,
+            name: '打工人'
+        };
+
+        function fn(a, b) {
+            console.log(this);
+            console.log(a * b);
+        }
+        // 1. bind 方法不调用函数，但能改变函数内部this指向，
+        // 2. 返回由指定的this值和初始化参数改造的 原函数拷贝
+        var new_fn = fn.bind(obj, 3, 3);
+        new_fn();
+        // 3. 作用：有的函数不需要立即调用，但是又想改变这个函数的内部this指向，此时用bind
+        // 4. 举例：我们有一个按钮，当我们点击之后禁用按钮，3秒后开启这个按钮
+        var btn1 = document.querySelector('#btn1');
+        btn1.addEventListener('click', function() {
+            this.disabled = true;
+            // 3秒后开启按钮: 中方法
+
+            //1. enableBtn.call(this, 3); // 3秒后开启
+
+            //2. var fn = enableBtn.bind(this, 3);
+            // fn();
+            // 3.
+            setTimeout(function() {
+                this.disabled = false;
+            }.bind(this), 3000);
+        });
+        // 开启按钮
+        function enableBtn(s) {
+            console.log(this);
+            setTimeout(() => {
+                console.log(this);
+                this.disabled = false;
+            }, s * 1000);
+        }
+    </script>
+</body>
+
+</html>

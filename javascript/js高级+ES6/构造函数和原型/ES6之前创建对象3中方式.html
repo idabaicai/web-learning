@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>object</title>
+</head>
+
+<body>
+    <script>
+        // 1. new Object() 创建
+        let obj1 = new Object();
+        obj1.name = '干饭人';
+        obj1.age = 22;
+        // 2. 通过对象字面量创建
+        let obj2 = {
+            name: '打工人',
+            age: 20
+        };
+        // 3. 利用构造函数
+        function Obj(name, age) {
+            this.name = name; // 构造函数中的属性和方法我们称为成员，成员可以添加
+            this.age = age;
+            this.sing = function() {
+                console.log('I am ' + this.name);
+            }
+        }
+        let obj3 = new Obj('前端人', 23); // 构造函数虽然好用 但存在浪费内存的问题
+        // 1. 实例成员是构造函数内部通过this添加的成员  name age sing 都是实例成员
+        //    实例成员只能通过实例化的对象来访问
+
+        // 2. 静态成员 在构造函数本身上添加的成员
+        Obj.sex = 'man'; // sex 是一个静态成员
+        console.log(Obj.sex);
+
+        console.log(obj1);
+        console.log(obj2);
+        console.log(obj3);
+
+
+        // 构造函数虽然好用 但存在浪费内存的问题 验证
+        let a = new Obj('a', 20);
+        let b = new Obj('b', 22);
+        console.log(a.sing == b.sing); // a的sing和b的sing方法一样，但开辟了两个空间
+    </script>
+</body>
+
+</html>

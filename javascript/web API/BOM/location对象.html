@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>location对象</title>
+</head>
+<body>
+    <button>location</button>
+    <div class="div"></div>
+    <script>
+        console.log(location.href);
+        console.log(location.search);
+        var btn = document.querySelector('button');
+        btn.addEventListener('click',function(){
+            location.href = 'http://www.baidu.com';
+        })
+        var div = document.querySelector('div');
+        // 5s后跳百度
+        var t = 5;
+        div.innerHTML = '将在'+t+'秒后跳转到百度';
+        setInterval(function(){
+            if(t === 0){
+                location.href = 'http://www.baidu.com';
+            } else {
+                div.innerHTML = '将在'+t+'秒后跳转到百度';
+                t--;
+            }
+        },1000)
+    </script>
+</body>
+</html>

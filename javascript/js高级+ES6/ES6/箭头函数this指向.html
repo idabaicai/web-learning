@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>箭头函数this指向</title>
+</head>
+
+<body>
+    <script>
+        var name = '干饭人111';
+        const obj = {
+            name: '打工人',
+            age: 18
+        };
+
+        function fn() {
+            console.log(this);
+            let fn_this = this;
+            return () => {
+                // 箭头函数不绑定this，箭头函数中的this指向的是函数定义位置上下文的this
+                console.log(this);
+                console.log(fn_this === this);
+            }
+        }
+        const fn1 = fn.call(obj);
+        fn1();
+        console.log('---------------------------');
+        // 不返回箭头函数时
+        function say() {
+            let name = '蓉漂人';
+            console.log(this.name);
+            return function() {
+                console.log(123);
+                console.log(this.name); // 干饭人
+            }
+        }
+        const say1 = say.call(obj);
+        say1();
+    </script>
+</body>
+
+</html>

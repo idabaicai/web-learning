@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>扩展内置对象</title>
+</head>
+
+<body>
+    <script>
+        // 给数组增加求偶数的方法
+        Array.prototype.getEven = function() {
+                let arr = [];
+                for (let i = 0; i < this.length; i++) {
+                    if (this[i] % 2 == 0) {
+                        arr.push(this[i]);
+                    }
+                }
+                return arr;
+            }
+            // 给数组增加求和的方法
+        Array.prototype.sum = function() {
+            let sum = 0;
+            for (let i = 0; i < this.length; i++) {
+                sum += this[i];
+            }
+            return sum;
+        }
+        let a = [1, 2, 3, 4, 5, 6];
+        console.log(a);
+        res = a.getEven();
+        console.log(res);
+        console.log(a.sum());
+    </script>
+</body>
+
+</html>

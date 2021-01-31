@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>定时器</title>
+</head>
+
+<body>
+    <h3>定时器</h3>
+    <ul>
+        <li>setTimeout(fn,毫秒数), 调用一次</li>
+        <li>setInterval(fn,毫秒数),重复调用</li>
+    </ul>
+    <button>停止time1定时器</button>
+    <button id="time2">停止time2定时器</button>
+    <script>
+        function fn() {
+            console.log('time');
+        }
+        // 一个页面有多个定时器，要为每个定时器给标识
+        var time1 = setTimeout(fn, 2000);
+        // fn 也叫回调函数 callback。等时机到了才执行的函数，addEventListener('',callback)，也是回调函数
+        // 停止定时器
+        var btn = document.querySelector('button');
+        btn.addEventListener('click', function() {
+                clearTimeout(time1);
+                console.log('time1 已停止');
+            })
+            // setInterval
+        function fn1() {
+            console.log('hello 大前端');
+        }
+        var time2 = setInterval(fn1, 2000);
+        // 停止time2
+        var btn2 = document.querySelector('#time2');
+        btn2.addEventListener('click', function() {
+            clearInterval(time2);
+            console.log('time2已停止');
+        })
+    </script>
+</body>
+
+</html>

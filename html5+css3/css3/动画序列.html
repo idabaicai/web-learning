@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>动画序列</title>
+    <style>
+        @keyframes move {
+            /* 相当于 0% */
+            from {
+                transform: translate(0, 0);
+            }
+            /* 相当于 100% */
+            to {
+                transform: translate(1000px, 0);
+            }
+        }
+        /* 动画序列 */
+        
+        @keyframes to {
+            0% {
+                transform: translate(0, 0);
+            }
+            25% {
+                transform: translate(800px, 0);
+            }
+            50% {
+                transform: translate(800px, 300px);
+            }
+            75% {
+                transform: translate(0, 300px);
+            }
+            100% {
+                transform: translate(0, 0);
+            }
+        }
+        
+        div {
+            width: 100px;
+            height: 100px;
+            margin: 10px;
+            background-color: pink;
+            /* 调用动画 */
+            animation-name: move;
+            /* 持续时间 */
+            animation-duration: 5s;
+            /* 动画速度曲线 */
+            animation-timing-function: cubic-bezier(0.075, 0.82, 0.165, 1);
+            /* 延迟 */
+            animation-delay: 1s;
+            /* 重复次数 */
+            animation-iteration-count: infinite;
+            /* 是否反方向播放 */
+            animation-direction: alternate;
+            /* 动画结束后状态 */
+            animation-fill-mode: forwards;
+            /* 简写 */
+            /* animation: move 1s linear 1s infinite alternate forwards; */
+        }
+        
+        div:hover {
+            /* 鼠标经过，让这个div停止动画 离开后继续播放 */
+            animation-play-state: paused;
+            /* 不能简写*/
+        }
+        
+        .div1 {
+            width: 120px;
+            height: 120px;
+            background-color: purple;
+            animation-name: to;
+            animation-duration: 20s;
+        }
+    </style>
+</head>
+
+<body>
+    <div></div>
+    <div class="div1"></div>
+</body>
+
+</html>

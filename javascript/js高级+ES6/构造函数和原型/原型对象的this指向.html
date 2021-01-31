@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>原型对象的this指向</title>
+</head>
+
+<body>
+    <script>
+        function City(name, area) {
+            this.name = name;
+            this.area = area;
+        }
+        let that;
+        City.prototype.say = function() {
+            console.log(this.name + '欢迎你！');
+            that = this;
+        }
+        let chengdu = new City('成都', 20200);
+        // 1.构造函数中this指向的对象是当前实例 chengdu
+        chengdu.say();
+        // 2.原型对象函数里面的this 指向的也是当前实例chengdu
+        console.log(that);
+    </script>
+</body>
+
+</html>

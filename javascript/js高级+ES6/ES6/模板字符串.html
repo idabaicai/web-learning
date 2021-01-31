@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        let foo = `模板字符串`;
+        console.log(foo);
+        let name = "打工人";
+        // 解析变量
+        let say = `Hello ${foo}`;
+        let obj = {
+            name: '打工人',
+            age: 22,
+            sex: 'man'
+        }
+        let html = `
+        <div>
+            <span>${obj.name}</span>
+            <span>${obj.age}</span>
+        </div>
+        `
+        console.log(html);
+        // 模板字符串可以调用函数
+        const fn = function() {
+            return '来吧，';
+        }
+        let str = `${fn()}展示`;
+        console.log(str);
+    </script>
+</body>
+
+</html>

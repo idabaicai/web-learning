@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div>div</div>
+    <a href="http://www.baidu.com">百度</a>
+    <form action="http://www.baidu.com">
+        <input type="submit" value="提交">
+    </form>
+    <script>
+        var div = document.querySelector('div');
+
+        function fn(e) {
+            console.log(e.type);
+        }
+        div.addEventListener('click', fn);
+        // 阻止默认事件
+        var a = document.querySelector('a');
+        a.addEventListener('click', function(e) {
+                e.preventDefault();
+            })
+            // 对于低版本浏览器
+        a.onclick = function(e) {
+            // 1
+            return false;
+            // 2
+            // e.returnValue;
+        }
+    </script>
+</body>
+
+</html>

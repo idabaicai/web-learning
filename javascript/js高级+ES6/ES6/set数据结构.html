@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>set数据结构</title>
+</head>
+
+<body>
+    <script>
+        // set 数据结构的值不能重复
+        const s1 = new Set([2, 4, 6, 7]);
+        console.log(s1);
+        let a = [1, 3, 5, 1, 3, 5];
+        // 数组去重
+        let res_a = new Set(a);
+        console.log(res_a);
+        // 转为数组
+        let a_arr = [...res_a];
+        console.log(a_arr);
+        // set 方法
+        res_a.add('r');
+        console.log(res_a);
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>创建节点</title>
+</head>
+
+<body>
+    <h3>常用在留言功能</h3>
+    <ul>
+        <li>我是提前创建好的</li>
+    </ul>
+    <h3>动态创建元素的区别</h3>
+    <ul>
+        <li>document.write() 直接将内容写入页面的内容流，但是文档流执行完毕，则会导致页面全部重绘</li>
+        <li>element.innerHTML 将内容写入某个DOM节点 创建多个元素时效率更高（不要拼接字符串，采取数组形式拼接）</li>
+        <li>document.createElemnet() 创建多个元素的效率稍低，但是结构更清晰。</li>
+    </ul>
+    <script>
+        // 1. 创建元素节点
+        var li = document.createElement('li');
+        li.innerHTML = "js创建的";
+        // 2. 追加节点
+        var ul = document.querySelector('ul');
+        ul.appendChild(li);
+        // 3. 插入节点
+        var li2 = document.createElement('li');
+        li2.innerHTML = '我要插在前面';
+        ul.insertBefore(li2, ul.children[0]);
+
+        // windown.write()
+        window.onload = function() {
+            // 导致页面只剩 <p>我是write创建的</p>
+            // document.write("<p>我是write创建的</p>");
+        }
+    </script>
+</body>
+
+</html>

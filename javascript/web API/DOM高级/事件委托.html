@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>事件委托</title>
+    <style>
+        .red {
+            color: red;
+        }
+    </style>
+</head>
+
+<body>
+    <p>事件委托原理</p>
+    <p class="red">不是每个子节点单独设置事件监听器，而是事件监听器设置在父节点上，然后根据冒泡原理影响设置每个子节点</p>
+    <h4>作用</h4>
+    <p>只操作了一次dom，提高了程序的性能。</p>
+    <h4>实例</h4>
+    <p>给ul注册点击事件，然后利用事件对象的target找到当前点击的li，因为点击li，事件会冒泡到ul上，ul有注册事件，就会触发事件监听器</p>
+    <ul>
+        <li>干饭人，干饭魂。</li>
+        <li>干饭人，干饭魂。</li>
+        <li>干饭人，干饭魂。</li>
+        <li>干饭人，干饭魂。</li>
+        <li>干饭人，干饭魂。</li>
+    </ul>
+    <script>
+        // 给父节点添加侦听器，利用事件冒泡影像每一个子节点
+        var ul = document.querySelector('ul');
+        ul.addEventListener('click', function(e) {
+            alert('hello');
+            e.target.style.backgroundColor = 'pink';
+        })
+    </script>
+</body>
+
+</html>

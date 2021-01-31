@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM事件流</title>
+    <style>
+        span {
+            color: red;
+        }
+        
+        .red {
+            color: red;
+        }
+        
+        .div1 {
+            position: relative;
+            width: 300px;
+            height: 300px;
+            margin: 20px auto;
+            background: pink;
+        }
+        
+        .div2 {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            height: 100px;
+            width: 100px;
+            margin-top: -50px;
+            margin-left: -50px;
+            text-align: center;
+            line-height: 100px;
+            background: purple;
+        }
+    </style>
+</head>
+
+<body>
+    <h3>DOM事件流</h3>
+    <p>
+        <span>事件</span> 发生时会在元素节点之间按照特定的顺序传播，这个 <span>传播过程</span> 叫做
+        <span>DOM事件流</span>
+    </p>
+    <h3>注意</h3>
+    <ol>
+        <li>JS 代码中只能执行捕获或者冒泡其中一个阶段</li>
+        <li>onclick和attachEvent只能得到冒泡阶段</li>
+        <li>捕获阶段 如果addEventListener的第三个参数是true 则处于捕获阶段</li>
+        <li class="red">实际开发中很少用事件捕获，更关注事件冒泡</li>
+        <li class="red">没有冒泡的事件：onblur、onfocus、onmouseenter、onmouseleave</li>
+    </ol>
+    <h3>实例</h3>
+    <div class="div1">
+        <div class="div2">
+            div2
+        </div>
+    </div>
+    <script>
+        var div1 = document.querySelector('.div1');
+        var div2 = document.querySelector('.div2');
+
+        function fn1() {
+            alert('dom事件流1!')
+        }
+
+        function fn2() {
+            alert('dom事件流2!')
+        }
+        // 捕获阶段： document --> html--> body --> div1 --> div2
+        // true=>捕获阶段: 先执行div1的事件  false=>冒泡事件：先执行div2事件
+        div2.addEventListener('click', fn2, false);
+        // 为div1也注册一个事件
+        div1.addEventListener('click', fn1, false);
+        // 为document也注册一个事件
+        document.addEventListener('click', function() {
+            alert('document event.');
+        }, false)
+    </script>
+</body>
+
+</html>

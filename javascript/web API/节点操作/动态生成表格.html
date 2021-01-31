@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>动态生成表格</title>
+    <style>
+        table {
+            width: 400px;
+            margin: 100px auto;
+            border-collapse: collapse;
+            text-align: center;
+        }
+        
+        thead {
+            background: #ccc;
+        }
+        
+        th,
+        td {
+            height: 30px;
+            line-height: 30px;
+            border: 1px solid #000;
+        }
+    </style>
+</head>
+
+<body>
+    <table>
+        <thead>
+            <tr>
+                <th>姓名</th>
+                <th>科目</th>
+                <th>成绩</th>
+                <th>操作</th>
+            </tr>
+        </thead>
+        <tbody>
+
+        </tbody>
+    </table>
+    <script>
+        // 准备数据
+        var datas = [{
+            name: '年轻人',
+            subject: 'JavaScript',
+            score: 89
+        }, {
+            name: '打工人',
+            subject: 'Java',
+            score: 92
+        }, {
+            name: '干饭人',
+            subject: 'Linux',
+            score: 88
+        }, {
+            name: '马保国',
+            subject: '太极拳',
+            score: 82
+        }];
+        // 表格生成
+        var tbody = document.querySelector('tbody');
+
+        for (var i = 0; i < datas.length; i++) { //生成tr
+            var tr = document.createElement('tr');
+            // console.log(datas[i]);
+            for (var k in datas[i]) {
+                var td = document.createElement('td');
+                td.innerHTML = datas[i][k];
+                tr.appendChild(td);
+            }
+            // 删除操作
+            var td = document.createElement('td');
+            td.innerHTML = '<a href="javascript:;" class="del">删除</a>';
+            tr.appendChild(td);
+            tbody.appendChild(tr);
+
+        }
+        // 表格删除操作
+        var tr = document.querySelectorAll('tr');
+        var del = document.querySelectorAll('.del');
+        var len = del.length;
+        for (var i = 0; i < len; i++) {
+            del[i].onclick = function() {
+                tbody.removeChild(this.parentElement.parentElement);
+            }
+        }
+    </script>
+</body>
+
+</html>

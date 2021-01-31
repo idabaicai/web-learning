@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>原型对象</title>
+</head>
+
+<body>
+    <script>
+        // 对象都会有一个__proto__指向构造函数的prototype原型对象，
+        // 之所以我们可以使用构造函数prototype原型对象的属性和方法，
+        // 就是因为对象有__proto__原型的存在
+
+        function App(name, size) {
+            this.name = name;
+            this.size = size;
+        }
+        App.prototype.to = function(use) {
+            console.log(this.name + '可以' + use);
+        }
+        let alipay = new App('支付宝', 100);
+        alipay.to('剁手');
+        console.log(alipay);
+        console.log(alipay.__proto__);
+        console.log(alipay.__proto__ === App.prototype); // true
+    </script>
+</body>
+
+</html>

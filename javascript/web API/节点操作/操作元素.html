@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>操作元素</title>
+</head>
+
+<body>
+    <div id="time">2021-01-16 08:27</div>
+    <button id="current_time">显示当前时间</button>
+    <h3>innerText 和 innerHTML的区别</h3>
+    <p id="text"></p>
+    <p id="html"></p>
+    <script>
+        var btn = document.getElementById('current_time');
+        btn.onclick = function() {
+            var date = new Date();
+            var c_time = date.getTime();
+            console.log(document.getElementById('time').innerText);
+            document.getElementById('time').innerText = c_time;
+        }
+        var text = document.getElementById('text');
+        var html = document.getElementById('html');
+        text.innerText = "<b>Text不解析html标签</b>";
+        html.innerHTML = "<b>Html可以解析html标签</b>";
+    </script>
+</body>
+
+</html>

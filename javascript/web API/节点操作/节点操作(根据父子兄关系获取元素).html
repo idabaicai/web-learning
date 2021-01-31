@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>节点操作</title>
+    <style>
+        table {
+            width: 500px;
+            height: 200px;
+            border-collapse: collapse;
+            text-align: center;
+        }
+        
+        th,
+        td {
+            border: 1px solid #ccc;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box">我是div</div>
+    <span>我是span</span>
+    <ul>
+        <li>我是li1</li>
+        <li>我是li2</li>
+        <li>我是li3</li>
+        <li>我是li4</li>
+        <li>我是li5</li>
+    </ul>
+    <h4>节点概述</h4>
+    <table>
+        <thead>
+            <tr>
+                <th>节点</th>
+                <th>nodeType</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>元素节点</td>
+                <td>1</td>
+            </tr>
+            <tr>
+                <td>属性节点</td>
+                <td>2</td>
+            </tr>
+            <tr>
+                <td>文本节点</td>
+                <td>3</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div class="box">
+        <span class="erweima">x</span>
+    </div>
+    <script>
+        // 1. 父节点 parentNode
+        var erweima = document.querySelector('.erweima');
+        var box = erweima.parentElement;
+        console.log(box);
+
+        // 2. 获取子节点 包括空格 换行 文本等
+        var ul = document.querySelector('ul');
+        var lis = ul.childNodes;
+        console.log(lis);
+        // 通过nodeType=1 获得元素节点
+        for (var i = 0; i < lis.length; i++) {
+            if (ul.childNodes[i].nodeType == 1) {
+                console.log(ul.childNodes[i]);
+            }
+        }
+        // 3. 通过children获取所有的子元素节点  非标准 但好用
+        console.log(ul.children);
+        // 4. 获取第一个元素和最后一个元素
+        var first_li = ul.firstElementChild; // IE9以上才支持
+        console.log(first_li);
+        var last_li = ul.last;
+        console.log(last_li);
+        // 解决兼容性
+        var first_li = ul.children[0];
+        console.log(first_li);
+        var last_li = ul.children[ul.children.length - 1];
+        console.log(last_li);
+    </script>
+</body>
+
+</html>

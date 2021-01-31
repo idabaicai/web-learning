@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>定光标</title>
+</head>
+
+<body>
+    <h3>搜索框</h3>
+    <p>知识点：鼠标事件，光标focus函数</p>
+    <input type="text" name="" id="">
+    <script>
+        var search = document.querySelector('input');
+        // keydown 也可以定位到搜索框，但是会将s写进搜索框
+        document.addEventListener('keyup', function(e) {
+            console.log(e.keyCode);
+            // 用户按s键 将光标定到搜索框
+            if (e.keyCode === 83) {
+                search.focus();
+            }
+        })
+    </script>
+</body>
+
+</html>

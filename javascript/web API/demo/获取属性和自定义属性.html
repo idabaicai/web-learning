@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="box" attr1="red"></div>
+    <script>
+        var div = document.querySelector('div');
+        console.log(div.className); //主要获取元素自身属性
+        console.log(div.getAttribute('class'));
+        console.log(div.getAttribute('attr1'));
+
+        //设置元素属性值
+        div.id = "box"; //方法一
+        div.setAttribute('attr1', 'blue');
+        // 移除元素属性
+        div.removeAttribute('attr1')
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>继承</title>
+</head>
+
+<body>
+    <script>
+        // 1. 父构造函数
+        function Father(name, age) {
+
+            this.name = name;
+            this.age = age;
+        }
+        Father.prototype.getMoney = function() {
+                console.log(10000000);
+            }
+            // 2. 子构造函数
+        function Son(sname, sage, score) {
+            // 借用父构造函数的属性 
+            // this指向子构造函数
+            Father.call(this, sname, sage);
+            this.score = score;
+        }
+        // 让Son的原型对象=父构造函数的原型对象 相当于继承了父构造函数的 getMoney()方法，但是存在问题3
+        // 解决办法：解决办法1
+        // Son.prototype = Father.prototype;
+        // // Son私有的方法？
+        // Son.prototype.play = function() { //问题3. 这样定义的方法，让Father的prototype也有了play方法
+        //     console.log('play lol');
+        // }
+
+        //解决办法1 让Son的方法私有且继承Father的属性的解决办法
+        Son.prototype = new Father();
+        // 如果利用对象的形式修改了原型对象，要用constructor指回原来的构造函数
+        Son.prototype.constructor = Son;
+
+
+        Son.prototype.play = function() {
+            console.log('play LOL');
+        }
+        console.log(Father.prototype);
+        console.log(Son.prototype.constructor);
+        let lxh = new Son('刘小华', 18, 98);
+        console.log('age:' + lxh.age); // 18
+        console.log('score:' + lxh.score); // 98
+        lxh.getMoney();
+        console.log(lxh);
+        lxh.play();
+    </script>
+</body>
+
+</html>

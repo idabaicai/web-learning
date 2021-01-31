@@ -1,0 +1,41 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.goods {
+    width: 800px;
+    height: 500px;
+    margin: 50px auto;
+}
+
+.search {
+    height: 50px;
+}
+
+.search-price {
+    float: left;
+}
+
+.search-price input {
+    width: 60px;
+}
+
+.search-name {
+    float: left;
+    margin-left: 20px;
+}
+
+table {
+    width: 500px;
+    margin: 10px auto;
+    text-align: center;
+    border: 1px solid #ccc;
+    border-collapse: collapse;
+}
+
+th,
+td {
+    height: 30px;
+    border: 1px solid #ccc;
+}

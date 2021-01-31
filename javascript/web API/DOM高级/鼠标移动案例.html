@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        img {
+            position: absolute;
+        }
+    </style>
+</head>
+
+<body>
+    <img src="../../image/angel.gif" alt="">
+    <script>
+        document.addEventListener('mousemove', function(e) {
+            // console.log('move');
+            //  每次移动都会获得鼠标坐标
+            var x = e.pageX - 48;
+            var y = e.pageY - 40;
+            // console.log('x:' + x, 'y:' + y);
+            var pic = document.querySelector('img');
+            pic.style.left = x + 'px';
+            pic.style.top = y + 'px';
+        })
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        let arrLike = {
+            "0": "10",
+            "1": "20",
+            "length": 2
+        };
+        let arr = Array.from(arrLike);
+        console.log(arr);
+        let newArr = Array.from(arrLike, (item) => item * 2);
+        console.log(newArr);
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>倒计时</title>
+    <style>
+        .time {
+            width: 300px;
+            height: 50px;
+            margin: 100px auto;
+        }
+        
+        .time div {
+            float: left;
+            width: 30px;
+            height: 30px;
+            line-height: 30px;
+            text-align: center;
+            font-size: 20px;
+            margin: 0 3px;
+            color: #fff;
+            background: #000;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="time">
+        <div class="h">0</div>
+        <div class="m">0</div>
+        <div class="s">0</div>
+    </div>
+    <button class="end">停止倒计时</button>
+    <button class="start">开始倒计时</button>
+    <script>
+        var h = document.querySelector('.h');
+        var m = document.querySelector('.m');
+        var s = document.querySelector('.s');
+        // sTime 活动开始时间
+        function getTime(sTime) {
+            var now = +new Date();
+            var sTime = +new Date(sTime); //开始时间的毫秒数
+            var time = (sTime - now) / 1000; //开始时间的描述
+            var h = parseInt(time / 3600);
+            var m = parseInt(time / 60 % 60);
+            var s = parseInt(time % 60);
+            return {
+                h: h,
+                m: m,
+                s: s
+            };
+        }
+        // 防止页面刷新有一秒延迟，在定时器之前就调用一次
+        timer(); //细节 细节决定成败
+
+        function timer() {
+            var time = getTime('2021-01-19 20:29');
+            // console.log(time);
+            h.innerHTML = time['h'];
+            m.innerHTML = time['m'];
+            s.innerHTML = time['s'];
+        }
+        var cutdown_timer = setInterval(timer, 1000);
+        // 停止定时器
+        var end_btn = document.querySelector('.end');
+        var start_btn = document.querySelector('.start');
+
+        end_btn.addEventListener('click', function() {
+                clearInterval(cutdown_timer);
+            })
+            // 开始倒计时
+        start_btn.addEventListener('click', function() {
+            cutdown_timer = setInterval(timer, 1000);
+        })
+    </script>
+</body>
+
+</html>

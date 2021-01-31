@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h3>ie11才支持 dataset</h3>
+    <div data-index="1" data-age="18" data-food-apple="红富士"></div>
+    <div data-name="打工人"></div>
+		<span></span>
+    <script>
+        var div = document.querySelector('div');
+        // h5新增属性获取方法
+        console.log(data);
+        console.log(div.dataset.age); // 18
+        // 多个-构成的属性获取方法
+        console.log(div.dataset.foodApple); // 红富士
+    </script>
+	
+	
+</body>
+
+</html>

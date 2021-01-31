@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+
+    </style>
+</head>
+
+<body>
+    <button>点击</button>
+    <button id="btn2">点击2</button>
+    <script>
+        var that = null;
+        class Star {
+
+            constructor(name, age) {
+                that = this;
+                this.name = name;
+                this.age = age;
+                this.btn = document.querySelector('button');
+                // this.btn.addEventListener('click', this.say); //调用say  
+                this.btn.onclick = this.say; //this.say, this指向的是btn 没有name ''
+
+                // 点击btn2 输出Star的name
+                this.btn2 = document.querySelector('#btn2');
+                this.btn2.addEventListener('click', this.say)
+            }
+            say() {
+                console.log(this);
+                console.log(that.name);
+            }
+            dance() {
+                console.log(this);
+            }
+        }
+        var ldh = new Star('刘德华', 18);
+        console.log(ldh.say());
+        console.log(ldh === that);
+        ldh.dance();
+        that.dance();
+    </script>
+    <script>
+        console.log('----------------');
+        console.log(ldh);
+    </script>
+</body>
+
+</html>

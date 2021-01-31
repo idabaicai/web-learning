@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>操作元素</title>
+    <style>
+        .div img {
+            width: 300px;
+        }
+    </style>
+</head>
+
+<body>
+    <h3>改变图片</h3>
+    <div class="div">
+        <img src="../image/big4004.jpg" alt="" id="bg">
+        <!-- <img src="../image/big4006.jpg" alt=""> -->
+    </div>
+    <button id="changeBg">换皮肤</button>
+    <script>
+        var obj = document.getElementById('changeBg');
+        obj.onclick = function() {
+            var bg = document.getElementById('bg');
+            var src = bg.src;
+            var bg_img = src.substring(src.length - 11);
+            if (bg_img == 'big4004.jpg') {
+                bg.src = '../image/big4006.jpg';
+            } else {
+                bg.src = '../image/big4004.jpg';
+            }
+        }
+    </script>
+</body>
+
+</html>

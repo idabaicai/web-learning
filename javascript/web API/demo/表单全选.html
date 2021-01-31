@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>表单全选</title>
+    <style>
+        table {
+            width: 500px;
+            margin: 50px auto;
+            border-collapse: collapse;
+            text-align: center;
+        }
+        
+        thead {
+            background-color: aqua;
+        }
+        
+        th,
+        td {
+            border: 1px solid #ccc;
+            height: 30px;
+        }
+        
+        .bg {
+            background-color: pink;
+        }
+    </style>
+</head>
+
+<body>
+    <table>
+        <thead>
+            <tr>
+                <th>
+                    <input type="checkbox" name="" id="selAll">
+                </th>
+                <th>商品</th>
+                <th>价格</th>
+            </tr>
+        </thead>
+        <tbody id="tbody">
+            <tr>
+                <td><input type="checkbox" name="" id="good1"></td>
+                <td>小米11</td>
+                <td>3999</td>
+            </tr>
+            <tr>
+                <td><input type="checkbox" name="" id="good2"></td>
+                <td>iphone12</td>
+                <td>4999</td>
+            </tr>
+            <tr>
+                <td><input type="checkbox" name="" id="good"></td>
+                <td>华为Meta40</td>
+                <td>4399</td>
+            </tr>
+            <tr>
+                <td><input type="checkbox" name="" id="good"></td>
+                <td>华为Meta40</td>
+                <td>4399</td>
+            </tr>
+            <tr>
+                <td><input type="checkbox" name="" id="good"></td>
+                <td>华为Meta40</td>
+                <td>4399</td>
+            </tr>
+            <tr>
+                <td><input type="checkbox" name="" id="good"></td>
+                <td>华为Meta40</td>
+                <td>4399</td>
+            </tr>
+        </tbody>
+    </table>
+    <script>
+        var tr = document.querySelector('tbody').querySelectorAll('tr');
+        for (var i = 0; i < tr.length; i++) {
+            tr[i].onmousemove = function() {
+                this.className = 'bg';
+            }
+            tr[i].onmouseleave = function() {
+                this.className = '';
+            }
+        }
+        var all = document.getElementById('selAll');
+        var goods = document.getElementById('tbody').getElementsByTagName('input');
+        console.log(all);
+        console.log(goods);
+        // 实现全选和全取消
+        all.onclick = function() {
+            for (var i = 0; i < goods.length; i++) { //让下边的选中状态跟全选框保持一致
+                goods[i].checked = this.checked;
+            }
+        }
+
+        // 有一个没选中则取消全选
+        for (var i = 0; i < goods.length; i++) {
+            goods[i].onclick = function() {
+                // 方法一
+                // 计算选中的个数
+                // var sel_num = 0;
+                // for (var j = 0; j < goods.length; j++) {
+                //     if (goods[j].checked == true) {
+                //         sel_num++;
+                //     }
+                // }
+                // if (sel_num < goods.length) {
+                //     all.checked = false;
+                // } else {
+                //     all.checked = true;
+                // }
+
+                // 方法二
+                var flag = true;
+                for (j = 0; j < goods.length; j++) {
+                    if (!goods[j].checked) {
+                        flag = false;
+                        break; // 细节 细节 细节
+                    }
+                    all.checked = flag;
+                }
+            }
+        }
+    </script>
+</body>
+
+</html>

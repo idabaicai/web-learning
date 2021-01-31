@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>热点地图</title>
+    <style>
+        .map {
+            position: relative;
+            width: 800px;
+            height: 661px;
+            margin: 50px auto;
+            background: url(image/map_min.png) no-repeat;
+        }
+        
+        .city {
+            position: absolute;
+            top: 426px;
+            left: 402px;
+        }
+        
+        .dotted {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background-color: rgb(69, 202, 36);
+        }
+        
+        .city div[class^="pulse"] {
+            /* 让小波纹在父盒子中水平垂直居中 */
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 8px;
+            height: 8px;
+            box-shadow: 0 0 12px rgb(109, 17, 184);
+            border-radius: 50%;
+            animation: pulse 1.2s linear infinite;
+        }
+        
+        .city div.pulse2 {
+            animation-delay: 0.4s;
+        }
+        
+        .city div.pulse3 {
+            animation-delay: 0.8s;
+        }
+        
+        @keyframes pulse {
+            0% {}
+            70% {
+                width: 40px;
+                height: 40px;
+                opacity: 1;
+            }
+            100% {
+                width: 70px;
+                height: 70px;
+                opacity: 0;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="map">
+        <div class="city">
+            <!-- 小圆点 -->
+            <div class="dotted"></div>
+            <!-- 波纹 -->
+            <div class="pulse1"></div>
+            <div class="pulse2"></div>
+            <div class="pulse3"></div>
+        </div>
+    </div>
+</body>
+
+</html>

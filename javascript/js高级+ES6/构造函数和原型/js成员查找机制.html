@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>js查找机制</title>
+</head>
+
+<body>
+    <script>
+        // 构造函数
+        function Hero(name, type) {
+            this.name = name;
+            this.type = type;
+        }
+        // 原型对象
+        Hero.prototype.say = function() {
+            console.log('I am ' + this.name + 'is a ' + this.type);
+        }
+        Hero.prototype.sex = 'man';
+
+        // jx实例
+        let jx = new Hero('剑圣', '打野');
+        jx.say();
+        jx.sex = '男';
+        console.log(jx.sex);
+        // xz实例
+        let xz = new Hero('盲僧', '打工人');
+        console.log(xz.sex); // man  实例对象中没有sex 通过__proto__查找原型对象
+        console.log(xz.__proto__.sex); // man
+        // hz 实例
+        let hz = new Hero('皇子', '上单');
+
+        hz.say();
+        console.log(hz.height); //undefined   打印皇子的身高，实例中无height，
+        // 原型对象中无height，查找原型对象的__proto__，也就是在Object原型对象prototype中找height
+        Object.prototype.height = 180; // 给英雄一个天生的身高
+        console.log(hz.height);
+        console.log(xz.height);
+        // Object的prototype有toString方法
+        console.log(xz.toString());
+    </script>
+</body>
+
+</html>

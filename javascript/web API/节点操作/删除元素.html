@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>删除节点</title>
+</head>
+
+<body>
+    <h3>删除节点</h3>
+    <pre>
+        node.removeChild(element);
+    </pre>
+    <p>从DOM中删除node的子节点，返回删除节点</p>
+    <ul>
+        <li>red</li>
+        <li>green</li>
+        <li>blue</li>
+    </ul>
+    <button>删除</button>
+    <button id="add">添加</button>
+    <script>
+        var ul = document.querySelector('ul');
+        var btn = document.querySelector('button')
+        var add = document.querySelector('#add');
+        // delete element
+        var del_element = [];
+        btn.onclick = function() {
+                if (ul.children.length > 0) {
+                    var el = ul.removeChild(ul.children[0]);
+                    del_element.push(el);
+                } else {
+                    alert('no element!');
+                }
+            }
+            // add element
+        add.onclick = function() {
+            ul.appendChild(del_element[0]);
+            del_element.shift();
+        }
+    </script>
+
+</body>
+
+</html>

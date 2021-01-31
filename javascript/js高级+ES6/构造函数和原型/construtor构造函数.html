@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>constructor</title>
+</head>
+
+<body>
+    <script>
+        // 对象原型(__proto__)和构造函数(prototype)原型对象里面都有一个constructor属性
+        // constructor 称为构造函数，因为它指回构造函数本身
+        function App(name, size) {
+            this.name = name;
+            this.size = size;
+        }
+        App.prototype.to = function(use) {
+            console.log(this.name + '可以' + use);
+        };
+        App.prototype.install = function() {
+            console.log(this.name + '已安装');
+        }
+
+        let pdd = new App('拼多多', 90);
+        pdd.to('砍价');
+        console.log(pdd.__proto__.constructor); // 指向构造函数 App()   
+        console.log(App.prototype.constructor); // 指向构造函数 App()
+
+        console.log('-----------------');
+        // 当构造函数方法比较多时，用对象的方式 放在原型对象中
+        function App1(name, size) {
+            this.name = name;
+            this.size = size;
+        }
+        App1.prototype = {
+            // 很多情况下，我们需要手动利用constructor 这个属性指回原来的构造函数
+            constructor: App1,
+            to: function(use) {
+                console.log(this.name + ' can ' + use);
+            },
+            install: function() {
+                console.log(this.name + 'install....');
+            }
+        }
+        let bli = new App1('bilibili', 66);
+        bli.to('下次一定');
+        console.log(bli.__proto__.constructor); // 当注释 constructor:App1时 输出 Object()
+    </script>
+</body>
+
+</html>

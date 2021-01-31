@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>模板语法</title>
+    <script src="lib/vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        {{message}}
+        <button v-on:click="reverse">翻转</button>
+    </div>
+    <script>
+        var vm = new Vue({
+            el: '#app',
+            data: {
+                message: 'hello',
+                a: 'vue'
+            },
+            methods: {
+                reverse: function() {
+                    this.message = this.message.split('').reverse().join('');
+                }
+            }
+
+        })
+    </script>
+</body>
+
+</html>

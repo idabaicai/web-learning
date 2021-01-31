@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>tab栏切换</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+    <div class="main" id="main">
+        <h4>js面向对象 动态添加标签页</h4>
+        <div class="tabbox" id="tabbox">
+            <!-- tab 标签 -->
+            <nav class="firstnav">
+                <ul id="tab">
+                    <li class="li-current"><span class="item">选项卡1</span><span class="icomoon del"></span></li>
+                    <li><span class="item">选项卡2</span><span class="icomoon del"></span></li>
+                    <li><span class="item">选项卡3</span><span class="icomoon del"></span></li>
+                </ul>
+                <!-- 添加tab -->
+                <div class="tabadd"><span class="icomoon add" id="add"></span></div>
+            </nav>
+            <!-- tab 内容 -->
+            <div class="tabscon">
+                <section class="sec-current">测试1</section>
+                <section>测试2</section>
+                <section>测试3</section>
+                <!-- <section>测试3</section> -->
+            </div>
+        </div>
+
+    </div>
+    <script src="js/tab.js"></script>
+</body>
+
+</html>

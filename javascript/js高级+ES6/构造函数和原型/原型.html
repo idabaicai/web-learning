@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>原型</title>
+</head>
+
+<body>
+    <script>
+        // 构造函数通过原型分配的函数是所有对象共享的
+        // js中规定，每一个构造函数都有一个prototype属性，指向另一个对象，
+        // 这里的prototype就是一个对象，这个对象的所有属性和方法，都会被构造函数所拥有
+
+        // 构造函数问题
+        function Star(name, age) {
+            this.name = name;
+            this.age = age;
+            this.sing = function() {
+                console.log('I am ' + this.name);
+            }
+        }
+        let ldh = new Star('liudehua', 30);
+        let lh = new Star('liuhui', 20);
+        console.log(ldh.sing == lh.sing); // false 方法一样 但开辟了两个内存空间
+        console.dir(Star);
+        // 解决办法：把一些不变的方法，直接定义在prototype对象上，
+        // 这样所有对象的实例就可以共享这些方法
+
+        // 案例
+        function App(name, size) {
+            this.name = name;
+            this.size = size;
+            // this.to = function(use) {  // 先从构造函数中赵to方法
+            //     console.log(use);
+            // }
+        }
+        App.prototype.to = function(use) {
+                console.log(this.name + '可以' + use);
+            }
+            // 微信实例
+        let wechat = new App('微信', 87);
+        wechat.to('发消息');
+        // 美团实例
+        let meituan = new App('美团', 50);
+        meituan.to('买菜');
+        console.log(wechat.to == meituan.to); // true 说明两个实例共享一个方法
+        // 一般情况下，公共属性定义在构造函数里，公共方法放在原型对象上
+    </script>
+</body>
+
+</html>

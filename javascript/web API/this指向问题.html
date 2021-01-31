@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>this指向问题</title>
+</head>
+
+<body>
+    <script>
+        // this一般指向他的调用者
+        console.log('全局环境下this指向' + this); //windown
+
+        function fn() {
+            console.log('函数中this指向' + this); //windown
+        }
+        fn();
+        // 1.fn() 相当于 windown.fn()
+        window.fn();
+        // 定时器this指向问题
+        setTimeout(function() {
+            console.log('setTimeout函数的this指向' + this);
+        }, 1000);
+        // 2.方法调用中谁调用this指向谁
+        var name = 'window的干饭人'
+        var obj = {
+            name: 'obj的打工人',
+            say: function() {
+                console.log('hello' + this.name);
+                console.log(window.name);
+            }
+        }
+        obj.say();
+        // 3. 构造函数中this指向构造函数的实例
+        function Fun() {
+            console.log(this); //this 指向fun 实例对象
+        }
+        var fun = new Fun();
+    </script>
+</body>
+
+</html>

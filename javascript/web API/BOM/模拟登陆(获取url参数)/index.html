@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>首页</title>
+</head>
+<body>
+    <div></div>
+    <script>
+        var str = location.search;
+        // 从第一个开始截取字符串
+        var str1 = str.substr(1);
+        console.log(str1);
+        // 利用&分隔为数组
+        var data = str1.split('&');
+        var name = data[0].split('=');
+        var name = name.split(',')[1];
+        console.log(name);
+        var div = document.querySelector('div');
+        div.innerHTML = "欢迎你"+name+"";
+    </script>
+</body>
+</html>

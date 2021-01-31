@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2D转换</title>
+    <style>
+        div {
+            margin: 100px 100px;
+        }
+        
+        .div1 {
+            float: left;
+            width: 200px;
+            height: 200px;
+            background-color: pink;
+            transition: all 3s;
+            /* 旋转中心 */
+            transform-origin: left bottom;
+            /* 默认是 50% 50% */
+        }
+        
+        div:hover {
+            transform: rotate(360deg);
+        }
+        
+        .div2 {
+            float: left;
+            width: 200px;
+            height: 200px;
+            background-color: purple;
+            transition: all 2s;
+            transform-origin: 20px 30px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="div1"></div>
+    <div class="div2"></div>
+    <div class="div3"></div>
+</body>
+
+</html>

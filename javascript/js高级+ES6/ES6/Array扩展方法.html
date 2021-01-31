@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        let arr = [{
+            id: 1,
+            name: 'AAA'
+        }, {
+            id: 2,
+            name: 'BBB'
+        }];
+        let res = arr.find(item => item.id === 2);
+        console.log(res);
+        let arr_num = [3, 4, 6, 2, 8, 4];
+        let i = arr_num.findIndex(item => item > 7);
+        console.log(i);
+    </script>
+</body>
+
+</html>

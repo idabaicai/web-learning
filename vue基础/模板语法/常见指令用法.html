@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="../lib/vue.js"></script>
+    <title>Document</title>
+    <style>
+        [v-cloak] {
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <h3>v-cloak</h3>
+    <p>隐藏未编译的 Mustache 标签直到实例准备完毕</p>
+    <div id="app" v-cloak>
+        {{message}}
+        <p v-text="message"></p>
+        <p v-html='html'></p>
+        <p>v-pre不解析</p>
+        <span v-pre>{{message}}</span>
+        <!-- 只编译一次 -->
+        <p v-once>{{info}}</p>
+        <h3>test给了一个空的初始值</h3>
+        <p style="background-color: pink;">test:{{test}}</p>
+    </div>
+    <script>
+        var vm = new Vue({
+            el: '#app',
+            data: {
+                message: 'hello',
+                html: '<h1>html</h1>',
+                info: '只编译一次',
+                test: ''
+            }
+        })
+    </script>
+</body>
+
+</html>

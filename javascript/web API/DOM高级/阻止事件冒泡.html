@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM事件流</title>
+    <style>
+        .div1 {
+            position: relative;
+            width: 300px;
+            height: 300px;
+            margin: 20px auto;
+            background: pink;
+        }
+        
+        .div2 {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            height: 100px;
+            width: 100px;
+            margin-top: -50px;
+            margin-left: -50px;
+            text-align: center;
+            line-height: 100px;
+            background: purple;
+        }
+    </style>
+</head>
+
+<body>
+    <h3>实例</h3>
+    <div class="div1">
+        <div class="div2">
+            div2
+        </div>
+    </div>
+    <script>
+        var div1 = document.querySelector('.div1');
+        var div2 = document.querySelector('.div2');
+
+        function fn1() {
+            alert('div1!')
+        }
+
+        function fn2(e) {
+            alert('div2!')
+            e.stopPropagation(); // 阻止事件冒泡
+            // 对于低版本浏览器
+            // e.cancelBubble = true;
+        }
+
+        div2.addEventListener('click', fn2, false);
+        // 为div1也注册一个事件
+        div1.addEventListener('click', fn1, false);
+        // 为document也注册一个事件
+        document.addEventListener('click', function() {
+            alert('document event.');
+        }, false)
+    </script>
+</body>
+
+</html>

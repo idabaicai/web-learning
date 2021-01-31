@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div>1</div>
+    <div>2</div>
+    <div>3</div>
+    <div>4</div>
+    <div>5</div>
+    <div>6</div>
+    <div>7</div>
+    <div>8</div>
+    <script>
+        let arr = [1, 2, 3];
+        console.log(...arr); //和下边输出一样
+        console.log(1, 2, 3);
+        // 应用1：合并数组
+        let arr1 = ['a', 'b', 'c'];
+        let arr2 = ['c', 'd', 'e'];
+        let arr3 = [...arr1, ...arr2];
+        console.log(arr3);
+        arr1.push(...arr3);
+        console.log(arr1);
+        // 应用2：伪数组转真数组
+        let div = document.querySelectorAll('div');
+        let div2 = document.getElementsByTagName('div');
+        console.log(div);
+        console.log(div2);
+        let div_arr = [...div];
+        console.log(div_arr);
+    </script>
+</body>
+
+</html>

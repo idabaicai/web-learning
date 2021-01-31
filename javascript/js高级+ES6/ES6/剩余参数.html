@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>剩余参数</title>
+</head>
+
+<body>
+    <script>
+        function fn(a, ...b) {
+            console.log(a);
+            console.log(b);
+        }
+        fn(1, 2, 3, 4);
+        const sum = (...args) => {
+            let sum = 0;
+            args.forEach(value => sum += value);
+            return sum;
+        };
+        let res = sum(9, 9, 6);
+        console.log(res); //24
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2d转换</title>
+    <style>
+        .box1 {
+            width: 200px;
+            height: 200px;
+            background-color: pink;
+            /* transform 不会影响其他盒子 */
+            transform: translate(100px, 200px);
+            /* transform: translateY(-100px); */
+            /* 对行内元素无效 */
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box1"></div>
+    <p></p>
+</body>
+
+</html>

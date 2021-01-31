@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>call</title>
+</head>
+
+<body>
+    <script>
+        // 在ES6之前没有extends继承，通过构造函数+原型对象模拟实现继承，称为组合继承
+        // 1. call函数 调用call函数可以修改函数运行时的this指向
+        function fn(x, y) {
+            console.log(this); // 默认输出 window
+            console.log(x + y);
+        }
+        var o = {
+                name: 'foo'
+            }
+            // call() 可以调用函数
+        fn.call();
+        // call() 意义改变这个函数this的指向
+        fn.call(o, 1, 2); //此时这个函数指向o
+    </script>
+</body>
+
+</html>

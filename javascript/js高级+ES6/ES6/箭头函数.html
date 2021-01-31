@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>箭头函数</title>
+</head>
+
+<body>
+    <script>
+        // 语法
+        const fn = () => {
+            console.log('hello 箭头函数');
+        }
+        fn();
+        // 函数体有一个值可省略花括号
+        const sum = (a, b) => a + b;
+        console.log(sum(6, 9));
+        // 如果形参有一个，也可省略
+        const foo = a => a ** 2;
+        console.log(foo(6));
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ES6中的类和对象</title>
+</head>
+
+<body>
+    <script>
+        // 1. 创建一个明星类 class
+        class Star {
+            //  constructor() 方法是类的默认构造函数，
+            //   用于传递参数 返回对象实例，通过new命令生成对象时，
+            //    自动调用该方法，如果没有定义，则自动创建一个 constructor()
+            //  对象没有变量提升
+            constructor(name, age) {
+                this.name = name;
+                this.age = age + 2;
+            }
+            sing(m) {
+                return this.name + '唱' + m;
+            }
+            desc() {
+                return '我是大明星';
+            }
+            addPlus() {
+                this.age += 2;
+            }
+        }
+        // 2. 利用类创建对象 new
+        var ldh = new Star('liudehua', 18);
+        console.log(ldh.age);
+        console.log(ldh.sing('冰雨'));
+        // 3. 类的继承 创建了一个小众明星 继承Star
+        class SubStar extends Star {
+            constructor(name, age) {
+                // 3.1 super 关键字用于访问和调用对象父类上的函数，可以调用父类的构造函数
+                // 也可以调用父类的普通函数
+                super(name, age); // 调用父类中的构造函数
+                // 自身构造函数
+                this.name = name;
+                this.age = age;
+            }
+            desc1() {
+                return super.desc(); // super 可以调用父类的方法
+            }
+            fn1() {
+                return 'web conding...';
+            }
+            agePlus() {
+                this.age++;
+            }
+        }
+        var lh = new SubStar('liuhui', 18);
+        var xl = new SubStar('小刘', 20);
+        console.log(lh.sing('打工歌'));
+        console.log(xl.sing('干饭歌'));
+        console.log(lh.desc1());
+        console.log(lh.fn1());
+        lh.agePlus();
+        console.log(lh.age);
+    </script>
+</body>
+
+</html>

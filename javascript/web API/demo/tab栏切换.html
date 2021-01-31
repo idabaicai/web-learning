@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>tab栏切换</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+        
+        .box {
+            width: 800px;
+            margin: 100px auto;
+        }
+        
+        .list {
+            height: 40px;
+            background: #ddd;
+        }
+        
+        .list ul li {
+            float: left;
+            margin-right: 10px;
+            padding: 0 20px;
+            line-height: 40px;
+            list-style: none;
+        }
+        
+        .list ul li:hover {
+            cursor: pointer;
+        }
+        
+        .current {
+            background: #f00;
+            color: #fff;
+        }
+        
+        .list-content {
+            padding: 10px 20px;
+        }
+        
+        .item {
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box">
+        <div class="list">
+            <ul>
+                <li class="current">商品介绍</li>
+                <li>规格与包装</li>
+                <li>售后保障</li>
+                <li>商品评价(999+)</li>
+                <li>手机社区</li>
+            </ul>
+        </div>
+
+        <div class="list-content">
+            <div class="item" style="display: block;">
+                <p>这是一首简单的歌，没有什么对错。</p>
+                <p> 这是一首简单的歌，没有什么对错。</p>
+            </div>
+            <div class="item">
+                200*200
+            </div>
+            <div class="item">
+                申请售后
+            </div>
+            <div class="item">
+                太棒了！！！！！！！下次还买
+            </div>
+            <div class="item">
+                小米12官方定价3999！
+            </div>
+        </div>
+    </div>
+    <script>
+        // 1. 上模块： 点击某一个，当前这一个底色会是红色，其余不变（排他思想）修改类名方式
+        var list = document.querySelectorAll('li');
+        // 获取下模块
+        var items = document.querySelectorAll('.item');
+        len = list.length;
+        for (var i = 0; i < len; i++) {
+            // 为每个list设置索引属性
+            list[i].setAttribute('data-index', i); //h5规定 自定义属性以 data- 开头
+
+            list[i].onclick = function() {
+                // 先将tab的class改为 '' 使其变为默认状态
+                for (var j = 0; j < len; j++) {
+                    list[j].className = '';
+                }
+                // 将当前点击的tab设置为current
+                this.className = 'current';
+
+                // 2. 下模块 当选中一个tab时，显示对应的content 
+                // 得到当前选中的tab的index
+                var index = this.getAttribute('data-index');
+                for (var i = 0; i < len; i++) {
+                    // 先清除所有
+                    items[i].style.display = 'none';
+                }
+                // 显示当前 
+                items[index].style.display = 'block';
+                /*完成 ！！！   */
+            }
+        }
+    </script>
+</body>
+
+</html>

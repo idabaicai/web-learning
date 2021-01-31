@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ES5新增方法</title>
+</head>
+
+<body>
+    <h3>数组方法</h3>
+    <script>
+        // forEach 遍历数组
+        let arr = [1, 3, 5];
+        let sum = 0;
+        arr.forEach(function(value, index, array) {
+            console.log('每个数组元素' + value);
+            console.log('每个数组元素的索引' + index);
+            console.log('数组本身' + array);
+            sum += value;
+        })
+        console.log(sum);
+
+        console.log('-------------');
+        // filter()创建一个新数组，新数组中的元素是通过检查指定数组中符合条件的所有元素，用于筛选数组
+        let arr1 = [12, 32, 4, 2, 34, 45, 23, 9, 54];
+        let res = arr1.filter(function(value, index) {
+            return value > 20;
+        })
+        console.log(res);
+        // some() 查找数组中是否有满足条件的元素
+        let arr3 = [32, 23, 14, 47, 63, 79];
+        var res2 = arr3.some(function(value, index) {
+            return value > 40; // 头大于40的，返回true
+        });
+        console.log(res2);
+    </script>
+</body>
+
+</html>

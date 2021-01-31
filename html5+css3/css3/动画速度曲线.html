@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div {
+            overflow: hidden;
+            width: 0;
+            height: 20px;
+            background-color: #0dd;
+            /* 步长 */
+            animation: w 5s steps(10) forwards;
+        }
+        
+        @keyframes w {
+            0% {
+                width: 0;
+            }
+            100% {
+                width: 200px;
+                background-color: purple;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div>日拱一卒，功不唐捐。</div>
+</body>
+
+</html>

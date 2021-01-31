@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>根据标签名获取元素</title>
+</head>
+
+<body>
+    <ul>
+        <li>打工人，打工魂。打工都是人上人。</li>
+        <li>打工人，打工魂。打工都是人上人。</li>
+        <li>打工人，打工魂。打工都是人上人。</li>
+        <li>打工人，打工魂。打工都是人上人。</li>
+        <li>打工人，打工魂。打工都是人上人。</li>
+        <li>打工人，打工魂。打工都是人上人。</li>
+    </ul>
+    <ul id="u2">
+        <li>蓉漂人，蓉漂魂，蓉漂都是人上人。</li>
+        <li>蓉漂人，蓉漂魂，蓉漂都是人上人。</li>
+        <li>蓉漂人，蓉漂魂，蓉漂都是人上人。</li>
+        <li>蓉漂人，蓉漂魂，蓉漂都是人上人。</li>
+        <li>蓉漂人，蓉漂魂，蓉漂都是人上人。</li>
+    </ul>
+    <div class="box">来吧，展示</div>
+    <div class="box">来呀，快活呀</div>
+    <script>
+        var li = document.getElementsByTagName('li');
+        console.log(li);
+        console.log(li[0]);
+        // 先通过id获取element 然后用element.getElementByTagName() 也可获得元素
+        var u2 = document.getElementById('u2');
+        var li2 = u2.getElementsByTagName('li');
+        console.log(li2);
+        // h5新增获取元素方法 
+        var box = document.getElementsByClassName('box');
+        console.log('通过getElementByClassName获取元素');
+        console.log(box);
+        // querySelector 获取第一个元素
+        var box1 = document.querySelector('.box');
+        console.log('通过querySelector获取元素:');
+        console.log(box1);
+        // querySelectorAll 获取所有元素
+        var boxAll = document.querySelectorAll('.box');
+        console.log('通过querySelectorAll获取元素：');
+        console.log(boxAll);
+        // 获取body
+        var body = document.body;
+        console.log('body:');
+        console.log(body);
+        // 获取html
+        var html = document.documentElement;
+        console.log('html:');
+        console.log(html);
+    </script>
+</body>
+
+</html>

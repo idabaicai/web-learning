@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <a href="" ></a>
+    <ul>
+        <li>AAA</li>
+        <li>BBB</li>
+        <li>CCC</li>
+    </ul>
+    <script>
+        var ul = document.querySelector('ul');
+        // 复制一个节点  true=> deep copy   false=> 浅拷贝
+        var li = ul.children[0].cloneNode(true);
+        ul.appendChild(li);
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>原型链</title>
+</head>
+
+<body>
+    <script>
+        function Hero(name, type) {
+            this.name = name;
+            this.type = type;
+        }
+        // Hero.prototype = {
+        //     constructor: Hero,
+        //     say: function() {
+        //         console.log('I am ' + this.name + 'is a ' + this.type);
+        //     },
+        //     back: function() {
+        //         console.log('按b回城了');
+        //     }
+        // }
+        Hero.prototype.say = function() {
+            console.log('I am ' + this.name + 'is a ' + this.type);
+        }
+        let yasuo = new Hero('亚索', '近战');
+        yasuo.say();
+        // 1. 只要对象就有__proto__原型，指向原型对象
+        console.log(Hero.prototype);
+        // 2. Hero原型对象里面的__proto__原型指向的是 Object.prototype
+        console.log(Hero.prototype.__proto__ === Object.prototype); // true
+        console.log(Object.prototype.__proto__); // null
+    </script>
+</body>
+
+</html>

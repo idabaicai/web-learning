@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <ul>
+        <li>DOM的顶级对象是 document</li>
+        <li>BOM的顶级对象是 window</li>
+    </ul>
+    <h4>window对象包含</h4>
+    <ul>
+        <li>document</li>
+        <li>location</li>
+        <li>navigation</li>
+        <li>screen</li>
+        <li>history</li>
+    </ul>
+    <script>
+        // 窗口加载事件1 等页面内容全部加载完毕触发，dom、图片、css、flash等
+        window.addEventListener('load', function() {
+                var btn = document.querySelector('button');
+                btn.addEventListener('click', function() {
+                    console.log(btn);
+                })
+            })
+            // 窗口加载事件2  等DOM加载完毕  不包含图片、css、等等
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('dom元素已加载！');
+        })
+    </script>
+    <p>此button在js代码后边，因此要给windown注册一个onload事件</p>
+    <button>button</button>
+</body>
+
+</html>

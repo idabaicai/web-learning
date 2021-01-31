@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>函数的调用</title>
+</head>
+
+<body>
+    <button>点击1</button>
+    <button id="btn2">点击2</button>
+    <h3>改变this执行的3中方法</h3>
+    <ul>
+        <li>call()</li>
+        <li>bind()</li>
+        <li>apply()</li>
+    </ul>
+    <script>
+        // 1. call() 可以调用函数 还可以改变函数内this的指向
+        var obj = {
+            a: 2,
+            b: 3,
+            name: '打工人'
+        };
+
+        function fn1(arr) {
+            console.log('fn1');
+            console.log(this);
+            console.log(arr);
+        }
+        // apply() 调用一个函数。也可以改变函数的this指向,但参数必须数组(伪数组)
+        fn1.apply(obj, [2]);
+        // apply 主要应用, 例：数组中无求最大值的方法，可以利用apply借用Math中的内置对象求最大值
+        var arr = [23, 12, 34, 12, 65, 23, 72, 48];
+        var max = Math.max.apply(Math, arr);
+        console.log('最大值是：' + max);
+    </script>
+</body>
+
+</html>
