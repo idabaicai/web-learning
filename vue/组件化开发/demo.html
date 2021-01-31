@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>组件示例</title>
+    <script src="../js/vue.js"></script>
+    <style>
+        .red {
+            color: red;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <button-counter></button-counter>
+        <button-counter></button-counter>
+        <hr>
+        <h3>button-counter1</h3>
+        <button-counter1></button-counter1>
+        <h3>局部注册的p-button</h3>
+        <p-button></p-button>
+    </div>
+    <script>
+        // 全局注册
+        Vue.component('button-counter', {
+            data: function() {
+                return {
+                    count: 0,
+                }
+            },
+            template: '<button @click="foo">you clicked me {{ count }} times</button>',
+            methods: {
+                foo: function() {
+                    this.count += 2;
+                }
+            }
+        });
+        // 使用模板字符串
+        Vue.component('button-counter1', {
+            data: function() {
+                return {
+                    count: 0,
+                }
+            },
+            template: `
+                     <button 
+                     @click="foo"
+                     >you clicked me {{ count }} times
+                     </button>
+            `,
+            methods: {
+                foo: function() {
+                    this.count += 4;
+                }
+            }
+        });
+        // 局部注册
+        let componentA = {
+            data: function() {
+                return {
+                    msg: '局部注册',
+                    red: true
+                };
+            },
+            template: `
+                <p :class="red"> {{msg}} <button @click="say"> click </button></p>
+            `,
+            methods: {
+                say: function() {
+                    alert('hello,' + this.msg);
+                }
+            }
+        };
+        var app = new Vue({
+            el: '#app',
+            data: {
+
+            },
+            methods: {
+
+            },
+            // 局部注册
+            components: {
+                'p-button': componentA,
+            }
+        });
+    </script>
+</body>
+
+</html>

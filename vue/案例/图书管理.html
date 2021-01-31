@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>图书管理demo</title>
+    <script src="../js/vue.js"></script>
+    <style>
+        #app {
+            width: 600px;
+            height: 500px;
+            margin: 50px auto;
+            text-align: center;
+        }
+        
+        table {
+            border-collapse: collapse;
+            margin: 20px auto;
+        }
+        
+        th,
+        td {
+            padding: 10px 18px;
+            border: 1px solid #ccc;
+            line-height: 25px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <h2>图书管理</h2>
+        <!-- <label for="id">编号</label>
+        <input type="text" id="id"> -->
+        <label for="name">名称</label>
+        <input type="text" id="name" v-model.trim="name">
+        <button @click="add" :disabled="isDisabled">提交</button>
+        <p>图书总量: {{ total }}</p>
+        <!-- <button @click="handleEdit">修改</button> -->
+        <table>
+            <thead>
+                <tr>
+                    <th>编号</th>
+                    <th>名称</th>
+                    <th>时间</th>
+                    <th>操作</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr :key="item.id" v-for="(item, index) in list">
+                    <td>{{ item.id }}</td>
+                    <td>{{ item.name }}</td>
+                    <td>{{ item.date }}</td>
+                    <td>
+                        <a href="" @click.prevent="edit(item.id)">修改</a> <span>|</span>
+                        <a href="" @click.prevent="del(index)"> 删除</a>
+                    </td>
+                </tr>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <script>
+        let vm = new Vue({
+            el: '#app',
+            data: {
+                // 修改时flag
+                flag: false,
+                // 图书名称
+                name: '',
+                // 图书日期
+                date: '',
+                // 是否可提交(添加和修改)
+                isDisabled: false,
+                list: ''
+            },
+            methods: {
+                // 清空表单
+                clear: function() {
+                    this.id = 0;
+                    this.name = '';
+                },
+                // 获取当前时间
+                getDate: function() {
+                    let date = new Date();
+                    let y = date.getFullYear();
+                    let m = date.getMonth() + 1;
+                    let d = date.getDate();
+                    return y + '-' + m + '-' + d;
+                },
+                // 判断是否存在此图书名
+                bookExist: function(book_name) {
+                    let res = this.list.find(val => {
+                        return val.name == book_name;
+                    });
+                    return res;
+                },
+                // 添加数据
+                add: function() {
+                    // 修改数据
+                    if (this.flag) {
+                        this.list.some(val => {
+                            if (val.id == this.id) {
+                                val.name = this.name;
+                                this.flag = false;
+                                this.clear();
+                                return true;
+                            }
+
+                        });
+
+                    } else { //添加数据
+
+                        let item = {};
+                        item.id = this.list.length + 1;
+                        item.name = this.name;
+                        item.date = this.getDate();
+                        this.list.push(item);
+                        // 清空表单
+                        this.clear();
+                    }
+
+                },
+                // edit data
+                edit: function(id) {
+                    // 修改
+                    this.flag = true;
+                    // 查到要修改的值
+                    let res = this.list.filter(function(item) {
+                        return item.id == id;
+                    });
+                    this.name = res[0].name;
+                    this.id = res[0].id;
+                },
+                // delete data
+                del: function(index) {
+                    // 1. splice() 方法
+                    this.list.splice(index, 1);
+                    // 2. 通过filter方法
+                }
+            },
+            computed: {
+                total: function() {
+                    return this.list.length;
+                }
+            },
+            watch: {
+                name: function(val) {
+                    if (this.bookExist(val) != undefined) { // 已存在
+                        // 禁用提交按钮
+                        this.isDisabled = true;
+                    } else {
+                        this.isDisabled = false;
+                    }
+                }
+            },
+
+            // 该函数触发后模板可以使用，一般在此时填充数据到模板
+            mounted: function() {
+                // 假设这个数据是从后台获取的
+                let list = [{
+                    id: 1,
+                    name: '斗罗大陆',
+                    date: '2012-12-8'
+                }, {
+                    id: 2,
+                    name: '西游记',
+                    date: '2018-12-8'
+                }, {
+                    id: 3,
+                    name: '冰与火之歌',
+                    date: '2016-2-8'
+                }, {
+                    id: 4,
+                    name: '人生海海',
+                    date: '2018-2-8'
+                }, {
+                    id: 5,
+                    name: '明朝那些事',
+                    date: '2018-2-3'
+                }, {
+                    id: 6,
+                    name: '数据结构',
+                    date: '2018-2-8'
+                }];
+                this.list = list;
+            }
+        });
+    </script>
+</body>
+
+</html>

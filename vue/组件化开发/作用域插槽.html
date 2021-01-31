@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    <script src="../js/vue.js"></script>
+    <style>
+        .current {
+            color: orange;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <shop :list="list">
+            <template slot-scope="slotProps">
+                <strong v-if="slotProps.info.id==3" class="current">{{slotProps.info.name}}</strong>
+                <p v-else>{{ slotProps.info.name }}</p>
+            </template>
+        </shop>
+    </div>
+    <script>
+        Vue.component('shop', {
+            data: function() {
+                return {}
+            },
+            props: ['title', 'list'],
+            template: `
+                <div>
+                    <h2>{{ title }}</h2>
+                    <ul>
+                        <li :key=item.id v-for="item in list">
+                            <slot :info="item">{{ item.name }}</slot>
+                        </li>
+                    </ul>
+                </div>
+            `
+        });
+        var vm = new Vue({
+            el: '#app',
+            data: {
+                list: [{
+                    id: 1,
+                    name: 'Iphone'
+                },{
+                    id: 2,
+                    name: 'Huawei'
+                },{
+                    id: 3,
+                    name: 'Xiaomi'
+                }]
+            },
+            methods: {
+
+            }
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>tab选项卡</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        
+        #app {
+            width: 500px;
+            height: 243px;
+            margin: 50px auto;
+            border: 1px solid #ccc;
+        }
+        
+        .img img {
+            display: none;
+            width: 500px;
+        }
+        
+        .tab li {
+            float: left;
+            padding: 0 10px;
+            height: 30px;
+            border-right: 1px solid #aaa;
+            line-height: 30px;
+            list-style: none;
+            text-align: center;
+        }
+        
+        .tab li a {
+            text-decoration: none;
+        }
+        
+        .current {
+            background-color: #ccc;
+        }
+        
+        .img .show {
+            display: block;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <div class="tab">
+            <ul>
+                <li :class="index==curIndex ? 'current' : ''" :key="item.id" v-for="(item, index) in list" @click="fn(index)">
+                    <a href="javascript:;" @click="change">{{item.title}}</a>
+                </li>
+                <!-- <li class="current" @click="change">
+                    <a href="#">云原生</a>
+                </li>
+                <li>
+                    <a href="#">Recat</a>
+                </li>
+                <li>
+                    <a href="#">电商平台</a>
+                </li> -->
+            </ul>
+        </div>
+        <div class="img" :key="item.id" v-for="(item,index) in list">
+            <!-- <img src="img/m1_min.jpg" alt=""> -->
+            <img :src="item.path" :class="index==curIndex ? 'show' : ''" alt="">
+        </div>
+    </div>
+    <script src="../js/vue.js"></script>
+
+    <script>
+        var vm = new Vue({
+            el: '#app',
+            data: {
+                // 选项卡当前索引 默认选中0
+                curIndex: 0,
+                items: ['云原生', 'Recat+TS', '电商平台'],
+                list: [{
+                    id: 1,
+                    title: '云原生',
+                    path: 'img/m1_min.jpg'
+                }, {
+                    id: 2,
+                    title: 'Recat',
+                    path: 'img/m2_min.jpg'
+                }, {
+                    id: 3,
+                    title: '电商平台',
+                    path: 'img/m3_min.jpg'
+                }]
+            },
+            methods: {
+                change: function() {},
+                fn: function(index) {
+                    this.curIndex = index;
+                }
+            }
+        });
+    </script>
+</body>
+
+</html>

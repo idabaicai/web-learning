@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>子传父</title>
+    <script src="../js/vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <h3>子组件</h3>
+        <test :list="list" @enlarge-text="handle($event)" @min-text="min">
+        </test>
+        <h3>父组件</h3>
+        <ul :style="{fontSize: fontSize + 'px'}">
+            <li :key="index" v-for="(item, index) in list">{{ item }}</li>
+        </ul>
+    </div>
+    <script>
+        Vue.component('test', {
+            data: function(){
+                return {
+                    item: ''
+                };
+            },
+            /**
+             * 不推荐直接给props添加值
+             * props造作原则：单向数据流
+             * */
+            methods: {
+                add: function() {
+                    this.list.push(this.item);
+                }
+            },
+            props: ['list'],
+            template: `
+            <div>
+                <ul>
+                    <li :key="index" v-for="(item, index) in list">{{item}}</li>
+                </ul>
+                <input type="text" v-model="item">
+                <p>直接操作props,不推荐</p>
+                <button @click="add">add</button>
+                <p>通过自定义函数</p>
+                <button @click="$emit('enlarge-text',10)">扩大父组件字体</button>
+                <button @click="$emit('min-text')">减小字体</button>
+            </div>
+
+            `,
+        });
+        var vm = new Vue({
+            el: '#app',
+            data: {
+                list: ['apple','xiaomi','huawei'],
+                fontSize: 14,
+            },
+            methods: {
+                handle: function(val) {
+                    console.log(val);
+                    this.fontSize += val;
+                },
+                min: function() {
+                    this.fontSize -= 2;
+                }
+            }
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    <script src="../js/vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <label for="uname">姓名</label>
+        <input type="text" v-model="uname"><span>{{tip}}</span>
+    </div>
+    <script>
+        var names = ['打工人', '干饭人', '前端人'];
+        var vm = new Vue({
+            el: '#app',
+            data: {
+                uname: 'wew',
+                tip: ''
+
+            },
+            methods: {
+                checkeName: function(uname) {
+                    // 模拟调用接口
+                    var that = this;
+                    setTimeout(function() {
+                        if (uname == 'admin') {
+                            that.tip = '用户名已存在';
+                        } else {
+                            that.tip = '用户名可用';
+                        }
+                    }, 1000);
+                }
+            },
+            watch: {
+                uname: function(val) {
+                    this.tip = '正在验证...';
+                    this.checkeName(val);
+                }
+            }
+        });
+    </script>
+</body>
+
+</html>

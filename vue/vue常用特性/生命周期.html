@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    <script src="../js/vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <h3>{{msg}}</h3>
+        <input type="text" v-model="msg">
+        <button @click="destroy">destroy</button>
+        <button @click="say">say</button>
+    </div>
+    <script>
+        var vm = new Vue({
+            el: '#app',
+            data: {
+                msg: 'hello lifecycle',
+            },
+            methods: {
+                destroy: function() {
+                    this.$destroy();
+                },
+                say: function() {
+                    console.log(this.$el);
+                }
+            },
+            beforeCreate: function() {
+                console.log('beforeCreate');
+            },
+            created: function() {
+                console.log('created')
+            },
+            beforeMount: function() {
+                console.log('beforeMoute');
+            },
+            mounted: function() {
+                console.log('mounted');
+            },
+            beforeUpdate: function() {
+                console.log('beforeUpdate');
+            },
+            updated: function() {
+                console.log('updated');
+            },
+            beforeDestroy: function() {
+                console.log('beforeDestroy');
+            },
+            destroyed: function() {
+                console.log('destroyed');
+            }
+        });
+    </script>
+</body>
+
+</html>

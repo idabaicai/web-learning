@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    <script src="../js/vue.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        #app {
+            width: 300px;
+            margin: 50px auto;
+        }
+        #app h4 {
+            height: 40px;
+            line-height: 40px;
+            background-color: pink;
+            text-align: center;
+        }
+        #app ul li {
+            height: 45px;
+            line-height: 45px;
+            list-style: none;
+        }
+        input {
+            width: 40px;
+            float: right;
+        }
+        input button {
+            height: 45px;
+            line-height: 45px;
+        }
+        .fr {
+            float: right;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <shop-title></shop-title>
+        <shop-list 
+        :list="list" 
+        @add-item="addItem($event)"
+        @decrease="decreaseItem($event)"
+        @del-item="delItem($event)"
+        ></shop-list>
+        <shop-buy :total-price="totalPrice"></shop-buy>
+    </div>
+    <script>
+        // 标题组件
+        Vue.component('shop-title', {
+            template: `
+            <h4>我的商品</h4>
+            `
+        });
+        // 商品列表
+        Vue.component('shop-list',{
+            props: ['list'],
+            template: `
+            <ul>
+                <li :key="item.id" v-for="(item, index) in list">
+                    {{ item.name }}
+                    <button @click="$emit('del-item',index)" class="fr">删除</button>
+                    <button @click="$emit('add-item',index)" class="fr">添加</button>
+                    <input type="text" :value="item.num">
+                    <button @click="$emit('decrease', index)" class="fr">减少</button>
+                </li>
+            </ul>
+            `
+        });
+        // 结算组件
+        Vue.component('shop-buy',{
+            props: ['totalPrice'],
+            template: `
+                <div>
+                    总价: {{ totalPrice }}
+                </div>
+            `
+        });
+        var vm = new Vue({
+            el: '#app',
+            data: {
+                list: [{
+                    id: 1,
+                    name: '小米11',
+                    num: 1,
+                    price: 3999
+                },{
+                    id: 2,
+                    name: '华为',
+                    num: 1,
+                    price: 4999
+                },{
+                    id: 3,
+                    name: 'VIVO',
+                    num: 1,
+                    price: 3600,
+                }]
+            },
+            methods: {
+                // 添加商品
+                addItem: function(index) {
+                    this.list[index].num++;
+                },
+                // 减少商品
+                decreaseItem: function(index) {
+                    this.list[index].num--;
+                },
+                // 删除商品
+                delItem: function(index) {
+                    this.list.splice(index,1);
+                }
+            },
+            computed: {
+                totalPrice: function() {
+                    console.log(this.list);
+                    let total = 0;
+                    this.list.forEach(item => {
+                        itemPrice = item.num * item.price;
+                        total += itemPrice;
+                    });
+                    return total;
+                }
+            },
+            mounted: function() {
+                // let list = [
+                //     {id:1,name:'xiaomi',num:2,price: 3999},
+                //     {id:2,name:'huawei',num:1,price: 4999},
+                //     {id:3,name:'apple',num:3, price: 6999},
+                // ];
+                // this.list = list;
+            }
+        });
+    </script>
+</body>
+
+</html>

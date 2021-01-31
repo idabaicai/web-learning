@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    <script src="../js/vue.js"></script>
+    <style>
+        form {
+            width: 500px;
+            height: 400px;
+            margin: 50px auto;
+        }
+        
+        form div {
+            margin: 10px 0;
+        }
+        
+        textarea {
+            resize: none;
+            overflow: auto;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <form>
+            <div>
+                <label for="uname">姓名:</label>
+                <input type="text" name="uname" v-model="uname" v-focus>
+            </div>
+            <div>
+                <span>性别：</span>
+                <label for="male">男</label>
+                <input type="radio" name="gender" id="male" value="male" v-model="gender">
+                <label for="female">女</label>
+                <input type="radio" name="gender" id="female" value="female" v-model="gender">
+            </div>
+            <div>
+                <label for="">爱好:</label>
+                <label for="lanqiu">篮球</label>
+                <input type="checkbox" name="love" id="lanqiu" value="lanqiu" v-model="love">
+                <label for="sing">唱歌</label>
+                <input type="checkbox" name="love" id="sing" value="sing" v-model="love">
+                <label for="coding">搬砖</label>
+                <input type="checkbox" name="love" id="coding" value="coding" v-model="love">
+            </div>
+            <div>
+                <label for="job">职业</label>
+                <select v-model="job" multiple="true">
+                    <option value="">请选择职业</option>
+                    <option value="freeman">自由从业者</option>
+                    <option value="dagongren">打工人</option>
+                    <option value="ganfanren">干饭人</option>
+                </select>
+
+            </div>
+            <div>
+                <label for="jieshao">简介</label>
+                <textarea name="jieshao" id="jieshao" cols="30" rows="10" v-model="jieshao"></textarea>
+            </div>
+            <div>
+                <button @click.prevent="handle">提交</button>
+            </div>
+        </form>
+    </div>
+    <script>
+        Vue.directive('focus', {
+            inserted: function(el) {
+                el.focus();
+            }
+        });
+        var vm = new Vue({
+            el: '#app',
+            data: {
+                uname: 'Link',
+                gender: 'male',
+                love: ['lanqiu', 'sing'],
+                job: ['freeman'],
+                jieshao: '日拱一卒，功不唐捐。金钱永不眠。'
+            },
+            methods: {
+                handle: function() {
+                    console.log(this.uname);
+                }
+            }
+        });
+    </script>
+</body>
+
+</html>

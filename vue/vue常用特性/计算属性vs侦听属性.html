@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>计算属性vs侦听属性</title>
+    <script src="../js/vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <div>
+            firstName: <input type="text" name="" id="" v-model="firstName"> {{firstName}}
+        </div>
+        <div>
+            lastName: <input type="text" v-model="lastName">{{lastName}}
+        </div>
+        <div>
+            fullName:<input type="text" v-model="fullName">{{fullName}}
+        </div>
+        <div>
+            {{reverse}}
+        </div>
+    </div>
+    <script>
+        var vm = new Vue({
+            el: '#app',
+            data: {
+                msg: 'hello computed',
+                firstName: 'Foo',
+                lastName: 'Bar',
+                // fullName: 'Foo Bar'
+            },
+            methods: {
+
+            },
+            // 方法一
+            // watch: {
+            //     firstName: function(val) {
+            //         this.fullName = val + ' ' + this.lastName;
+            //     },
+            //     lastName: function(val) {
+            //         this.fullName = this.firstName + ' ' + val;
+            //     }
+            // },
+            // 方法二 计算属性
+            computed: {
+                fullName: function() {
+                    return this.firstName + this.lastName;
+                },
+                reverse: function() {
+                    return this.fullName.split('').reverse().join('');
+                }
+            }
+        });
+    </script>
+</body>
+
+</html>

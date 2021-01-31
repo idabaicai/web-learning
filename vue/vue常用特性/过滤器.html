@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>过滤器</title>
+    <script src="../js/vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <h2>自动首字母大小写</h2>
+        <input type="text" v-model="msg">
+        <p>{{msg | upper}}</p>
+        <p>{{msg | lower}}</p>
+        <p>{{msg | split}}</p>
+        <h2>带参数的过滤器</h2>
+        <p>{{ date | format('yyyy-mm-dd') }}</p>
+    </div>
+    <script>
+        // 自定义过滤器 全局
+        Vue.filter('upper', function(val) {
+            return val.charAt(0).toUpperCase() + val.slice(1);
+        });
+        Vue.filter('lower', function(val) {
+            return val.charAt(0).toLowerCase() + val.slice(1);
+        });
+        // 带参数的过滤器
+        Vue.filter('format', function(val, arg) {
+            var res = "";
+            if (arg == 'yyyy-mm-dd') {
+                res += val.getFullYear() + '-' + (val.getMonth() + 1) + '-' + val.getDate();
+            }
+            return res;
+        });
+        var vm = new Vue({
+            el: '#app',
+            data: {
+                msg: 'hello',
+                date: new Date(),
+            },
+            methods: {
+
+            },
+            // 自定义过滤器 局部
+            filters: {
+                split: function(val) {
+                    return val.split('');
+                }
+            }
+        });
+    </script>
+</body>
+
+</html>

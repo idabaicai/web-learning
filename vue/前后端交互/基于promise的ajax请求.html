@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 基于promise的Ajax请求
+        function queryData(url) {
+            let promise = new Promise((resolve, reject) => {
+                let xhr = new XMLHttpRequest();
+                xhr.onreadystatechange = () => {
+                    if(xhr.readyState != 4) {
+                        return;
+                    } if (xhr.readyState === 4 && xhr.status === 200) {
+                        resolve(xhr.responseText); //成功
+                    } else {
+                        reject('服务器错误');
+                    }
+                };
+                xhr.open('get', url);
+                xhr.send(null);
+            });
+            return promise;
+        }
+        let url = 'http://127.0.0.1:3000/';
+        queryData(url+ 'data')
+            .then(data => {
+                console.log(data); //成功
+            },info => {
+                console.log(info); //错误
+            });
+        // 多次调用示例
+        queryData(url + 'data1')
+            .then(data => {
+                console.log('success1'); //成功
+            }, info => {
+                console.log('error1.......'); //错误 继续调用
+                return queryData(rul + 'data2');
+            })
+            .then(data => {
+                console.log('success2');
+            },info => {
+                console.log('error2.......');  // 现有 error1再有error2
+            });
+
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    <script src="../js/vue.js"></script>
+    <style>
+        .demo {
+            float: left;
+            margin-left: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <money-box> 1800000$ </money-box>
+        <money-box> 1800000RMB </money-box>
+        <money-box> </money-box>
+        <h3>具名插槽</h3>
+        <base-layout>
+            <p slot="header">标题信息</p>
+            <p>主要内容</p>
+            <p>主要内容</p>
+            <p slot="footer">底部信息</p>
+        </base-layout>
+        <h3>具名插槽另一种用法</h3>
+        <base-layout>
+            <template slot="header">
+                <h2>来吧展示</h2>
+                <p>此心安处是吾乡</p>
+            </template>
+            <template>
+                <p>心若没有栖息的地方，到哪里都是流浪。</p>
+            </template>
+            <template slot="footer">
+                <p>锲而不舍，金石可镂。</p>
+            </template>
+        </base-layout>
+    </div>
+    <script>
+        Vue.component('money-box', {
+            data: function(){
+                return {}
+            },
+            template: `
+                <div class="">
+                    <h4>你的余额还剩:</h4>
+                    <slot>82M$</slot>
+                </div>
+
+            `
+        });
+        // 具名插槽
+        Vue.component('base-layout', {
+            template: `
+            <div>
+                <header>
+                    <slot name="header"></slot>
+                </header>
+                <main>
+                    <slot></slot>
+                </main>
+                <footer>
+                    <slot name="footer"></slot>
+                </footer>
+            </div>
+
+            `
+        });
+        var vm = new Vue({
+            el: '#app',
+            data: {
+
+            },
+            methods: {
+
+            }
+        });
+    </script>
+</body>
+
+</html>

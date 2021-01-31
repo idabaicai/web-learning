@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>父传子</title>
+    <script src="../js/vue.js"></script>
+    <style>
+        .blue {
+            color: blue;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <p></p>
+        <blog-post :post="post" :like-people="likePeople" :good-idea="goodIdea"></blog-post>
+        <button @click="read">read</button>
+    </div>
+    <script>
+        /**
+         * @param  
+         * */
+        Vue.component('blog-post', {
+            data: function() {
+                return {
+                    title: '大风歌',
+                    msg: 'I am son component',
+                    blue: true,
+                };
+            },
+            props: ['post','likePeople','goodIdea'],
+            template: `
+                <div>
+                    <h3>{{ title }}</h3>
+                    <p>作者: {{ post.author }}</p>
+                    <p :class="blue">阅读次数：{{ post.num }}</p>
+                    <p>内容: {{ post.content }}</p>
+                    <p>点赞人：</p>
+                    <ol>
+                        <li :key="index" v-for="(item, index) in likePeople"> {{ item }} </li>
+                    </ol>
+                    <p>评论：{{ goodIdea }}</p>
+                </div>
+                    
+                `
+        });
+        var vm = new Vue({
+            el: '#app',
+            data: {
+                msg: '来自父组件的msg',
+                title: '日拱一卒，功不唐捐',
+                post: {
+                    id: 1,
+                    author: 'Link',
+                    num:12,
+                    content: '大风起兮云飞扬，威加海内兮归故乡，安得猛士兮守四方。'
+                },
+                likePeople: ['韩信','赵云','关云长','刘伯温'],
+                goodIdea: '不错，有气势！！！'
+            },
+            methods: {
+                read: function() {
+                    this.post.num++;
+                }
+            }
+        });
+    </script>
+</body>
+
+</html>

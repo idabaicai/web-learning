@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    <script src="../js/vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <p>数值a</p>
+        <input type="text" v-model="a">
+        <p>数值b</p>
+        <input type="text" v-model="b">
+        <br>
+        <button @click="sum">计算</button>
+        <p>计算结果：{{res}}</p>
+    </div>
+    <script>
+        var vm = new Vue({
+            el: '#app',
+            data: {
+                a: '',
+                b: '',
+                res: ''
+            },
+            methods: {
+                sum: function(a, b) {
+                    this.res = parseInt(this.a) + parseInt(this.b);
+                }
+            }
+        });
+    </script>
+</body>
+
+</html>

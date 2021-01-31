@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    <script src="../js/vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <label for="name">姓名</label>
+        <input type="text" id="name" v-focus1>
+        <input type="text">
+        <hr>
+        <p>bind钩子函数</p>
+        <input type="text" v-color="msg">
+        <input type="text" v-color1="msg">
+    </div>
+    <script>
+        // 自定义指令
+        Vue.directive('focus', {
+            inserted: function(el) {
+                // el 表示指令所绑定的元素
+                el.focus();
+            }
+        });
+        Vue.directive('color', {
+            bind: function(el, binding) {
+                console.log(binding.value.color); // red
+                // 根据指令参数设置背景色
+                el.style.backgroundColor = binding.value.color;
+            }
+        });
+        var vm = new Vue({
+            el: '#app',
+            data: {
+                msg: {
+                    color: 'aqua',
+                    color1: 'blue'
+                }
+            },
+            methods: {
+
+            },
+            // 局部注册指令
+            directives: {
+                focus1: {
+                    inserted: function(el) {
+                        el.focus();
+                    }
+                },
+                color1: {
+                    bind: function(el, binding) {
+                        el.style.backgroundColor = binding.value.color1;
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+
+</html>

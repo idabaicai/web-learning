@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>兄弟组件传值</title>
+    <script src="../js/vue.js"></script>
+</head>
+
+<body>
+    <h3>兄弟组件通事件中心传值</h3>
+    <div id="app">
+        <jd-shop></jd-shop>
+        <tb-shop></tb-shop>
+        <button @click="destroy">destroy event</button>
+    </div>
+    <script>
+        // 提供事件中心
+        var hub = new Vue();
+        Vue.component('jd-shop',{
+            data: function() {
+                return {
+                    num: 4,
+                    shopName: '京东，热爱你的热爱',
+                    list: ['xiaomi','apple','oppo','vivo'],
+                };
+            },
+            methods: {
+                handle: function() {
+                    // 触发兄弟组件的事件
+                    hub.$emit('tb-event', 1);
+                }
+            },
+            mounted: function() {
+                // mounte之后监听事件
+                hub.$on('jd-event', val => {
+                    // this.num += val;
+                    alert(val)
+                });
+            },
+            template: `
+                <div>
+                    <h2>{{ shopName  }}</h2>
+                    <ul>
+                        <li :key="index" v-for="(item, index) in list">{{ item }}</li>
+                    </ul>
+                    <p>商品数量: {{ num }}</p>
+                    <button @click="handle">click</button>
+                </div>
+
+            `
+        });
+        Vue.component('tb-shop',{
+            data: function() {
+                return {
+                    num: 3,
+                    shopName: '淘你所爱，就上Taobao',
+                    list: ['蔬菜','水果','大米'],
+                };
+            },
+            methods: {
+                handle: function() {
+                    // 触发兄弟组件的事件
+                    hub.$emit('jd-event', 'hello liuqiangdong');
+                },
+            },
+            mounted: function(){
+                // 监听事件
+                hub.$on('tb-event', val => {
+                    this.num += val;
+                });
+            },
+            template: `
+                <div>
+                    <h2>{{ shopName }}</h2>
+                    <ul>
+                        <li :key="index" v-for="(item, index) in list">{{ item }}</li>
+                    </ul>
+                    <p>商品数量: {{ num }}</p>
+                    <button @click="handle">click</button>
+                </div>
+
+            `
+        });
+        var vm = new Vue({
+            el: '#app',
+            data: {
+
+            },
+            methods: {
+                destroy: function() {
+                    hub.$off('jd-event');
+                    hub.$off('tb-event');
+                }
+            }
+        });
+    </script>
+    <script>
+        var repeat = function (str, n) {
+            var res = '';
+            while (n) {
+                if (n % 2 === 1) { res += str; }
+                if (n > 1) { str += str; }
+                n >>= 1;
+            }
+            return res
+        };
+        var res = repeat('vue', 3);
+        console.log(res);
+    </script>
+</body>
+
+</html>
