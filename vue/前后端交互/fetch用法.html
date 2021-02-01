@@ -79,6 +79,21 @@
         }).then(data => {
             console.log(data);
         });
+        // put方式请求参数,用来修改数据
+        fetch(url + '/set/20', {
+            method: 'put',
+            body: JSON.stringify({
+                name: '打工人',
+                pwd: 'put123456'
+            }),
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        }).then(data => {
+            return data.json();
+        }).then(data => {
+            console.log(data);
+        });
     </script>
 </body>
 

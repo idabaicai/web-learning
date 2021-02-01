@@ -45,4 +45,12 @@ app.put('/edit/:id', (req, res) => {
     res.send('put req: ' + req.params.id + '---' + req.body.name + '-----' + req.body.pwd);
 });
 
+// 接受put请求 返回json数据
+app.put('/set/:id', (req, res) => {
+    res.json({
+        msg: 'success',
+        code: 1
+    });
+});
+
 app.listen(port, () => console.log(`Example app listening on port ${port}!`))
