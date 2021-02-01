@@ -1,20 +1,85 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
+
 <body>
     <script>
-        // node+gulp/app1/index.js
-        let url = 'http://127.0.0.1:3000/name';
-        fetch(url).then( data => {
+        // 服务在 node/app1/index.js
+        let url = 'http://127.0.0.1:3000';
+        // 传统传参
+        fetch(url + '/name?id=2').then(data => {
             // text() 方法返回一个Promise实例对象，用于获取后台返回的数据
             return data.text();
         }).then(res => {
             console.log(res);
         });
+
+        // Restful形式的url传递参
+        fetch(url + '/age/id=2').then(data => {
+            // text() 方法返回一个Promise实例对象，用于获取后台返回的数据
+            return data.text();
+        }).then(res => {
+            console.log(res);
+        });
+
+        // delete请求方式传参
+        fetch(url + '/color/2', {
+            method: 'delete',
+        }).then(data => {
+            return data.text();
+        }).then(res => {
+            // 最终得到的数据
+            console.log(res);
+        });
+
+        // post方式请求参数
+        fetch(url + '/sex', {
+            method: 'post',
+            body: 'name=Link&pwd=123',
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded'
+            }
+        }).then(data => {
+            return data.text();
+        }).then(data => {
+            console.log(data);
+        });
+        // post方式请求参数 json格式
+        fetch(url + '/sex', {
+            method: 'post',
+            body: JSON.stringify({
+                name: '打工人',
+                pwd: '123456'
+            }),
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        }).then(data => {
+            return data.text();
+        }).then(data => {
+            console.log(data);
+        });
+        // put方式请求参数,用来修改数据
+        fetch(url + '/edit/20', {
+            method: 'put',
+            body: JSON.stringify({
+                name: '打工人',
+                pwd: 'put123456'
+            }),
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        }).then(data => {
+            return data.text();
+        }).then(data => {
+            console.log(data);
+        });
     </script>
 </body>
+
 </html>
