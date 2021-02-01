@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Promise用法</title>
+    <style>
+        
+    </style>
+</head>
+
+<body>
+    <h2>Promise概述</h2>
+    <p>Promise是异步编程的一种解决方案，从语法上讲，Promise是一个对象，可以获取异步操作的消息</p>
+    <h4>好处</h4>
+    <ul>
+        <li>解决回调地狱问题</li>
+        <li>提供了简洁的API，使得控制异步操作更加容易</li>
+    </ul>
+    <p></p>
+    <h4>异步效果分析</h4>
+    <ul>
+        <li>定时任务</li>
+        <li>Ajax</li>
+        <li>事件函数</li>
+    </ul>
+    <h4>多次异步调用的依赖</h4>
+    <ul>
+        <li>多次异步调用顺序不确定</li>
+        <li>如果想得到想要的顺序，需要嵌套</li>
+    </ul>
+    <script>
+        const promise1 = new Promise((resolve, reject) => {
+            let flag = false;
+            setTimeout(()=> {
+                if(flag === true) {
+                    resolve('success!');
+                    console.log(promise1);
+                } else {
+                    reject('error....');
+                    console.log(promise1);
+                }
+            },1000);
+        });
+        promise1.then((value) => { //成功时调用
+            console.log(value);  // after 2s success!
+        },(info) => {
+            console.log(info);
+        });
+        console.log(promise1);  // [object Promise]
+    </script>
+</body>
+</html>

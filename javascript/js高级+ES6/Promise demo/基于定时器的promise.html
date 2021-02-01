@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        
+        /**
+         * 如果num大于100则 执行resolve
+         * 否则 执行reject
+         * */
+        function isRight(num) {
+            
+        }
+        function getInfo(num) {
+            let p1 = new Promise((resolve, reject) => {
+                setTimeout(function() {
+                    if(num < 100) {
+                        resolve(num + 'success!');
+                    } else {
+                        reject(num + 'error.........');
+                    }
+                }, 1000);
+            });
+            return p1;
+        }
+        /**
+    getInfo(880)
+        .then(data => {
+            console.log(data);
+        },info => {
+            console.log(info);  //错误继续调用
+            return getInfo(102);
+        })
+        .then(data => {
+            console.log(data);
+        }, info => {
+            console.log(info);
+            return getInfo(88); //错误再调用
+        })
+        .then(data => {
+            console.log(data);
+        },info => {
+            console.log(info);
+        })
+        .finally(() => {
+            console.log('finished!');
+        });
+**/
+        // Promise.all() 当所有任务执行完成得到结果
+        let promiseA = getInfo(80);
+        let promiseB = getInfo(20);
+        let promiseC = getInfo(60);
+        Promise.all([promiseA,promiseB,promiseC])
+                .then( data => {
+                    console.log('all task is finished');
+                    console.log(data);
+                });
+        Promise.race([promiseA,promiseB,promiseC])
+        .then( data => {
+            console.log('one task is finished');
+            console.log(data);
+            console.log('------------------');
+        });
+    </script>
+</body>
+</html>
