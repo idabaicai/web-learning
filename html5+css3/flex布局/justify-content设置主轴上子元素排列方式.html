@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>flex布局</title>
+    <style>
+        .flex {
+            display: flex;
+            /* 设置子元素在的排列方式 */
+            /* 设置主轴 */
+            flex-direction: column;
+            /* 贴近右侧 */
+            /* justify-content: flex-end; */
+            /* justify-content: flex-start; */
+            /* 居中对齐 */
+            /* justify-content: center; */
+            /* 平分剩余空间 */
+            /* justify-content: space-around; */
+            /* 先两边贴边 在平分剩余 */
+            justify-content: space-between;
+            /* 子元素是否换行 */
+            flex-wrap: wrap;
+            width: 80%;
+            height: 600px;
+            background-color: pink;
+        }
+        
+        .flex span {
+            width: 20%;
+            height: 50px;
+            background-color: #0ff;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="flex">
+        <span>1</span>
+        <span>2</span>
+        <span>3</span>
+        <span>4</span>
+    </div>
+</body>
+
+</html>

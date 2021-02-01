@@ -53,4 +53,17 @@ app.put('/set/:id', (req, res) => {
     });
 });
 
+
+// 接收axios请求数据
+app.get('/ax', (req, res) => {
+    res.send('axios:' + req.query.id);
+});
+// 接收axios restful 形式
+app.get('/ax-restfull/:id', (req, res) => {
+    res.send('axios-restfull:' + req.params.id);
+});
+// 接收axios params形式传参
+app.get('/ax-param', (req, res) => {
+    res.send('axios-param:' + req.query.id);
+});
 app.listen(port, () => console.log(`Example app listening on port ${port}!`))

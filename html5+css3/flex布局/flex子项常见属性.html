@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div {
+            display: flex;
+            align-items: flex-end;
+            width: 60%;
+            height: 350px;
+            margin: 0 auto;
+            background-color: pink;
+        }
+        
+        div span:nth-child(1) {
+            width: 100px;
+            height: 150px;
+            background-color: #0dd;
+        }
+        
+        div span:nth-child(2) {
+            /* 分配剩余空间 */
+            flex: 1;
+            /* 在侧轴开始的位置对齐 */
+            align-self: flex-start;
+            /* order定义项目排列的顺序 */
+            order: -1;
+            height: 150px;
+            background-color: #d0d;
+        }
+        
+        div span:nth-child(3) {
+            width: 100px;
+            height: 150px;
+            background-color: #dd0;
+        }
+        
+        p {
+            display: flex;
+            width: 60%;
+            height: 150px;
+            margin: 20px auto;
+            background-color: pink;
+        }
+        
+        p span {
+            flex: 1;
+        }
+        
+        p span:nth-child(2) {
+            flex: 2;
+            background-color: purple;
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        <span>1</span>
+        <span>2</span>
+        <span>3</span>
+    </div>
+    <p>
+        <span>1</span>
+        <span>2</span>
+        <span>3</span>
+    </p>
+</body>
+
+</html>

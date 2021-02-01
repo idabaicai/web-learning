@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>flex布局</title>
+    <style>
+        .flex {
+            display: flex;
+            /* 设置主轴 元素跟着主轴排列*/
+            flex-direction: column;
+            /* 项目在主轴上的对齐方式 */
+            justify-content: space-around;
+            width: 80%;
+            height: 300px;
+            background-color: pink;
+        }
+        
+        .flex span {
+            width: 150px;
+            height: 120px;
+            margin-right: 10px;
+            margin-bottom: 10px;
+            background-color: #0ff;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="flex">
+        <span>1</span>
+        <span>2</span>
+        <span>3</span>
+    </div>
+</body>
+
+</html>

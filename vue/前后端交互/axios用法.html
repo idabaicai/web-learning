@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>axios用法</title>
+</head>
+
+<body>
+    <script src="../../node_modules/axios/dist/axios.js"></script>
+    <script>
+        url = 'http://127.0.0.1:3000';
+        // get 查询数据
+        axios.get(url + '/ax/?id=2')
+            .then(res => {
+                console.log(res);
+            });
+        // post 添加数据
+        // Restful方式
+        axios.get(url + '/ax-restfull/2')
+            .then(res => {
+                console.log(res.data);
+            });
+        // get params传参
+        axios.get(url + '/ax-param', {
+                params: {
+                    id: 23
+                }
+            })
+            .then(res => {
+                console.log(res.data);
+            });
+    </script>
+</body>
+
+</html>

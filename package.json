@@ -1,0 +1,26 @@
+{
+  "name": "web-learning",
+  "version": "1.0.0",
+  "description": "learn web dev",
+  "main": "index.js",
+  "dependencies": {
+    "axios": "^0.21.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/idabaicai/web-learning.git"
+  },
+  "keywords": [
+    "web"
+  ],
+  "author": "Link",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/idabaicai/web-learning/issues"
+  },
+  "homepage": "https://github.com/idabaicai/web-learning#readme"
+}
