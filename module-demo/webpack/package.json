@@ -1,0 +1,22 @@
+{
+    "name": "webpack-start",
+    "version": "1.0.0",
+    "description": "'learn webpack'",
+    "main": "index.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "dev": "webpack"
+    },
+    "keywords": [
+        "'webpack'"
+    ],
+    "author": "Link",
+    "license": "MIT",
+    "dependencies": {
+        "jquery": "^3.5.1"
+    },
+    "devDependencies": {
+        "webpack": "^5.21.0",
+        "webpack-cli": "^4.5.0"
+    }
+}
