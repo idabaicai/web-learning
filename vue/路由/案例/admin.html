@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../../lib/vue.js"></script>
+    <script src="../../lib/vue-router.js"></script>
+    <style>
+        header {
+            width: 100%;
+            height: 50px;
+            background-color: pink;
+            line-height: 50px;
+            font-size: 26px;
+            text-align: center;
+        }
+        
+        .main {
+            height: 500px;
+        }
+        
+        table {
+            width: 800px;
+            text-align: center;
+            border-collapse: collapse;
+        }
+        
+        th,
+        td {
+            height: 28px;
+            border: 1px solid #cccc;
+        }
+        
+        ul li {
+            list-style: none;
+            line-height: 36px;
+            cursor: pointer;
+        }
+        
+        a {
+            text-decoration: none;
+        }
+        
+        .left {
+            width: 300px;
+            height: 100%;
+            float: left;
+            background-color: #ccc;
+        }
+        
+        .right {
+            float: left;
+            margin: 30px 50px
+        }
+        
+        .footer {
+            height: 55px;
+            width: 100%;
+            line-height: 55px;
+            text-align: center;
+            background-color: #0dd;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <router-view>
+
+        </router-view>
+    </div>
+
+    <script>
+        const App = {
+                template: `
+            <div>
+                <!-- 头部 -->
+                <header>后台管理系统</header>
+
+            <!-- 中间主题 -->
+            <div class="main">
+                <!-- 左侧导航 -->
+                <div class="content left">
+                    <ul>
+                        <li><router-link to="/user">用户管理</router-link></li>
+                        <li><router-link to="/right">权限管理</router-link></li>
+                        <li><router-link to="/good">商品管理</router-link></li>
+                        <li><router-link to="/order">订单管理</router-link></li>
+                    </ul>
+                </div>
+                <!-- 右侧内容 -->
+                <div class="content right">
+                    <router-view></router-view>
+                </div>
+            </div>
+    <!-- 版权 -->
+    <div class="footer">版权</div>
+    </div>`,
+            }
+            // 用户管理组件
+        const User = {
+                data: () => {
+                    return {
+                        userList: [{
+                            id: 1,
+                            name: 'Pink',
+                            age: 18
+                        }, {
+                            id: 2,
+                            name: 'Link',
+                            age: 22
+                        }, {
+                            id: 3,
+                            name: 'Link2',
+                            age: 20
+                        }]
+                    }
+
+                },
+                template: `
+            <div>
+                <h2>用户管理</h2>
+                <table>
+                    <thead>
+                        <th>ID</th>
+                        <th>姓名</th>
+                        <th>年龄</th>
+                        <th>操作</th>
+                    </thead>
+                    <tbody>
+                        <tr v-for="item in userList" :key="item.id">
+                            <td>{{ item.id }}</td>
+                            <td>{{item.name}}</td>
+                            <td>{{item.age}}</td>
+                            <td>
+                                <a href="javascript:;" @click="goDetail(item.id)">详情</a>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            `,
+                methods: {
+                    goDetail: function(id) {
+                        // console.log(id);
+                        this.$router.push('/userinfo/' + id)
+                    }
+                }
+            }
+            // 用户详情组件
+        const UserInfo = {
+                props: ['id'],
+                template: `
+                <div>
+                    <h4>用户详情</h4>
+                    <p>id: {{id}}</p>
+                    <button @click="back">返回</button>
+                </div>
+                `,
+                methods: {
+                    back: function() {
+                        this.$router.go(-1)
+                    }
+                }
+            }
+            // 权限管理组件
+        const Right = {
+                template: `
+            <div>
+                <h2>权限管理</h2>
+            </div>
+
+            `
+            }
+            // 商品管理组件
+        const Good = {
+                template: `
+            <div>
+                <h2>商品管理</h2>
+            </div>
+            `
+            }
+            // 订单管理组件
+        const Order = {
+            template: `
+            <div>
+                <h2>订单管理组件</h2>
+            </div>
+            `
+        }
+        const router = new VueRouter({
+            routes: [{
+                path: '/',
+                component: App,
+                redirect: '/user',
+                children: [{
+                        path: '/user',
+                        component: User
+                    },
+                    // 用户详情
+                    {
+                        path: '/userinfo/:id',
+                        component: UserInfo,
+                        props: true
+                    }, {
+                        path: '/good',
+                        component: Good
+                    }, {
+                        path: '/right',
+                        component: Right,
+                    }, {
+                        path: '/order',
+                        component: Order
+                    }
+                ]
+            }]
+        })
+        const vm = new Vue({
+            el: '#app',
+            router: router
+        })
+    </script>
+</body>
+
+</html>
