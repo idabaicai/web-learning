@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../lib/vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <a href="#/dagong">打工</a>
+        <a href="#/ganfan">干饭</a>
+        <a href="#/shici">诗词</a>
+        <a href="#/yule">娱乐</a>
+        <!-- 根据:is属性指定组件名称，把对应的组件渲染到component标签所在的位置 -->
+        <component :is="comName"></component>
+    </div>
+</body>
+<script>
+    // 主页组件
+    const dagong = {
+            template: '<h1>打工人，打工魂。打工都是人上人</h1>'
+        }
+        // 干饭组件
+    const ganfan = {
+            template: '<h1>我们要悄悄地干饭，然后惊艳所有人。</h1>'
+        }
+        // 诗词组件
+    const shici = {
+            template: `
+            <div>
+                <h3>朱颜辞镜花辞树，最是人间留不住。</h3>
+                <h3>但使龙城飞将在，不教胡马度阴山。</h3>
+            </div>
+            `
+        }
+        // 娱乐组件
+    const yule = {
+        template: '<h3>来呀，快活呀，反正有...大把时光。</h3>'
+    }
+    const vm = new Vue({
+            el: '#app',
+            data: {
+                comName: 'shici'
+            },
+            // 注册私有组件
+            components: {
+                dagong,
+                ganfan,
+                shici,
+                yule
+            }
+        })
+        // 监听window的onhashchange事件，根据最新hash值，切换到对应的组件
+    window.onhashchange = () => {
+        console.log(location.hash.slice(2)); // dagong ganfan
+        let hash = location.hash.slice(2);
+        vm.comName = hash;
+    }
+</script>
+
+</html>
