@@ -5,7 +5,7 @@
     "main": "index.js",
     "scripts": {
         "test": "echo \"Error: no test specified\" && exit 1",
-        "dev": "webpack"
+        "dev": "webpack-dev-server --open --host 127.0.0.1 --port 8080"
     },
     "keywords": [
         "'webpack'"
@@ -16,7 +16,17 @@
         "jquery": "^3.5.1"
     },
     "devDependencies": {
-        "webpack": "^5.21.0",
-        "webpack-cli": "^4.5.0"
+        "autoprefixer": "^9.2.4",
+        "css-loader": "^5.0.1",
+        "html-webpack-plugin": "^4.0.0",
+        "less": "^3.1.1",
+        "less-loader": "^7.0.0",
+        "node-sass": "^5.0.0",
+        "postcss-loader": "^5.0.0",
+        "sass-loader": "^11.0.0",
+        "style-loader": "^2.0.0",
+        "webpack": "^4.20.2",
+        "webpack-cli": "^3.1.2",
+        "webpack-dev-server": "^3.1.9"
     }
 }

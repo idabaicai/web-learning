@@ -1,0 +1,8 @@
+li {
+    line-height: 36px;
+    list-style: none;
+}
+
+::placeholder {
+    color: red;
+}
