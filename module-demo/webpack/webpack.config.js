@@ -1,7 +1,8 @@
 const path = require('path')
     // 导入插件
 const HtmlWebpackPlugin = require('html-webpack-plugin')
-
+    // vue加载器
+const VueLoaderPlugin = require('vue-loader/lib/plugin')
 const htmlWebpackPlugin = new HtmlWebpackPlugin({
     template: './src/index.html', // 模板文件
     filename: 'index.html'
@@ -17,11 +18,15 @@ module.exports = {
         path: path.join(__dirname, './dist'),
         filename: 'bundle.js'
     },
-    plugins: [htmlWebpackPlugin],
+    plugins: [htmlWebpackPlugin, new VueLoaderPlugin()],
     module: {
         rules: [
-            { test: /\.css$/, use: ['style-loader', 'css-loader'] },
-            { test: /\.less$/, use: ['style-loader', 'css-loader', 'less-loader'] }
+            // { test: /\.css$/, use: ['style-loader', 'css-loader', 'postcss-loader'] },
+            // { test: /\.less$/, use: ['style-loader', 'css-loader', 'less-loader'] },
+            // 打包图片和字体文件
+            // { test: /\.(jpg|png|gif|ttf|bmp|woff2)$/, use: ['url-loader'] }
+            { test: '/\.vue$/', loader: 'vue-loader' }
+
         ]
     }
 }

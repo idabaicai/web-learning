@@ -4,9 +4,21 @@
   "description": "learn web dev",
   "main": "index.js",
   "dependencies": {
+    "@babel/polyfill": "^7.12.1",
     "axios": "^0.21.1"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "@babel/cli": "^7.12.13",
+    "@babel/core": "^7.12.13",
+    "@babel/node": "^7.12.13",
+    "@babel/preset-env": "^7.12.13",
+    "css-loader": "^5.0.1",
+    "file-loader": "^6.2.0",
+    "style-loader": "^2.0.0",
+    "url-loader": "^4.1.1",
+    "vue-loader": "^15.9.6",
+    "vue-template-compiler": "^2.6.12"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },

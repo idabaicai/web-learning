@@ -4,6 +4,7 @@
     "description": "'learn webpack'",
     "main": "index.js",
     "scripts": {
+        "build": "webpack -p",
         "test": "echo \"Error: no test specified\" && exit 1",
         "dev": "webpack-dev-server --open --host 127.0.0.1 --port 8080"
     },
@@ -13,18 +14,19 @@
     "author": "Link",
     "license": "MIT",
     "dependencies": {
-        "jquery": "^3.5.1"
+        "jquery": "^3.5.1",
+        "vue": "^2.6.12"
     },
     "devDependencies": {
-        "autoprefixer": "^9.2.4",
         "css-loader": "^5.0.1",
         "html-webpack-plugin": "^4.0.0",
         "less": "^3.1.1",
         "less-loader": "^7.0.0",
         "node-sass": "^5.0.0",
         "postcss-loader": "^5.0.0",
-        "sass-loader": "^11.0.0",
         "style-loader": "^2.0.0",
+        "vue-loader": "^15.1.6",
+        "vue-template-compiler": "^2.6.1",
         "webpack": "^4.20.2",
         "webpack-cli": "^3.1.2",
         "webpack-dev-server": "^3.1.9"
