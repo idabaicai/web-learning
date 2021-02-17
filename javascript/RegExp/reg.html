@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./reg.js"></script>
+    <style>
+        .right {
+            color: green;
+        }
+        
+        .error {
+            color: red;
+        }
+    </style>
+</head>
+
+<body>
+    <input type="text" class="name"> <span>请输入用户名</span>
+    <p>敏感词过滤</p>
+    <textarea name="msg" id="" cols="30" rows="10"></textarea>
+    <button>提交</button>
+    <div class="msg"></div>
+</body>
+<script>
+    const input = document.querySelector('.name');
+    const span = document.querySelector('span');
+    input.addEventListener('blur', function() {
+        const reg = /^[a-zA-Z]{6,15}$/
+        if (!reg.test(this.value)) {
+            span.className = 'error';
+            span.innerHTML = "请输入正确用户名"
+        } else {
+            span.className = 'right';
+            span.innerHTML = "用户名正确"
+        }
+    })
+    let txt = document.querySelector('textarea');
+    const btn = document.querySelector('button');
+    const div = document.querySelector('.msg');
+    btn.addEventListener('click', () => {
+        console.log(txt);
+        const res = txt.value.replace(/五毛/g, '**');
+        div.innerHTML = res;
+    })
+</script>
+
+</html>
