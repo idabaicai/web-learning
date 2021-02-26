@@ -1,0 +1,27 @@
+html {
+  font-size: 20px;
+}
+body {
+  background-color: pink;
+}
+.less {
+  background-color: pink;
+}
+.less p {
+  font-size: 20px;
+  color: purple;
+}
+.less a {
+  text-decoration: none;
+}
+.less a:hover {
+  color: red;
+}
+.less .border {
+  width: 200px;
+  height: 200px;
+  border: 25px solid #0dd;
+}
+.less .foo {
+  font-size: 2rem;
+}

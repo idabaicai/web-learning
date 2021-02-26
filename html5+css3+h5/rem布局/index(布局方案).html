@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>rem布局</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        
+        body {
+            min-width: 320px;
+            max-width: 900px;
+            margin: 0 auto;
+            overflow-x: hidden;
+        }
+        /* 将宽度分为15等分 */
+        /* iphone 5 */
+        
+        @media screen and (min-width: 320px) {
+            html {
+                font-size: 21.33px;
+            }
+        }
+        /* iphone6/7/8 */
+        
+        @media screen and (min-width: 375px) {
+            html {
+                font-size: 25px;
+            }
+        }
+        
+        @media screen and (min-width: 750px) {
+            html {
+                font-size: 50px;
+            }
+        }
+        
+        div {
+            width: 15rem;
+            height: 6rem;
+            margin: 0 auto;
+            padding: 0;
+            background-color: pink;
+            font-size: 0.4rem;
+        }
+        
+        div ul li {
+            list-style: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        <h2>每个页面划分为15等分，以750px的宽度为基准</h2>
+        <ul>
+            <li>750px iphone6,7,8宽度。一份为50px。将html的font-size设置为1等分的宽度</li>
+            <li>在320px时，一份为21.33px</li>
+        </ul>
+    </div>
+    <p>没有加rem样式，字体为50px</p>
+</body>
+
+</html>

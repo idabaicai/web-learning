@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        html {
+            font-size: 14px;
+        }
+        
+        .embox {
+            font-size: 8px;
+        }
+        
+        p {
+            font-size: 3em;
+            width: 12em;
+            height: 2em;
+            background-color: pink;
+        }
+        
+        .em {
+            font-size: 2em;
+        }
+        
+        span {
+            color: red;
+        }
+        
+        ul {
+            font-size: 2rem;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="embox">
+        <p class="">em单位</p>
+        <p class="em">2em大小</p>
+        <div>
+            <p>父级没有设置大小</p>
+        </div>
+    </div>
+    <div>
+        <ul>
+            <li>em 相对于父元素字体大小</li>
+            <li>rem 的基准是相对于 <span>html</span> 元素的<span>字体大小</span></li>
+            <li>rem的有点可以通过修改html里面的文字大小，可以整体控制页面元素的大小</li>
+        </ul>
+    </div>
+</body>
+
+</html>

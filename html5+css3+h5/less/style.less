@@ -1,0 +1,35 @@
+// 背景颜色
+@bgcolor: pink;
+@fontColor: purple;
+@fontSize: 20px;
+@border: 5px;
+@baseFont: 20px;
+html {
+  font-size: @baseFont;
+}
+body {
+  background-color: @bgcolor;
+}
+.less {
+  background-color: @bgcolor;
+  p {
+    font-size: @fontSize;
+    color: @fontColor;
+  }
+  a {
+    text-decoration: none;
+    // & 用来连接
+    &:hover {
+      color: red;
+    }
+  }
+  .border {
+    width: 200px;
+    height: 200px;
+    border: @border + 20 solid #0dd;
+  }
+  .foo {
+    // == 2rem 以第一个单位为主
+    font-size: 40rem / @baseFont;
+  }
+}

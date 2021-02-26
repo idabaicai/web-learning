@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>媒体查询</title>
+    <style>
+        /* 屏幕上 宽度在700-800px时的样式 */
+        
+        @media screen and (max-width: 800px) and ( min-width: 700px) {
+            body {
+                background-color: pink;
+            }
+        }
+        /* 屏幕上 宽度小于 600px时的样式 */
+        
+        @media screen and (max-width: 600px) {
+            body {
+                background-color: purple;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        <h2>语法规范</h2>
+        <ul>
+            <li>用@media开头</li>
+            <li>mediatype 媒体类型,</li>
+            <li>关键字 and not only</li>
+            <li>media feature 媒体特性 必须有小括号包含</li>
+        </ul>
+        <h2>media type</h2>
+        <ul>
+            <li>all 用于所有设备</li>
+            <li>print 打印机和打印预览</li>
+            <li>screen 用于电脑屏幕、平板电脑、只能手机等</li>
+        </ul>
+        <h2>media feature</h2>
+        <ul>
+            <li>width 可见区域宽度</li>
+            <li>min-width 最小可见区域</li>
+            <li>max-width 最大可见区域</li>
+        </ul>
+    </div>
+</body>
+
+</html>
