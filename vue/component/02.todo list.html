@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>to do list</title>
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+  <div id="app">
+    <base-input @add-item="pAddItem"></base-input>
+    <v-commont :list="pList" @remove="pRemove"></v-commont>
+  </div>
+  <script>
+    const BaseInput = {
+      data () {
+        return {
+          val: ''
+        }
+      },
+      template: `
+        <div>
+          <input v-model="val" @keyup.enter="$emit('add-item', val)"/>
+        </div>
+      `
+    };
+    const commont = {
+      props: ['list'],
+      template: `
+        <div>
+          <ul>
+            <li :key="item.id" v-for="(item, idx) in list">{{ item.text }} <button @click="$emit('remove', idx)">X</button> </li>
+          </ul>
+        </div>
+      `,
+      methods: {
+
+      }
+    };
+    const vm = new Vue({
+      el: '#app',
+      data: {
+        pList: [
+          {id: 1, text: 'html'},
+          {id: 2, text: 'css'},
+          {id: 3, text: 'js'}
+        ]
+      },
+      components: {
+        'v-commont': commont,
+        BaseInput
+      },
+      methods: {
+        pRemove (idx) {
+          // console.log(idx);
+          this.pList.splice(idx, 1);
+        },
+        pAddItem (val) {
+          // console.log(val);
+
+          this.pList.push({id: this.length + 1, text: val})
+        }
+      },
+      computed: {
+        length () {
+          return this.pList.length;
+        }
+      }
+    })
+  </script>
+</body>
+</html>
