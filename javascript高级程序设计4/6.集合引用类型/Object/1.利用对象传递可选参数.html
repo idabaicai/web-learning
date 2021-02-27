@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Object</title>
+</head>
+
+<body>
+    <h2>利用对象传递大量可选参数</h2>
+    <script>
+        function displatInfo(args) {
+            let output = '';
+            if (typeof args.name === 'string') {
+                output += 'Name: ' + args.name + '\n';
+            }
+            if (typeof args.age === 'number') {
+                output += 'age: ' + args.age + '\n';
+            }
+            console.log(output);
+        }
+        const info = {
+            name: 'Link',
+            age: 22
+        };
+        displatInfo(info);
+        delete info.age;
+        console.log('after delete info.age');
+        displatInfo(info);
+    </script>
+</body>
+
+</html>

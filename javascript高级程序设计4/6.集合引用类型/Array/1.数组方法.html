@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>数组新方法</title>
+</head>
+
+<body>
+    <script>
+        // 1.将字符串转换为数组
+        const str = "Link";
+        const arr = Array.from(str);
+        console.log(arr); // ['L', 'i', 'n', 'k']
+        // 2. 将set和map转换为数组
+        const m = new Map().set('name', 'link').set('age', 22);
+        console.log(m);
+        const s = new Set().add('foo').add('bar');
+        console.log(s);
+        const arrFromMap = Array.from(m); // [['name','link'],['age',22]
+        console.log('array from map');
+        console.log(arrFromMap);
+        console.log('array from set');
+        const arrFromSet = Array.from(s);
+        console.log(arrFromSet); // ['foo', 'bar']
+        // 将一组参数转为数组
+        console.log('将一组参数转为数组');
+        console.log(Array.of(1, 2, 3, 4));
+        // 数组空位
+        const arr1 = [1, , , 4, , ];
+        for (const val of arr1) {
+            // console.log(val);
+            console.log(typeof val == 'undefined');
+        }
+        console.log('检测数组');
+        console.log(arr1 instanceof Array); // true
+        console.log(Array.isArray(arr1)); // true
+        console.log('迭代器方法');
+        const a = ['foo', 'bar', 'baz', 'qux'];
+        const aKeys = Array.from(a.keys());
+        console.log(aKeys); // [0,1,2,3]
+        const aValues = Array.from(a.values());
+        console.log(aValues); //['foo', 'bar', 'baz', 'qux']
+        const aEntries = Array.from(a.entries());
+        console.log(aEntries); // [[0, "foo"], [1, "bar"]...]
+        console.log('利用ES6结构拆分数组键值对');
+        for (const [idx, val] of a.entries()) {
+            console.log(idx); // 0,1,2,3
+            console.log(val); // foo,bar...
+        }
+        console.log('复制和填充数组');
+        const zeros = [0, 0, 0, 0];
+        console.log(zeros.fill(6)); // [6,6,6,6]
+        console.log(zeros.fill(8, 1)); // [6,8,8,8]
+        console.log(zeros.valueOf()); // [6,8,8,8]
+        console.log(zeros.toString()); // 6,8,8,8
+    </script>
+</body>
+
+</html>
