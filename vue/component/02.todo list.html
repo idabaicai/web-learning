@@ -5,12 +5,22 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>to do list</title>
+<<<<<<< HEAD
   <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 </head>
 <body>
   <div id="app">
     <base-input @add-item="pAddItem"></base-input>
     <v-commont :list="pList" @remove="pRemove"></v-commont>
+=======
+  <!-- <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script> -->
+  <script src="../lib/vue.js"></script>
+</head>
+<body>
+  <div id="app">
+    <base-input @add-item="pAddItem" ref="inp"></base-input>
+    <v-commont :list="pList" @remove="pRemove" ></v-commont>
+>>>>>>> dev
   </div>
   <script>
     const BaseInput = {
@@ -60,8 +70,18 @@
           // console.log(val);
 
           this.pList.push({id: this.length + 1, text: val})
+<<<<<<< HEAD
         }
       },
+=======
+          // 清空输入框
+          this.$refs.inp.val = ''
+        }
+      },
+      mounted () {
+        console.log(this.$refs);
+      },
+>>>>>>> dev
       computed: {
         length () {
           return this.pList.length;
