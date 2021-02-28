@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>数组方法2</title>
+</head>
+<body>
+  <script>
+    const arr = [1,3,5,7,9];
+    let filterRes = arr.filter((val, idx, array) => val > 5); // [7, 9]
+    console.log('filter result');
+    console.log(filterRes);
+    let mapRes = arr.map((val, idx, array) => val * 2);
+    console.log('map result');
+    console.log(mapRes); // [2,6,10,14,18]
+    let reduceRes = arr.reduce((pre, cur, idx, array) => {
+      return pre + cur;
+    })
+    console.log('reduce result');
+    console.log(reduceRes); // 25
+    console.log('扩展操作符');
+    const arr1 = [5,6,7];
+    const arr2 = [1,2,3,4, ...arr1];
+    console.log(arr2); // [1,2,3,4,5,6,7]
+  </script>
+</body>
+</html>
