@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>todo</title>
+  <script src="../lib/Vue.js"></script>
+</head>
+<body>
+  <div id="app">
+  </div>
+  <script>
+    const Todo = {
+      data() {
+        return {
+          val: '',
+          list: [
+            {id:1, name: 'css'},
+            {id:2, name: 'html'},
+            {id:3, name: 'js'},
+          ]
+        }
+      },
+      methods: {
+        add() {
+          this.list.push({id: this.list.length+1, name: this.val});
+          this.val = '';
+        },
+        del(id) {
+        //  this.list.splice(idx, 1);
+          const idx = this.list.findIndex(item => item.id === id);
+          console.log(idx);
+          this.list.splice(idx, 1)
+        }
+      },
+      template: `
+      <div>
+        <input v-model="val" />
+        <button @click="add" :title="val">add</button>
+        <todo-item v-for="item in list" :content="item" @del-item="del"></todo-item>
+      </div>
+      `
+    }
+    const app = Vue.createApp(Todo);
+    app.component('todo-item', {
+      props: ['content'],
+      data() {
+        return {
+          msg: 'hello'
+        }
+      },
+      template: `
+      <div>
+        <ul>
+          <li>{{ content.name }} <button @click="$emit('del-item',content.id)">x</button></li>
+        </ul>
+      </div>
+      `,
+      methods: {
+        del() {
+
+        }
+      }
+    });
+    app.mount("#app");
+  </script>
+</body>
+</html>

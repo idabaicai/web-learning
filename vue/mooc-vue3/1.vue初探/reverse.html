@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>反转</title>
+  <script src="https://unpkg.com/vue@next"></script>
+
+</head>
+<body>
+  <div id="app"></div>
+  <script>
+    const Reverse = {
+      data() {
+        return {
+          world: true,
+          msg: 'hello'
+        }
+      },
+      template: `
+        <div>
+          <h3>{{msg}}</h3>
+          <h2 v-if="world">world</h2>
+          <button @click="reverse">reverse</button>
+          <button @click="show">show/hide world</button>
+        </div>
+      `,
+      methods: {
+        reverse() {
+          console.log('reverse');
+          this.msg = this.msg.split('').reverse().join('');
+        },
+        show() {
+          this.world = !this.world;
+        }
+      }
+    }
+    Vue.createApp(Reverse).mount("#app");
+  </script>
+</body>
+</html>
