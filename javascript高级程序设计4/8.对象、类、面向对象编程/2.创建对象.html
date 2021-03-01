@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>创建对象</title>
+</head>
+<body>
+  <script>
+    // 1. 工厂模式
+    // 2. 构造函数模式
+    // 3. 原型模式
+    function Person() {
+    }
+    console.log(typeof Person.prototype);  // Object
+    console.log(typeof Person.prototype.constructor);  // function
+    console.log(Person.prototype); // {constructor: f() function, __proto__: Object}
+  </script>
+</body>
+</html>
