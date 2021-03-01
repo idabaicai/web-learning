@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>属性的类型</title>
+</head>
+<body>
+  <script>
+    let obj = {
+      name: 'Link',
+      age: 22,
+      job: 'front end',
+      say () {
+        console.log('I am a ' + this.job);
+      }
+    }
+    obj.say();
+    // 修改属性的默认特性
+    Object.defineProperty(obj, 'name', {
+      writable: false
+    });
+    obj.name = 'Pink';
+    console.log(obj.name); // Link
+    // 访问器属性
+    console.log('访问器属性--------');
+    let book = { 
+      year_: 2017, // 下划线表示该属性不希望对象方法的外部访问
+      edition: 1
+    };
+    Object.defineProperty(book, 'year', {
+      get() {
+        return this.year_;
+      },
+      set(newVal) {
+        if(newVal > 2018) {
+          this.year_ = newVal;
+          this.edition = newVal - 2017;
+        }
+      }
+    })
+    console.log(book.year);  // 2017
+    book.year = 2020;
+    console.log(book); // {year_: 2020, edition: 3}
+    // 读取属性的特性
+    const des = Object.getOwnPropertyDescriptor(book, 'year_');
+    console.log(des); // {value: 2020, writable: true,enumerable: true, configurable: true}
+    // 合并对象
+    let dest, src, result;
+    dest = {name: 'dest'};
+    src = {id: 'src'};
+    result = Object.assign(dest, src);
+    console.log(result); // {name: 'dest',id: 'src'}
+    console.log(dest);  // {name: 'dest',id: 'src'}
+    // 解构赋值
+    console.log('解构赋值');
+    const person = {
+      name: 'link',
+      age: 22,
+      gender: 'male'
+    }
+    const { name: pName, age: pAge } = person;
+    console.log(pName); // link
+    console.log(pAge);   // 22
+    const { name, age, job = 'front end', gender = 'female'} = person;
+    console.log(name);  // link
+    console.log(age);  // 22
+    console.log(job);  // front end
+    console.log(gender); // male
+    let { constructor: c } = 666;
+    console.log(c === Number); // true
+  </script>
+</body>
+</html>
