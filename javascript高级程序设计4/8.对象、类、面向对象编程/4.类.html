@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>class</title>
+</head>
+<body>
+  <script>
+    class Animal {}
+    class Person {
+      constructor() {
+        this.name = 'link';
+      }
+    }
+    const p1 = new Person();
+    console.log(p1.name); // link
+    console.log('super 关键字');
+    class Vehicle {
+      constructor() {
+        this.hasEngine = true;
+      }
+    }
+    class Car extends Vehicle {
+      constructor() {
+        super();
+      }
+    }
+    const tesila = new Car();
+    console.log('tesila engine: '+ tesila.hasEngine);  // true
+  </script>
+</body>
+</html>
