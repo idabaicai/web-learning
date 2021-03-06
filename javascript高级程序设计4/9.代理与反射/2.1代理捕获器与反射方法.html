@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>代理捕获器与反射方法</title>
+</head>
+<body>
+  <script>
+    // get
+    const target = {
+      foo: 'bar'
+    }
+    const handler1 = {
+      get() {
+        return Reflect.get(...arguments)
+      }
+    }
+    const p1 = new Proxy(target, handler1);
+    console.log(p1.foo); // bar
+    // set 
+    const handler2 = {
+      set(target, property, value, receiver) {
+        console.log('set is call');
+        return Reflect.set(...arguments)
+      },
+      has(target, property) {
+        console.log('has is call');
+        return Reflect.has(...arguments)
+      }
+    }
+    const p2 = new Proxy(target, handler2)
+    p2.word = 'respect';
+    console.log(p2.word);  // respect
+    console.log('foo' in p2);  // true
+  </script>
+</body>
+</html>

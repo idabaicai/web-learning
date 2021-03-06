@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>代理基础</title>
+</head>
+<body>
+  <script>
+    console.log('可撤销代理');
+    const target = {
+      word: 'love and peace'
+    }
+    const handler = {
+      get() {
+        return Reflect.get(...arguments)
+      }
+    }
+    const proxy1 = new Proxy(target, handler);
+    console.log(proxy1.word);
+    const { proxy, revoke } = Proxy.revocable(target, handler);
+    console.log(proxy.word); // love and peace
+    console.log('call revoke');
+    revoke();
+    console.log(proxy);  // Proxy {}
+    // console.log(proxy.word); // Uncaught TypeError: Cannot perform 'get' on a proxy that has been revoked
+    // 使用代理定义新属性
+    const o = {}
+    if(Reflect.defineProperty(o, 'foo', {value: 'bar'})) {
+      console.log('success!'); // success
+    } else {
+      console.log('error');
+    }
+    console.log(o.foo); // bar
+  </script>
+</body>
+</html>

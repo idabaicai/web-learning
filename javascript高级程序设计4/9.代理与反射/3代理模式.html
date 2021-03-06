@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>代理模式</title>
+</head>
+<body>
+  <script>
+    // 跟踪属性访问
+    const target = {
+      name: '李白',
+      poem: '天生我材必有用'
+    }
+    const handler = {
+      get(target, property, receiver) {
+        console.log('get value');
+        return Reflect.get(...arguments);
+      },
+      set(target, property, value, receiver) {
+        console.log('set value');
+        if(property === 'age' && typeof value !== 'number') {
+          console.log('age must be a number');
+          return false
+        } else {
+          return Reflect.set(...arguments);
+        }
+      }
+    }
+    const proxy = new Proxy(target, handler);
+    console.log(proxy.poem); // 天生我才必有用
+    proxy.poem1 = '千金散尽还复来'; // set value
+    // 属性验证
+    console.log('属性验证');
+    proxy.age = '22'; // 24: age must be a number
+    proxy.age = 60;
+    console.log(proxy.age); // 60
+
+  </script>
+</body>
+</html>
