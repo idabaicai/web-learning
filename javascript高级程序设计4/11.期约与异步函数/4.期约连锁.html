@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>期约连锁</title>
+</head>
+<body>
+  <script>
+    // 传行化异步任务
+    let p1 = new Promise((resolve, reject) => {
+      console.log('p1 executor');
+      setTimeout(resolve, 200);
+    });
+    p1.then(() => new Promise((resolve, reject) => {
+      console.log('p2 excutor');
+      setTimeout(resolve, 200);
+    }))
+    .then(() => new Promise((resolve, reject) => {
+      console.log('p3 executor');
+      setTimeout(resolve, 200);
+    }))
+    .then(() => new Promise((resolve, reject) => {
+      console.log('p4 executor');
+      setTimeout(resolve, 200);
+    }))
+    .then(() => new Promise((resolve, reject) => {
+      console.log('p5 executor');
+      setTimeout(reject, 200, 'p5 rejected');
+    }))
+    .catch((e) => console.log(e)) 
+    .finally(()=> {console.log('finish');})
+    // p1 executor p2... p3... p4...p5...p5 rejected...finish
+    // 把生成期约提取到一个工厂函数中
+    function delayedResolve(str) {
+      return new Promise((resolve, reject) => {
+        console.log(str);
+        setTimeout(resolve, 1000);
+      });
+    }
+    delayedResolve('p1')
+      .then(() => delayedResolve('p2'))
+      .then(() => delayedResolve('p3'))
+      .then(() => delayedResolve('p4'))
+      // p1   p2   p3   p4
+      // 同时使用 then(), catch(), finally()
+      let p2 = new Promise((resolve, reject) => {
+        console.log('initial promise rejects');
+        reject();
+      });
+      p2.catch(() => console.log('reject handler'))
+        .then(() => console.log('resolve handler'))
+        .finally(() => console.log('finally handler'));
+  </script>
+</body>
+</html>

@@ -7,6 +7,6 @@
 ## list
 - html5
 - css3
-- javascript
+- javascript高级程序设计第四版
 - nodejs
 - vue

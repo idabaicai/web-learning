@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>期约</title>
+</head>
+<body>
+  <script>
+    // 1. 空函数应付
+    const p = new Promise(() => {});
+    setTimeout(console.log, 100, p); // Promise {<pending>}
+    // 2. 通过执行函数控制期约状态
+    const p2 = new Promise((resove, reject) => resove());
+    setTimeout(console.log, 100, p2); // Promise {<fulfilled>: undefined}
+      // 调用reject会抛出一个错误
+    const p3 = new Promise((resove, reject) => reject());  // Uncaught (in promise)
+    setTimeout(console.log, 100, p3); // Promise {<rejected>: undefined}
+      // 代码执行顺序
+      new Promise(() => setTimeout(console.log, 110, 'executor')); // executor
+      setTimeout(console.log, 110, 'promise init'); // promise init
+      // 推迟切换状态
+      console.log('推迟切换状态:');
+      let p4 = new Promise((resove, reject) => {
+        setTimeout(resove, 1000);
+      })
+      setTimeout(console.log, 0, p4, 'p4'); // Promise {<pending>} 'p4'
+        // 拒绝期约的理由
+        let p5 = Promise.reject(555);
+        setTimeout(console.log, 0 , p5); // Promise {<rejected>: 555}
+          p5.then(null, (e) => setTimeout(console.log, 0, e)); // 555
+  </script>
+</body>
+</html>

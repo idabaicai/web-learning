@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>异步编程</title>
+</head>
+<body>
+  <script>
+    // 异步程序
+    function sum(a, b) {
+      setTimeout(() => {
+        console.log(a + b);
+      }, 1000);
+    }
+    sum(6, 6);
+    // 异步返回值
+    function double(a, callback) {
+      setTimeout(() => {
+        callback(a * 2);
+      }, 1000)
+    }
+    double(3, (x) => console.log(`I was given ${x}`)) // I was given 6
+    // 成功回调及失败回调
+    function triple(num, success, error) {
+      setTimeout(() => {
+        try{
+          if( typeof num !== 'number') {
+          throw 'the first argument must be a number';
+        }
+        success(3 * num);
+        } catch(e) {
+          error(e);
+        }
+      }, 1000)
+    }
+    triple(3, (num) => {
+      console.log(num); // 9
+    }, (error) => {
+      console.log(error);
+    })
+    triple('6', (num) => {
+      console.log(num);
+    }, (e) => {
+      console.log(e);  // the first argument must be a number
+    })
+    // 嵌套异步回调
+    function mutiple(x, success, error) {
+      try {
+        if(typeof x !== 'number') {
+          throw 'argument error';
+        } else {
+          setTimeout(() => {
+            success(5 * x)
+          }, 1000)
+        }
+      } catch(e) {
+        error(e);
+      } 
+    }
+    const successCallback = (x) => {
+      mutiple(x, y => {console.log(y);}) 
+    }
+    const errorCallback = (e) => {
+      console.log(e);
+    }
+    mutiple(2, successCallback, errorCallback); // 50 
+    mutiple('2', successCallback, errorCallback); // argument error
+  </script>
+</body>
+</html>

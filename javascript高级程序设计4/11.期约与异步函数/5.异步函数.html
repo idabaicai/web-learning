@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>异步函数</title>
+</head>
+<body>
+  <script>
+    async function foo() {
+      console.log(1);
+      // return 3; // 直接返回期约也一样
+      return Promise.resolve(3)
+    }
+    foo().then(console.log);
+    console.log(2);
+    // 1 2 3
+    // 使用 await 暂停异步函数代码的执行
+    let p = new Promise((resolve, reject) => setTimeout(resolve, 1000, 4));
+    p.then((x) => console.log(x)); // 4
+    async function bar() {
+      let p = new Promise((resolve, reject) => setTimeout(resolve, 1000, 5));
+      console.log(await p);
+    }
+    bar(); // 5
+    // 1000 ms 后异步打印 'baz'
+    async function baz() {
+      await new Promise((resolve, reject) => setTimeout(resolve, 1000));
+      console.log('baz');
+    }
+    baz();
+  </script>
+</body>
+</html>

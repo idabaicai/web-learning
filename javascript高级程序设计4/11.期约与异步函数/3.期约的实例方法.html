@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>期约实例方法</title>
+</head>
+<body>
+  <script>
+    // 不能捕获错误
+    try {
+      throw new Error('foo');
+    } catch(e) {
+      console.log(e); // Error: foo
+    }
+    try {
+      Promise.reject('bar');
+    } catch(e) {
+      console.log(e); // Uncaught (in promise) bar
+    }
+    // 期约实例方法 实现Thenable接口 
+    // 1. Promise.prototype.then()  返回新的期约实例
+    function onResolved(id) {
+      setTimeout(console.log, 0, id, 'resolved');
+    }
+    function onRejected(id) {
+      setTimeout(console.log, 0, id, 'rejected');
+    }
+    let p1 = new Promise((resolve, reject) => setTimeout(resolve, 1000)); 
+    let p2 = new Promise((resolve, reject) => setTimeout(reject, 1000)); // p2 "rejected"
+    p1.then(() => onResolved('p1'),
+            () => onRejected('p1')); // p1 "resolved"
+    let p2_1 = p2.then(() => onResolved('p2'),
+                        () => onRejected('p2')); // p2 "rejected"
+    console.log(p2_1); // Promise {<pending>}
+    // 2. Promise.prototype.catch 用于给期约添加拒绝处理程序
+    let p3 = Promise.reject();
+    let onRejected1 = function(e) {
+      setTimeout(console.log, 0, 'rejected1');
+    }
+    // 以下添加拒绝处理程序的方式是一样的
+    p3.then(null, onRejected1); // "rejected1"
+    p3.catch(onRejected1); // rejected1
+    // 3. Promise.prototype.finally()
+    let p4 = Promise.resolve();
+    let p5 = Promise.reject();
+    let onFinally = function() {
+      setTimeout(console.log, 0, 'Finally');
+    } 
+    p4.finally(onFinally); // Finally
+    p5.finally(onFinally); // Finally
+  </script>
+</body>
+</html>
