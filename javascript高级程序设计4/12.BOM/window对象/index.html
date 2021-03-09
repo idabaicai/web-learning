@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div id="window">
+    123
+  </div>
+  <script>
+    var name = 'foo';
+    let age = 22;
+    let say = () => console.log('let say');
+    const sing = () => console.log('const sing');
+    console.log(window.name); // foo
+    console.log(window.age); // undefined
+    // window.say(); // window say is not a function
+    // this.say(); // this say is not a function
+    console.log(window);
+    // 移动窗口到左上角
+    window.moveTo(0, 0);
+    // 向下移动200px
+    window.moveBy(0, 200)
+    // 像素比
+    console.log(window.devicePixelRatio); // 1.25
+    // 自身大小
+    console.log('窗口自身大小');
+    console.log(window.innerWidth); // 1536
+    console.log(window.innerHeight); // 754
+    // 浏览器大小
+    console.log('浏览器大小');
+    console.log(window.outerWidth); // 1536
+    console.log(window.outerHeight); // 824
+    // 调整窗口大小
+    window.resizeBy(500, 500);
+    // 向下滚动窗口
+    window.scrollBy(0, 300);
+    // 打开窗口
+    // window.open('http://www.qq.com')
+    // 超时任务
+    const msg = setTimeout(alert, 5000, 'hello')
+    clearTimeout(msg)
+    // 交互
+    if(confirm('确认删除吗')) {
+      console.log('ok');
+    } else {
+      console.log('cancle');
+    }
+    const res = prompt('填写name:')
+    console.log(res);
+    // 打印
+    // print()
+    // 查找
+    // find()
+  </script>
+</body>
+</html>

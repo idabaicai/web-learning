@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Node类型</title>
+</head>
+<body>
+  <div id="node">
+    123
+    <p>node</p>
+    <h3>child</h3>
+  </div>
+  <script>
+    const div = document.querySelector('div')
+    console.log(div.nodeType); // 1  Element_node
+    console.log(div.nodeValue); // null
+    // child node
+    console.log(div.childNodes); // NodeList [text, p, h3, text]
+    console.log(div.childNodes[0].nodeType); // 3 Text_node
+    const text = div.childNodes[0].nodeType;
+    console.log(text.toString()); // 3
+  </script>
+</body>
+</html>
