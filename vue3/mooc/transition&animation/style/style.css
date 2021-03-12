@@ -1,0 +1,46 @@
+.transition {
+  transition: 3s background-color ease;
+}
+.blue {
+  background-color: blue;
+}
+.margin-top-20 {
+  margin-top: 20px;
+}
+.pink {
+  background-color: pink;
+}
+@keyframes leftToRight {
+  0% {
+    transform: translateX(-100px);
+  }
+  50% {
+    transform: translateX(-50px);
+  }
+  0% {
+    transform: translateX(0);
+  }
+}
+.animation {
+  animation: leftToRight 3s infinite;
+}
+/* vue animation enter*/
+.v-enter-from {
+  opacity: 0;
+}
+.v-enter-to {
+  opacity: 1;
+}
+.v-enter-active {
+  transition: opacity 2s ease-out;
+}
+/* vue animation leave */
+.v-leave-from {
+  opacity: 1;
+}
+.v-leave-active {
+  transition: opacity 2s ease-out;
+}
+.v-leave-to {
+  opacity: 0;
+}
