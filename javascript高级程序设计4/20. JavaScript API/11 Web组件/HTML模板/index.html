@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Web DOM</title>
+</head>
+<body>
+  <template id="template">
+    <p>I am inside a template</p>
+  </template>
+  <div id="foo"></div>
+  <template id="bar">
+    <p>template</p>
+    <p>web template</p>
+    <p>It is fun</p>
+  </template>
+  <script>
+    const fragment = document.querySelector('#template')
+    console.log(fragment.content)
+    console.log(fragment.content.querySelector('p'));
+    // 将 #bar 批量插入 到 #foo中
+    const foo = document.querySelector('#foo')
+    const barTemplate = document.querySelector('#bar')
+    const barFragment = barTemplate.content;
+    foo.appendChild(barFragment)
+  </script>
+</body>
+</html>
