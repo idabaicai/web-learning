@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>事件冒泡</title>
+  <style>
+    .div1 {
+      width: 200px;
+      height: 200px;
+      background-color: aqua;
+    }
+  </style>
+</head>
+<body>
+  <h4>事件冒泡</h4>
+  <p>也叫IE事件流，定义： 从最具体的元素（文档树最深的节点）开始触发，然后向上传播至没有具体的元素。</p>
+  <div class="div1">
+    <div class="div2">
+      <button id="click">click</button>
+    </div>
+  </div>
+  <script>
+    const click = document.querySelector('#click');
+    const div1 = document.querySelector('.div1')
+    click.addEventListener('click', () => {
+      console.log('I am button');
+    })
+    div1.addEventListener('click', () => {
+      console.log('I am div1');
+    })
+  </script>
+</body>
+</html>

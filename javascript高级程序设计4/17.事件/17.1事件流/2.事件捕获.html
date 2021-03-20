@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>事件捕获</title>
+</head>
+<body>
+  <h4>事件捕获</h4>
+  <p>
+    Netscape Communicator 团队提出了另一种名为事件捕获的事件流。事件捕获的意思是最不具体的节
+点应该最先收到事件，而最具体的节点应该最后收到事件。事件捕获实际上是为了在事件到达最终目标
+前拦截事件。如果前面的例子使用事件捕获，则点击 div 元素会以下列顺序触发 click 事件：
+  </p>
+  <ol>
+    <li>document</li>
+    <li>html</li>
+    <li>body</li>
+    <li>div</li>
+  </ol>
+</body>
+</html>
