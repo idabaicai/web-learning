@@ -10,3 +10,5 @@
 - javascript高级程序设计第四版
 - nodejs
 - vue
+- vue3
+- nuxt

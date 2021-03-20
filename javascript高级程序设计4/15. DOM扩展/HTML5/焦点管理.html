@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>焦点管理</title>
+</head>
+<body>
+  <div class="focus">
+    <button id="focus">focus</button>
+  </div>
+  <script>
+    const button = document.querySelector('#focus');
+    console.log(button);
+    button.focus();
+    console.log(document.hasFocus()); // true
+  </script>
+</body>
+</html>
