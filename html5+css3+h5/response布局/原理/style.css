@@ -1,0 +1,27 @@
+.container {
+  height: 200px;
+  background-color: pink;
+  margin: 0 auto;
+}
+/* 第一档 超小屏幕 */
+@media screen and (max-width: 767px) {
+  .container {
+    width: 100%;
+  }
+}
+/* 小屏幕 */
+@media screen and (min-width: 768px) {
+  .container {
+    width: 750px;
+  }
+}
+@media screen and (min-width: 992px) {
+  .container {
+    width: 970px;
+  }
+}
+@media screen and (min-width: 1200px) {
+  .container {
+    width: 1170px;
+  }
+}
