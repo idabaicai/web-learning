@@ -8,7 +8,9 @@ app.component('app-button', {
    /*html */
    `
    <div>
-    <button> {{ text }} </button>
+    <button>
+      <slot></slot>
+    </button>
    </div>
    `
 })

@@ -10,10 +10,13 @@
 </head>
 <body>
   <div id="app">
-    <app-button :text="text"></app-button>
+    <app-button :text="text">default</app-button>
+    <app-button :text="text">press me</app-button>
+    <icon />
   </div>
   <script src="./main.js"></script>
   <script src="./component/AppButton.js"></script>
+  <script src="./component/Icon.js"></script>
   <script>
     app.mount('#app')
   </script>
