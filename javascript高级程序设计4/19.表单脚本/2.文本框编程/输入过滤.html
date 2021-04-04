@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>输入过滤</title>
+</head>
+<body>
+  <form action="" id="form">
+    <input type="text" name="phone" value="阻止输入，但可以删除">
+    <input type="text" name="number" placeholder="只接受数字">
+  </form>
+  <script>
+    const form = document.getElementById('form');
+    form.elements['phone'].addEventListener('keypress', (e) => {
+      console.log(e);
+      e.preventDefault() // 阻止输入
+    })
+    form.elements['number'].addEventListener('keypress', (e) => {
+      // console.log(e);
+      console.log(String.fromCharCode(e.charCode));
+      const condition1 = !/\d/.test(e.key) // 必须是数字
+      const condition2 = e.charCode > 9 // 不要阻止非字符键
+      const condition3 = !event.ctrlKey // 确保没有按下 ctrl 键
+      if(condition1 && condition2 && condition3) { // 阻止输入非数字
+        e.preventDefault()
+      }
+    })
+  </script>
+</body>
+</html>
