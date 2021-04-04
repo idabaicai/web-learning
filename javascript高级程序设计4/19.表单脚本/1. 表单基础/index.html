@@ -5,6 +5,11 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
+  <style>
+    .mb-20 {
+      margin-bottom: 20px;
+    }
+  </style>
 </head>
 <body>
   <div>
@@ -13,6 +18,23 @@
       图片按钮
       <input type="image" src="../../img/xj.png">
     </form>
+    <div class="mb-20"></div>
+    <form id="form2" action="index.php">
+      <input type="text">
+      <input type="button" value="button">
+      <button type="submit">submit</button>
+      <!-- 重置 -->
+      <input type="reset" value="reset">
+    </form>
   </div>
+  <script>
+    // document.forms 获取表单 collections
+    const forms = document.forms
+    console.log(forms);
+    forms[1].addEventListener('submit', (event) => {
+      console.log(event);
+      event.preventDefault(); // 阻止表单提交
+    })
+  </script>
 </body>
 </html>
