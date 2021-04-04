@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>表单字段</title>
+</head>
+<body>
+  <form action="" id="form">
+    <input type="text" placeholder="name" name="uname">
+    <textarea name="remark" id="" cols="30" rows="10"></textarea>
+    <select name="love" id="">
+      <option value="web">web</option>
+      <option value="linux">linux</option>
+      <option value="data analysis">data analysis</option>
+    </select>
+    <input type="button" id="button" value="submit">
+  </form>
+  <script>
+    // 默认聚焦第一个字段
+    window.addEventListener('load', () => {
+      // document.forms[0].elements[0].focus()
+      document.getElementById('form').elements['uname'].focus()
+    })
+    // 表单字段
+    const btn =document.getElementById('button')
+    btn.addEventListener('click', () => {
+      const form = document.getElementById('form')
+      console.log(form);
+      const field1 = form.elements[0]; // 获取第一个字段
+      const textArea = form.elements['remark']
+      const love = form.elements['love']; // 获取name=love的字段
+      console.log(field1);
+      console.log(love);
+      console.log(love.form === form); // true 检查字段是否属于当前form
+      field1.focus()
+    })
+    
+  </script>
+</body>
+</html>
