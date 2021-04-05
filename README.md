@@ -8,8 +8,9 @@
 - html5
 - css3
 - javascript高级程序设计第四版
-- freeCodeCamp key lesson
 - nodejs
 - vue
 - vue3
 - nuxt
+- freeCodeCamp key lesson
+- Map: 腾讯地图

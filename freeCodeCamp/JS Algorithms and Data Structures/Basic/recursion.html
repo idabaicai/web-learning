@@ -8,6 +8,16 @@
 </head>
 <body>
   <script>
+      function countdown(n){
+        if(n < 1) {
+          return []
+        } else {
+          const arr = countdown(n - 1)
+          arr.unshift(n)
+          return arr
+        }
+      }
+      console.log(countdown(6));
     function sum(arr, n) {
       if(n <= 0) {
         return 0;

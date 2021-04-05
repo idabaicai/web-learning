@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script charset="utf-8" src="https://map.qq.com/api/js?v=2.exp&key=7KNBZ-CEGLG-CNJQZ-IXB4V-BGAEE-UMF6J"></script>
+  <style>
+    #map-container {
+      width: 600px;
+      height: 600px;
+    }
+  </style>
+</head>
+<body>
+  <div id="map-container"></div>
+  <script>
+    console.log(qq);
+    function init() {
+      const map = new qq.maps.Map(document.getElementById('map-container'), {
+        center: new qq.maps.LatLng(33, 116)
+      })
+    }
+    init()
+  </script>
+</body>
+</html>
