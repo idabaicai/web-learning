@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>归并方法</title>
+</head>
+
+<body>
+    <ul>
+        <li>reduce</li>
+        <li>reduceRight</li>
+    </ul>
+    <script>
+        const arr = [1, 2, 3, 4]
+
+        const reduceRes = arr.reduce((prev, cur, index, arr) => {
+            console.log(prev); // 1 3 6
+            console.log(cur); // 2 3 4
+            return prev + cur
+        })
+        console.log(reduceRes); // 10
+
+        console.log('reduceRight res');
+        const reduceRightRes = arr.reduceRight((prev, cur, index, arr) => {
+            console.log(prev); // 4, 7, 9
+            console.log(cur); // 3, 2, 1
+            // console.log(cur);
+            return prev + cur;
+        })
+    </script>
+</body>
+
+</html>

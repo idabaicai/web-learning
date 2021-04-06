@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>迭代方法</title>
+</head>
+
+<body>
+    <ul>
+        <li>every</li>
+        <li>some</li>
+        <li>filter</li>
+        <li>forEach</li>
+        <li>map</li>
+    </ul>
+    <script>
+        const arr = [1, 2, 3, 4, 5, 6]
+
+        const everyRes = arr.every(item => {
+            console.log(item) // 1
+            return item >= 6
+        })
+        console.log(everyRes) // false
+
+        const someRes = arr.some(item => {
+            console.log(item)
+            return item >= 4
+        })
+        console.log(someRes); // true
+
+        const filterRes = arr.filter(item => {
+            console.log(item) // 1, 2, 3, 4, 5, 6
+            return item >= 4
+        })
+        console.log(filterRes);
+        [4, 5, 6]
+
+        arr.forEach(item => {
+            console.log(item) // 1, 2, 3, 4, 5, 6
+        })
+
+        const mapRes = arr.map(item => {
+            console.log(item);
+            if (item > 3) {
+                return item * 2
+            }
+        })
+        console.log(mapRes); // [undefined, undefined, undefined, 8, 10, 12]
+    </script>
+</body>
+
+</html>
