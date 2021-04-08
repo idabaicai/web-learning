@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>nextTick</title>
+    <script src="https://unpkg.com/vue"></script>
+</head>
+
+<body>
+    <div id="app"></div>
+    <script>
+        const example = Vue.component('example', {
+            template: '<p> {{ message }} </p>',
+            data() {
+                return {
+                    message: 'not updated'
+                }
+            },
+            mounted() {
+                this.message = 'updated'
+                console.log(this.message) // updated
+                console.log(this.$el.textContent); // not updated
+                this.$nextTick(() => {
+                    console.log(this.$el.textContent); // updated
+                })
+            }
+        })
+        new Vue({
+            el: '#app',
+            render: h => h(example)
+        })
+    </script>
+</body>
+
+</html>
