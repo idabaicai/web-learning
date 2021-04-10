@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTTP头部</title>
+</head>
+
+<body>
+    <h3>头部字段</h3>
+    <ul>
+        <li>Accept</li>
+        <li>Accept-Charset</li>
+        <li>Accept-Encoding</li>
+        <li>Accept-Language</li>
+        <li>Connection</li>
+        <li>Cookie</li>
+        <li>Host</li>
+        <li>Referer</li>
+        <li>User-Agent</li>
+    </ul>
+    <p>可以在open() 方法和 send()方法之间调用setRequestHeader() 设置头部</p>
+    <script>
+        const xhr = new XMLHttpRequest();
+        xhr.open('get', 'xxx.php', false);
+        xhr.setRequestHeader('myHeader', 'myValue');
+        xhr.send(null) // 打开浏览器 network 可以在头部看到: myHeader: myValue
+    </script>
+</body>
+
+</html>
