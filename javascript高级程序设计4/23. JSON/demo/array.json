@@ -1,0 +1,8 @@
+{
+    "name": "dabai",
+    "author": ["foo", "bar"],
+    "obj": {
+        "name": "obj1",
+        "prop": ["width", "height"]
+    }
+}
