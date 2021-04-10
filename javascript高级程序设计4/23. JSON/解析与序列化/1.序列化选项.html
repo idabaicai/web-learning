@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // JSON.stringify('要序列化的对象','过滤器','缩进结果的选项')
+
+        // 1. 过滤结果, 如果第二个参数是一个数组，那么JSON.stingify() 返回的结果只会包含该数组中列出的对象属性
+        const book = {
+            title: '冰与火之歌',
+            sigil: ['Winter is coming', 'Chaos is a ladder'],
+            edition: 8,
+            year: 2019
+        }
+        const jsonText = JSON.stringify(book);
+        console.log(jsonText);
+        const titleAndYearJsonText = JSON.stringify(book, ['title', 'edition']);
+        console.log(titleAndYearJsonText); // 只包含 title 和 edition
+
+        // 2. 字符串缩进
+
+        const jsonTabText = JSON.stringify(book, null, 8);
+        console.log(jsonTabText); // 有8个缩进的结果
+    </script>
+</body>
+
+</html>
