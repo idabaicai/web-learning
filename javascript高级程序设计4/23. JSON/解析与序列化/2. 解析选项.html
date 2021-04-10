@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // JSON.parse('json', '还原函数')
+        const book = {
+            title: '冰与火之歌',
+            sigil: ['Winter is coming', 'Chaos is a ladder'],
+            edition: 8,
+            year: 2019
+        }
+        const jsonText = JSON.stringify(book)
+        const bookCopy = JSON.parse(jsonText, (key, value) => {
+            if (key === 'year') {
+                return new Date(value)
+            } else {
+                return value
+            }
+        })
+        console.log(bookCopy); // Date 对象 year: Thu Jan 01 1970 .......
+    </script>
+</body>
+
+</html>
