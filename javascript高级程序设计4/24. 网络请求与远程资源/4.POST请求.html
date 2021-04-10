@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>POST请求</title>
+</head>
+
+<body>
+    <form action="">
+        <input type="text" name="name">
+    </form>
+    <script>
+        const xhr = new XMLHttpRequest()
+        xhr.open('post', 'index.php', true)
+        const form = document.getElementById('form')
+        xhr.send(null)
+    </script>
+</body>
+
+</html>
