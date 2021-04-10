@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>xhr</title>
+</head>
+
+<body>
+    <script>
+        const xhr = new XMLHttpRequest()
+        console.log(xhr);
+        // 1. 定义发送请求, false 表示同步的
+        xhr.open('get', 'some.php', false);
+        // 2. 发送 传入一个请求体 
+        xhr.send(null)
+            // 收到相应后，检查 status 属性
+        console.log(xhr.status); // 404 mot found
+    </script>
+</body>
+
+</html>
