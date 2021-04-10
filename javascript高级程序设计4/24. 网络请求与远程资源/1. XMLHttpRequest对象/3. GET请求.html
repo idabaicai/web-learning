@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>get请求</title>
+</head>
+
+<body>
+    <script>
+        let url = 'index.php'
+            // 添加参数
+        function addUrlParam(url, name, value) {
+            url += (url.indexOf('?') === -1 ? '?' : '&')
+            url += encodeURIComponent(name) + '=' + encodeURIComponent(value)
+            return url
+        }
+        url = addUrlParam(url, 'name', 'dabai')
+        console.log(url); // index.php?name=dabai
+        url = addUrlParam(url, 'age', 22)
+        console.log(url); // index.php?name=dabai&age=22
+        // 初始化请求
+        const xhr = new XMLHttpRequest()
+        xhr.open('get', url, false)
+        xhr.send() // 404
+    </script>
+</body>
+
+</html>
