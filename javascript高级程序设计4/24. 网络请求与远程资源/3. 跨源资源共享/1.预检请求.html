@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <p>
+    对于简单的请求，没有自定义头部而且请求是text/plain类型，这样的请求在发送时会有一个额外的头部，
+  叫Origin。比如 Origin: http://www.my.com
+  </p>
+  <P>如果服务器决定响应，就应该发送 Access-Control-Allow-Origin: http://www.my.com, 如果资源是公开的，则这个值应该设置为 "*"</P>
+</body>
+</html>
