@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>事件对象</title>
+</head>
+
+<body>
+    <p>在DOM事件发生时，所有相关信息都会收集并存储在一个名为event的对象中</p>
+    <button id="btn">click</button>
+    <script>
+        const btn = document.querySelector('#btn')
+        btn.addEventListener('click', function(event) {
+            console.log(event); // 2
+            console.log(event.target); // <button id="btn">click</button>
+            console.log(event.currentTarget); // <button id="btn">click</button>
+            console.log(event.eventPhase); // <button id="btn">click</button>
+            console.log(this); // <button id="btn">click</button>
+        })
+    </script>
+</body>
+
+</html>
