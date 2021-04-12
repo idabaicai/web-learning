@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // Header 和 Map 的set, delete,has,get等方法类似 
+        const h = new Headers()
+        console.log(h);
+        h.set('name', 'AAA')
+        console.log(h.get('name')); // AAA
+        console.log(h.has('name')); // true
+
+        // headers 独有特性 初始化时可以传入 一个对象
+        const h1 = new Headers({
+            age: 22
+        })
+        console.log(h1.get('age')); // 22
+        // 可以使用append追加值
+        h1.append('gender', 'man')
+        console.log(h1.get('gender')); // man
+    </script>
+</body>
+
+</html>
