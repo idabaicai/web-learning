@@ -13,8 +13,11 @@
     <p>图片探测是与服务器之间简单、跨域、单向的通信</p>
     <script>
         const img = new Image()
-        img.onload = img.onerror = () => {
-            alert('Done')
+        img.onload = () => {
+            console.log('onload');
+        }
+        img.onerror = () => {
+            console.log('onerror'); // onerror
         }
         img.src = "https://www.baidu.com/test?name=dabai"
     </script>
