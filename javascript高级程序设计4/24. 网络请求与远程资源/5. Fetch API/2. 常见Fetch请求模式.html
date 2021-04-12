@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // 1. 发送 JSON 数据
+        const payload = JSON.stringify({
+            name: 'dabai'
+        })
+        const payload1 = {
+            name: 'dabai'
+        }
+        const jsonHeaders = new Headers({
+            'Content-Type': 'application/json'
+        })
+        fetch('/send-me-json', {
+            method: 'POST',
+            body: payload,
+            headers: jsonHeaders
+        })
+        fetch('/send-me-obj', {
+            method: 'POST',
+            body: payload,
+            headers: jsonHeaders
+        })
+    </script>
+</body>
+
+</html>
