@@ -1,1 +1,2 @@
-console.log('hello ts');
+var message:string = "hello typescript"
+console.log(message);
