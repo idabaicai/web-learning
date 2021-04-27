@@ -12,6 +12,7 @@
 - Datastruct and Algorithms
 - vue
   - vuemastery
+    - real world vue
 - vue3
 - nuxt
 - freeCodeCamp key lesson
