@@ -4,7 +4,7 @@
       <router-link :to="{ name: 'EventList' }">list</router-link> |
       <router-link :to="{ name: 'EventShow' }">show</router-link> |
       <router-link :to="{ name: 'EventCreate' }">create</router-link> |
-      <router-link :to="{ name: 'User' }">user</router-link> |
+      <router-link :to="{ name: 'User', params: { id: 20 } }">user</router-link> |
     </div>
     <router-view />
   </div>

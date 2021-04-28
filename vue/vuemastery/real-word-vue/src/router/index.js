@@ -41,6 +41,7 @@ const routes = [
 ]
 
 const router = new VueRouter({
+  mode: 'history', // 开启历史模式
   routes,
 })
 
