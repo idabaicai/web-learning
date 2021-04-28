@@ -1,8 +1,10 @@
 <template>
   <div id="app">
     <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
+      <router-link :to="{ name: 'EventList' }">list</router-link> |
+      <router-link :to="{ name: 'EventShow' }">show</router-link> |
+      <router-link :to="{ name: 'EventCreate' }">create</router-link> |
+      <router-link :to="{ name: 'User' }">user</router-link> |
     </div>
     <router-view />
   </div>
@@ -13,7 +15,7 @@ export default {
     return {
       msg: "hello",
       name: "sew",
-    };
+    }
   },
 }
 </script>
