@@ -4,6 +4,7 @@ import EventCreate from "../views/EventCreate";
 import EventList from "../views/EventList";
 import EventShow from "../views/EventShow";
 import User from "../views/User";
+import NotFound from "../views/NotFound"
 
 Vue.use(VueRouter)
 
@@ -24,10 +25,15 @@ const routes = [
     component: EventCreate,
   },
   {
-    path: '/user/:id',
-    name: 'User',
+    path: "/user/:id",
+    name: "User",
     component: User,
     props: true
+  },
+  {
+    path: "*",
+    name: "NotFound",
+    component: NotFound
   }
   // {
   //   path: "/about",
