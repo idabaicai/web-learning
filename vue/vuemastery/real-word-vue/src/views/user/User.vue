@@ -1,7 +1,10 @@
 <template>
   <div>
-    user {{ id }}
+    <p>user {{ id }}</p>
     <p> this is params {{ $route.params }} </p>
+    <div class="post">
+      <router-view />
+    </div>
   </div>
 </template>
 
@@ -17,7 +20,10 @@ export default {
   },
 }
 </script>
-
-<style>
-
+<style lang="less" scoped>
+  .post {
+    width: 800px;
+    height: 600px;
+    background-color: pink;
+  }
 </style>
