@@ -5,6 +5,7 @@ import EventList from "../views/EventList";
 import EventShow from "../views/EventShow";
 import User from "../views/user/User";
 import NotFound from "../views/NotFound"
+import Post from "../views/user/component/Post"
 
 Vue.use(VueRouter)
 
@@ -28,7 +29,14 @@ const routes = [
     path: "/user/:id",
     name: "User",
     component: User,
-    props: true
+    props: true,
+    children: [
+      {
+        path: "post",
+        name: "Post",
+        component: Post
+      }
+    ]
   },
   {
     path: "*",
