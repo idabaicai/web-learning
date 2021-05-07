@@ -14,6 +14,9 @@ class Rectangle {
   set area(value) {
     this._area = value
   }
+  static logNbSides() {
+    return 'I have 5 sides'
+  }
 }
 
 const r1 = new Rectangle(20, 30)
@@ -26,7 +29,12 @@ class Square extends Rectangle {
     super(length, length)
     this.name = 'Square'
   }
+  static logDescription() {
+    // 调用父类 static methods
+    return super.logNbSides() + ' which are all equal'
+  }
 }
 const s1 = new Square(20)
 console.log(s1, 's1')
 console.log(s1.area) // 400
+console.log(Square.logDescription()) // I have 5 sides which are all equal
