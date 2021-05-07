@@ -14,12 +14,10 @@ class Square extends React.Component {
 
 class Board extends React.Component {
   renderSquare(i) {
-    return <Square />;
+    return <Square />
   }
-
   render() {
-    const status = 'Next player: X';
-
+    const status = 'Next player: X'
     return (
       <div>
         <div className="status">{status}</div>
@@ -39,7 +37,7 @@ class Board extends React.Component {
           {this.renderSquare(8)}
         </div>
       </div>
-    );
+    )
   }
 }
 
@@ -52,10 +50,10 @@ class Game extends React.Component {
         </div>
         <div className="game-info">
           <div>{/* status */}</div>
-          <ol>{/* TODO */}</ol>
+          <div>{/* TODO */}</div>
         </div>
       </div>
-    );
+    )
   }
 }
 
@@ -64,4 +62,4 @@ class Game extends React.Component {
 ReactDOM.render(
   <Game />,
   document.getElementById('root')
-);
+)
