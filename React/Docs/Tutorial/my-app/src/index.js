@@ -1,7 +1,7 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import './index.css'
-
+import { calculatorWiner } from './utils/util'
 // class Square extends React.Component {
 //   render() {
 //     return (
@@ -49,7 +49,8 @@ class Board extends React.Component {
     )
   }
   render() {
-    const status = 'Next player: ' + (this.state.xIsNext ? 'X' : 'O')
+    const winner = calculatorWiner(this.state.squares)
+    const status = winner ? 'Winner: ' + winner : 'Next player: ' + (this.state.xIsNext ? 'X' : 'O')
     return (
       <div>
         <div className="status">{status}</div>
