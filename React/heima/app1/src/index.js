@@ -2,7 +2,7 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import './css/index.css'
 import Hello from './components/Hello'
-
+import SayHello from './components/SayHello'
 const numbers = [1, 2, 3, 4, 5]
 
 const listItems = numbers.map(item => {
@@ -64,6 +64,14 @@ function Comment(props) {
       <div className="data">
         {props.date}
       </div>
+      {/* 引入外部组件 */}
+      <Hello name="front-end" />
+      <hr />
+      {/* state and lifecycle */}
+      <h2> state and lifecycle </h2>
+      {/* enent handle */}
+      <h2> event handle </h2>
+      <SayHello />
     </div>
   )
 }
@@ -74,7 +82,6 @@ function App() {
       <Welcome name="dabai" />
       <Welcome1 name="dabai1" />
       <Comment text="react is also good" user={user} />
-      <Hello name="front-end" />
     </div>
   )
 }
