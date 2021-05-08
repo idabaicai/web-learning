@@ -1,7 +1,8 @@
 import React from 'react'
 class SayHello extends React.Component {
-  handleClick () {
+  handleClick (e) {
     console.log('hello')
+    console.log('event target', e)
   }
   render() {
     return (
