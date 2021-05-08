@@ -13,7 +13,10 @@ function formatName(user) {
 }
 
 const element = (
-  <h1> hello {formatName(user)} </h1>
+  <div>
+    <h1 className="title"> hello {formatName(user)} </h1>
+    <h2>Good to see you here</h2>
+  </div>
 )
 ReactDOM.render(
   element,
