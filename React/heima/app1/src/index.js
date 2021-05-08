@@ -31,12 +31,18 @@ function Welcome(props) {
     <h1>Hello, {props.name}</h1>
   )
 }
+class Welcome1 extends React.Component {
+  render() {
+    return <h1>Hello, {this.props.name}</h1>
+  }
+}
 ReactDOM.render(
   <div>
     <ul>
       {listItems}
     </ul>
     <Welcome name="dabai" />
+    <Welcome1 name="weizhangdongwu" />
   </div>,
   document.getElementById('root')
 )
