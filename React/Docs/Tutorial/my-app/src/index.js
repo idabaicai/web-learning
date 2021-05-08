@@ -2,18 +2,6 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import './index.css'
 import { calculatorWiner } from './utils/util'
-// class Square extends React.Component {
-//   render() {
-//     return (
-//       <button
-//         className="square"
-//         onClick={() => this.props.onClick()}
-//       >
-//         {this.props.value}
-//       </button>
-//     );
-//   }
-// }
 
 function Square(props) {
   return (
