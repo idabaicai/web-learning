@@ -22,10 +22,21 @@ const listItems = numbers.map(item => {
     style={{color:'pink'}}
     >{item}</li>
 })
-console.log(listItems)
+
+/**
+ * component and props
+ */
+function Welcome(props) {
+  return (
+    <h1>Hello, {props.name}</h1>
+  )
+}
 ReactDOM.render(
-  <ul>
-    {listItems}
-  </ul>,
+  <div>
+    <ul>
+      {listItems}
+    </ul>
+    <Welcome name="dabai" />
+  </div>,
   document.getElementById('root')
 )
