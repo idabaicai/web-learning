@@ -1,5 +1,6 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
+import './css/index.css'
 
 
 // function tick() {
@@ -15,7 +16,11 @@ import ReactDOM from 'react-dom'
 const numbers = [1, 2, 3, 4, 5]
 
 const listItems = numbers.map(item => {
-  return <li key={item}>{item}</li>
+  return <li
+    key={item}
+    className="list"
+    style={{color:'pink'}}
+    >{item}</li>
 })
 console.log(listItems)
 ReactDOM.render(
