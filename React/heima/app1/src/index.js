@@ -1,17 +1,7 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import './css/index.css'
-
-
-// function tick() {
-//   const element = (
-//     <div>
-//       <h3> It is {new Date().toLocaleTimeString()} </h3>
-//     </div>
-//   );
-//   ReactDOM.render(element, document.getElementById('root'))
-// }
-// setInterval(tick, 1000)
+import Hello from './components/Hello'
 
 const numbers = [1, 2, 3, 4, 5]
 
@@ -84,6 +74,7 @@ function App() {
       <Welcome name="dabai" />
       <Welcome1 name="dabai1" />
       <Comment text="react is also good" user={user} />
+      <Hello name="front-end" />
     </div>
   )
 }
