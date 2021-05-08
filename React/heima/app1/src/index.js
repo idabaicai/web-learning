@@ -6,7 +6,10 @@ const user = {
   lastName: 'bai'
 }
 function formatName(user) {
-  return `${user.firstName} ${user.lastName}`
+  if(user) {
+    return `${user.firstName} ${user.lastName}`
+  }
+  return <h1> Hello, Stranger </h1>
 }
 
 const element = (
