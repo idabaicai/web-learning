@@ -8,12 +8,20 @@ class Content extends React.Component {
     }
   }
   render() {
-    return this.state.list.map(item => (
-      <div key={item.id}>
-        <h2>{item.user}</h2>
-        <p>{item.content}</p>
-      </div>
-    ))
+    if(this.state.list.length > 0) {
+      return this.state.list.map(item => (
+        <div key={item.id}>
+          <h2>{item.user}</h2>
+          <p>{item.content}</p>
+        </div>
+      ))
+    } else {
+      return (
+        <div>
+          no comment, just post one!
+        </div>
+      )
+    }
   }
 }
 

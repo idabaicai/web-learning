@@ -34,7 +34,7 @@ class Comment extends React.Component {
         <div className="user">
           <input
             name="user"
-            placeholder="请输入评论人"
+            placeholder="please input username"
             onChange={(e) => this.handleChange(e)} 
             value={this.state.user} />
         </div>
@@ -44,12 +44,12 @@ class Comment extends React.Component {
             rows="10"
             onChange={(e) => this.handleChange(e)}
             value={this.state.content}
-            placeholder="请输入评论内容"
+            placeholder="please input content"
           ></textarea>
         </div>
         <button
           onClick={() => this.handleClick()}
-        >发表评论</button>
+        >commit</button>
         <div className="comment">
           <Content list={this.state.list} />
         </div>
