@@ -42,7 +42,7 @@ interface Pointer {
 }
 
 function logPoint(p: Pointer) {
-  console.log(p)
+  console.log(`x: ${p.x}, y: ${p.y}`)
 }
 const p1: Pointer = {
   x: 12.2,
