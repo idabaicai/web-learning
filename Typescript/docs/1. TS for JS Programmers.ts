@@ -34,3 +34,18 @@ const objWithName: ObjectWithNameArray = [
   { name: '23' }
 ]
 console.log(objWithName)
+
+// Structrual Type System
+interface Pointer {
+  x: number;
+  y: number;
+}
+
+function logPoint(p: Pointer) {
+  console.log(p)
+}
+const p1: Pointer = {
+  x: 12.2,
+  y: 10.6
+}
+console.log(p1);
