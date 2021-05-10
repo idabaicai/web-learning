@@ -16,11 +16,16 @@ class Comment extends React.Component {
     })
   }
   handleClick() {
+    const { user, content } = this.state
+    if(user === '' || content === '') {
+      alert('please input username or content')
+      return false
+    }
     const newList = this.state.list
-    newList.push({
+    newList.unshift({
       id: Number(new Date()),
-      user: this.state.user,
-      content: this.state.content,
+      user: user,
+      content: content,
     })
     this.setState({
       list: newList,
