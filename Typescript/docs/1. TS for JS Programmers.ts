@@ -1,4 +1,3 @@
-
 interface User{
   name: string,
   id: number,
@@ -24,3 +23,14 @@ type LockState = 'locked' | 'unlocked'
 
 const sex: Gender = 'male'
 const lockState1: LockState = 'locked'
+
+// Generics
+
+type StringArray = Array<string>
+type ObjectWithNameArray = Array<{name: string}>
+
+const arr1: StringArray = ['str1', 'str2']
+const objWithName: ObjectWithNameArray = [
+  { name: '23' }
+]
+console.log(objWithName)
