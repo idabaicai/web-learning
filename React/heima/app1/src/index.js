@@ -1,16 +1,14 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import NameForm from './components/form/NameForm'
+import Comment from './components/comment/Comment'
+import './css/comment.css'
 
 function App() {
   return (
     <div>
-      <NameForm />
+      <Comment />
     </div>
   )
 }
 
-ReactDOM.render(
-  <App />,
-  document.getElementById('root')
-)
+ReactDOM.render(<App />, document.getElementById('root'))
