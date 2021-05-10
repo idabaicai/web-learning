@@ -4,6 +4,7 @@ import './css/index.css'
 import Hello from './components/Hello'
 import SayHello from './components/SayHello'
 import Clock from './components/Clock'
+import Count from './components/Count'
 
 const numbers = [1, 2, 3, 4, 5]
 
@@ -85,7 +86,9 @@ function App() {
       {/* enent handle */}
       <h2> event handle </h2>
       <SayHello />
-
+      <h2>Count</h2>
+      <Count />
+      <Count />
     </div>
   )
 }
