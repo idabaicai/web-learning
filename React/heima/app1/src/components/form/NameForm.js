@@ -8,29 +8,19 @@ class NameForm extends React.Component {
       textValue: '',
       selectValue: 'js',
     }
-    this.handleChange = this.handleChange.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
-    this.handleTextChange = this.handleTextChange.bind(this)
-    this.handleSelectChange = this.handleSelectChange.bind(this)
+    this.handleAllChange = this.handleAllChange.bind(this)
+  }
+  handleAllChange(e) {
+    console.log(e.target)
+    const name = e.target.name
+    this.setState({
+      [name]: e.target.value
+    })
   }
   handleSubmit(event) {
     console.log(this.state)
     event.preventDefault()
-  }
-  handleChange(event) {
-    this.setState({
-      value: event.target.value
-    })
-  }
-  handleTextChange(e) {
-    this.setState({
-      textValue: e.target.value
-    })
-  }
-  handleSelectChange(e) {
-    this.setState({
-      selectValue: e.target.value
-    })
   }
   render() {
     return (
@@ -39,8 +29,9 @@ class NameForm extends React.Component {
           Name:
           <input 
             type="text" 
-            value={this.state.value} 
-            onChange={this.handleChange}
+            value={this.state.value}
+            name="value"
+            onChange={this.handleAllChange}
             />
         </label>
         <br />
@@ -48,11 +39,16 @@ class NameForm extends React.Component {
         TextArea:
           <textarea
             value={this.state.textValue}
-            onChange={this.handleTextChange}
+            name="textValue"
+            onChange={this.handleAllChange}
           ></textarea>
         </label>
         <br />
-        <select value={this.state.selectValue} onChange={this.handleSelectChange}>
+        <select 
+          value={this.state.selectValue}
+          onChange={this.handleAllChange}
+          name="selectValue"
+        >
           <option value="java">java</option>
           <option value="html">html</option>
           <option value="js">js</option>
