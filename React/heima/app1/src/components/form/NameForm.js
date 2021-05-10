@@ -5,11 +5,13 @@ class NameForm extends React.Component {
     super(props)
     this.state = {
       value: '',
-      textValue: ''
+      textValue: '',
+      selectValue: 'js',
     }
     this.handleChange = this.handleChange.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
     this.handleTextChange = this.handleTextChange.bind(this)
+    this.handleSelectChange = this.handleSelectChange.bind(this)
   }
   handleSubmit(event) {
     console.log(this.state)
@@ -23,6 +25,11 @@ class NameForm extends React.Component {
   handleTextChange(e) {
     this.setState({
       textValue: e.target.value
+    })
+  }
+  handleSelectChange(e) {
+    this.setState({
+      selectValue: e.target.value
     })
   }
   render() {
@@ -45,6 +52,13 @@ class NameForm extends React.Component {
           ></textarea>
         </label>
         <br />
+        <select value={this.state.selectValue} onChange={this.handleSelectChange}>
+          <option value="java">java</option>
+          <option value="html">html</option>
+          <option value="js">js</option>
+          <option value="React">React</option>
+          <option value="Vue">Vue</option>
+        </select>
         <input type="submit" value="submit" />
       </form>
     )
