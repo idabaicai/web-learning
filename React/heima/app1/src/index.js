@@ -6,14 +6,25 @@ class Parent extends React.Component{
   constructor(props) {
     super(props)
     this.state = {
-      lastName: 'wang'
+      lastName: 'wang',
+      msg: 'parent msg'
     }
+  }
+  getChildMsg= (msg) => {
+    console.log(msg)
+    this.setState({
+      msg,
+    })
   }
   render() {
     return (
       <div>
         data down: 
-        <Child  lastName={this.state.lastName} />
+        <Child 
+          lastName={this.state.lastName} 
+          getMsg={this.getChildMsg}         
+        />
+        msg: {this.state.msg}
       </div>
     )
   }
