@@ -1,48 +1,42 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import Child from './components/data-flow/Child'
-import ChildCounter from './components/data-flow/ChildCounter1'
 
-class Parent extends React.Component{
+const { Provider, Consumer } = React.createContext()
+
+class App extends React.Component {
   constructor(props) {
     super(props)
-    this.state = {
-      lastName: 'wang',
-      msg: 'parent msg',
-      count: 1
-    }
-  }
-  getChildMsg = (msg) => {
-    this.setState({
-      msg,
-    })
-  }
-  changeCount = () => {
-    console.log('count')
-    this.setState({
-      count: this.state.count + 1
-    })
   }
   render() {
     return (
-      <div>
-        data down:
-        msg: {this.state.msg}
-        <Child 
-          lastName={this.state.lastName} 
-          getMsg={this.getChildMsg}
-          changeBroCount={this.changeCount}
-        />
-        <ChildCounter count={this.state.count} />
+      <Provider value="pink">
+        <div className="app">
+          <Node />
       </div>
+      </Provider>
     )
   }
 }
-
-function App() {
+function Node(props) {
   return (
-    <div>
-      <Parent />
+    <div className="node">
+      <SubNode />
+    </div>
+  )
+}
+function SubNode(props) {
+  return (
+    <div className="subnode">
+      subnode
+      <Consumer>
+        {
+          data => (
+            <div>
+               <span style={{color: data}}>{data}</span>
+            </div>
+          )
+        }
+      </Consumer>
     </div>
   )
 }
