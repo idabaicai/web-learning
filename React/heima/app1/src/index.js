@@ -1,12 +1,28 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import Comment from './components/comment/Comment'
-import './css/comment.css'
+import Child from './components/data-flow/Child'
+
+class Parent extends React.Component{
+  constructor(props) {
+    super(props)
+    this.state = {
+      lastName: 'wang'
+    }
+  }
+  render() {
+    return (
+      <div>
+        data down: 
+        <Child  lastName={this.state.lastName} />
+      </div>
+    )
+  }
+}
 
 function App() {
   return (
     <div>
-      <Comment />
+      <Parent />
     </div>
   )
 }
