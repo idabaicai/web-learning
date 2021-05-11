@@ -1,10 +1,10 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import './css/index.css'
-import Hello from './components/Hello'
-import SayHello from './components/SayHello'
-import Clock from './components/Clock'
-import Count from './components/Count'
+import Hello from '../src/components/Hello'
+import SayHello from '../src/components/SayHello'
+import Clock from '../src/components/Clock'
+import Count from '../src/components/Count'
 
 const numbers = [1, 2, 3, 4, 5]
 
