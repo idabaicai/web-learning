@@ -1,53 +1,85 @@
+
 import React from 'react'
 import ReactDOM from 'react-dom'
+import avatar from './assets/avatar.jpg'
 
-import PropsTypes from 'prop-types'
-
-class ListDemo extends React.Component {
+class Mouse extends React.Component {
   constructor(props) {
     super(props)
-    console.warn('constructor')
+    this.handleMouseMove = this.handleMouseMove.bind(this)
     this.state = {
-      count: 1
+      x: 0,
+      y: 0
     }
   }
-  handleClick() {
+  handleMouseMove(e) {
     this.setState({
-      count: this.state.count + 1
+      x: e.clientX,
+      y: e.clientY
     })
   }
   render() {
-    console.warn('render')
-    const list = this.props.list
-    const li = list.map(item => (<li key={item}>item: {item}</li>))
     return (
-      <div>
-        <ul>
-          {li}
-        </ul>
-        <div className="count">
-          <p>{this.state.count}</p>
-          <button onClick={() => this.handleClick()}>add</button>
-        </div>
+      <div style={{height: '50vh'}} onMouseMove={this.handleMouseMove}>
+        {this.props.render(this.state)}
       </div>
     )
   }
-  componentDidMount() {
-    console.warn('componentDidMount');
-  }
-  componentDidUpdate() {
-    console.warn('componentDidUpdate')
+}
+
+class Cat extends React.Component {
+  render() {
+    const mouse = this.props.mouse
+    return (
+      <div>
+        {/* <img src={avatar} alt="cat" style={{position: 'absolute', left: mouse.x, top: mouse.y}} /> */}
+        <img src={avatar} alt="cat" style={{width: '100px', height: '100px',position: 'absolute', left: mouse.x - 50, top: mouse.y - 50}} />
+      </div>
+    )
   }
 }
-ListDemo.propTypes = {
-  list: PropsTypes.array
+
+class DisPlay extends React.Component {
+  render() {
+    const mouse = this.props.mouse
+    return (
+      <div>
+        <h2>The poit is ({mouse.x},{mouse.y})</h2>
+      </div>
+    )
+  }
+}
+
+class MouseTracker extends React.Component {
+  render() {
+    return (
+      <div>
+        <Mouse render={mouse => (
+          <Cat mouse={mouse} />
+        )} 
+        />
+      </div>
+    )
+  }
+}
+
+class MouseTracker1 extends React.Component {
+  render() {
+    return (
+      <div>
+        <Mouse render={ mouse => (
+          <DisPlay mouse={mouse} />
+        )} />
+      </div>
+    )
+  }
 }
 
 function App() {
   return (
     <div>
-        <ListDemo list={['vue', 'react']} />
-        {/* <ListDemo list={1} /> */}
+      <MouseTracker />
+      {/* <MouseTracker1 /> */}
     </div>
   )
 }
