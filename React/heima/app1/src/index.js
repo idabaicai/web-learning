@@ -1,42 +1,28 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 
-const { Provider, Consumer } = React.createContext()
+import PropsTypes from 'prop-types'
 
-class App extends React.Component {
-  constructor(props) {
-    super(props)
-  }
+class ListDemo extends React.Component {
   render() {
+    const list = this.props.list
+    const li = list.map(item => (<li key={item}>item: {item}</li>))
     return (
-      <Provider value="pink">
-        <div className="app">
-          <Node />
-      </div>
-      </Provider>
+      <ul>
+        <li />
+      </ul>
     )
   }
 }
-function Node(props) {
-  return (
-    <div className="node">
-      <SubNode />
-    </div>
-  )
+ListDemo.propTypes = {
+  list: PropsTypes.array
 }
-function SubNode(props) {
+
+function App() {
   return (
-    <div className="subnode">
-      subnode
-      <Consumer>
-        {
-          data => (
-            <div>
-               <span style={{color: data}}>{data}</span>
-            </div>
-          )
-        }
-      </Consumer>
+    <div>
+        {/* <List list={['vue', 'react']} /> */}
+        <ListDemo list={1} />
     </div>
   )
 }
