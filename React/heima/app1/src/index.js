@@ -25,7 +25,7 @@ function WithMouse(WrappedComponent) {
     render() {
       return (
         <div style={{height:'100vh'}} onMouseMove = {(e) => this.handleMouseMove(e)}>
-          <WrappedComponent {...this.state} />
+          <WrappedComponent {...this.state} {...this.props} />
         </div>
       )
     }
@@ -33,18 +33,20 @@ function WithMouse(WrappedComponent) {
   return Mouse
 }
 
-const Point = (props) => (
-  <div>
-    the popint is ({props.x}, {props.y}).
-  </div>
-)
+const Point = (props) => {
+  return (
+    <div>
+      the popint is ({props.x}, {props.y}).
+    </div>
+  )
+}
 
 const WithMousePoint = WithMouse(Point)
 
 function App() {
   return (
     <div>
-      <WithMousePoint />
+      <WithMousePoint name="HOC" />
     </div>
   )
 }
