@@ -6,7 +6,8 @@ class Demo extends React.Component {
   constructor() {
     super()
     this.state = {
-      count: 1
+      count: 1,
+      num: 1
     }
   }
   
@@ -14,18 +15,29 @@ class Demo extends React.Component {
     this.setState({
       count: this.state.count + 1
     })
-    console.log('after first update', this.state.count)
     
     this.setState({
       count: this.state.count + 1
     })
-    console.log('after sencond update',this.state.count)
+
+    // recommend 多次更新数据时，推荐使用回调函数
+    this.setState((state, props) => {
+      return {
+        num: state.num + 1
+      }
+    })
+    this.setState((state, props) => {
+      return {
+        num: state.num + 1
+      }
+    })
+    console.log(this.state)
   }
   render() {
-    console.log('render')
     return (
       <div>
         <p> count: {this.state.count} </p>
+        <p> num: {this.state.num} </p>
         <button onClick={() => this.handleClick()}>add</button>
       </div>
     )
