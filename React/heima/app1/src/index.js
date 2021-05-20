@@ -26,18 +26,23 @@ class Demo extends React.Component {
         num: state.num + 1
       }
     })
-    this.setState((state, props) => {
-      return {
-        num: state.num + 1
+    this.setState(
+      (state, props) => {
+        console.log(state)
+      },
+      // after render callback
+      () => {
+        console.log(document.getElementById('num').innerText) // num: 2
+        console.log('after update state',this.state)
       }
-    })
+    )
     console.log(this.state)
   }
   render() {
     return (
       <div>
         <p> count: {this.state.count} </p>
-        <p> num: {this.state.num} </p>
+        <p id="num"> num: {this.state.num} </p>
         <button onClick={() => this.handleClick()}>add</button>
       </div>
     )
