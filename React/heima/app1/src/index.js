@@ -1,59 +1,56 @@
-// 异步更新状态
 import React from 'react'
 import ReactDOM from 'react-dom'
+import {
+  BrowserRouter as Router,
+  Route,
+  Link
+} from 'react-router-dom'
 
-class Demo extends React.Component {
-  constructor() {
-    super()
-    this.state = {
-      count: 1,
-      num: 1
-    }
-  }
-  
-  handleClick() {
-    this.setState({
-      count: this.state.count + 1
-    })
-    
-    this.setState({
-      count: this.state.count + 1
-    })
-
-    // recommend 多次更新数据时，推荐使用回调函数
-    this.setState((state, props) => {
-      return {
-        num: state.num + 1
-      }
-    })
-    this.setState(
-      (state, props) => {
-        console.log(state)
-      },
-      // after render callback
-      () => {
-        console.log(document.getElementById('num').innerText) // num: 2
-        console.log('after update state',this.state)
-      }
-    )
-    console.log(this.state)
-  }
-  render() {
-    return (
-      <div>
-        <p> count: {this.state.count} </p>
-        <p id="num"> num: {this.state.num} </p>
-        <button onClick={() => this.handleClick()}>add</button>
-      </div>
-    )
-  }
-}
-
-function App() {
+function Home() {
   return (
     <div>
-      <Demo />
+      <h1>Home</h1>
     </div>
   )
 }
+
+function About() {
+  return (
+    <div>
+      <h1>about</h1>
+    </div>
+  )
+}
+
+function User() {
+  return (
+    <div>
+      <h1>user</h1>
+    </div>
+  )
+}
+function App() {
+  return (
+    <Router>
+      <div>
+        <ul>
+          <li>
+            <Link to="/">Home</Link>
+          </li>
+          <li>
+            <Link to="/about">about</Link>
+          </li>
+          <li>
+            <Link to="/user">user</Link>
+          </li>
+        </ul>
+        <hr />
+          <Route exact path="/" component={Home}></Route>
+          <Route path="/about" component={About}></Route>
+          <Route path="/user" component={User}></Route>
+      </div>
+    </Router>
+  )
+}
+
 ReactDOM.render(<App />, document.getElementById('root'))
