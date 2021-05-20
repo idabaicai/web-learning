@@ -2,6 +2,10 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+## create App
+
+### `npx create-react-app app-ts --template typescript`
+
 ## Available Scripts
 
 In the project directory, you can run:
