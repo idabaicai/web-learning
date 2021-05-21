@@ -2,6 +2,7 @@ import React from 'react';
 import robots from './mockdata/robots.json'
 import Robots from './components/Robots'
 import styles from './App.module.css'
+import logo from './assets/images/logo.svg'
 
 function App() {
   return (
