@@ -1,56 +1,15 @@
-import React from 'react'
+import React, { useState } from 'react'
 import ReactDOM from 'react-dom'
-import {
-  BrowserRouter as Router,
-  Route,
-  Link
-} from 'react-router-dom'
 
-function Home() {
+function Example() {
+  // Declare a new state
+  const [count, setCount] = useState(0);
   return (
     <div>
-      <h1>Home</h1>
+      <p> You clicked {count} times </p>
+      <button onClick={() => setCount(count + 1)}> Click</button>
     </div>
   )
 }
 
-function About() {
-  return (
-    <div>
-      <h1>about</h1>
-    </div>
-  )
-}
-
-function User() {
-  return (
-    <div>
-      <h1>user</h1>
-    </div>
-  )
-}
-function App() {
-  return (
-    <Router>
-      <div>
-        <ul>
-          <li>
-            <Link to="/">Home</Link>
-          </li>
-          <li>
-            <Link to="/about">about</Link>
-          </li>
-          <li>
-            <Link to="/user">user</Link>
-          </li>
-        </ul>
-        <hr />
-          <Route exact path="/" component={Home}></Route>
-          <Route path="/about" component={About}></Route>
-          <Route path="/user" component={User}></Route>
-      </div>
-    </Router>
-  )
-}
-
-ReactDOM.render(<App />, document.getElementById('root'))
+ReactDOM.render(<Example />, document.getElementById('root'))
