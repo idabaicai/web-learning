@@ -12,3 +12,8 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+@font-face {
+  font-family: 'Slidefu';
+  src: local('Slidefu'), url(./assets/fonts/Slidefu-Regular-2.ttf) format('truetype')
+}
