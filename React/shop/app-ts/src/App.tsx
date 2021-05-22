@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import robots from './mockdata/robots.json'
 import Robots from './components/Robots'
+import RobotDiscount from './components/RobotDiscount'
 import styles from './App.module.css'
 import logo from './assets/images/logo.svg'
 import ShoppingCart from './components/ShoppingCart'
@@ -53,9 +53,12 @@ const App: React.FC<Props> = (props) =>  {
         {
           !isLoding ?
             <div className={styles.robotList}>
-              {robotGallery.map(item => <Robots key={item.id} id={item.id} name={item.name} email={item.email} />)}
-            </div>
-          :
+              {robotGallery.map((item, index) => {
+                return index % 2 === 0 ?
+                  (<Robots key={item.id} id={item.id} name={item.name} email={item.email} />) :
+                  (<RobotDiscount key={item.id} id={item.id} name={item.name} email={item.email} />)
+              })}
+            </div>:
             <div>
               <h2>loding</h2>
             </div>
