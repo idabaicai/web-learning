@@ -14,7 +14,7 @@ body {
   margin: 0;
   padding: 0;
   background: url(../images/bg.jpg) no-repeat #000;
-  background-size: cover;
+  // background-size: cover;
   line-height: 1.15;
 }
 
@@ -191,7 +191,7 @@ header {
       width: 10.046875rem;
       height: 10.046875rem;
       background: url(../images/lbx.png);
-      background-size: 100%;
+      background-size: 100% 100%;
       animation: rotate1 30s linear infinite;
       opacity: .6;
     }
@@ -203,12 +203,20 @@ header {
       width: 8.84375rem;
       height: 8.84375rem;
       background: url(../images/jt.png);
-      background-size: 100%;
+      background-size: 100% 100%;
       animation: rotate2 10s linear infinite;
       opacity: .6;
     }
+    .chart {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 100%;
+      height: 12.65625rem;
+    }
     @keyframes rotate1 {
-      from1 {
+      from {
         transform: translate(-50%, -50%) rotate(0deg);
       }
       to {
