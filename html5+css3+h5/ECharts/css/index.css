@@ -181,7 +181,7 @@ header .show-time {
   background-size: 100%;
   opacity: 0.3;
 }
-.main-box .map .map-animation {
+.main-box .map .map-rotate1 {
   position: absolute;
   top: 50%;
   left: 50%;
@@ -190,4 +190,34 @@ header .show-time {
   height: 10.046875rem;
   background: url(../images/lbx.png);
   background-size: 100%;
+  animation: rotate1 30s linear infinite;
+  opacity: 0.6;
+}
+.main-box .map .map-rotate2 {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 8.84375rem;
+  height: 8.84375rem;
+  background: url(../images/jt.png);
+  background-size: 100%;
+  animation: rotate2 10s linear infinite;
+  opacity: 0.6;
+}
+@keyframes rotate1 {
+  from1 {
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+  to {
+    transform: translate(-50%, -50%) rotate(360deg);
+  }
+}
+@keyframes rotate2 {
+  from {
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+  to {
+    transform: translate(-50%, -50%) rotate(-360deg);
+  }
 }
