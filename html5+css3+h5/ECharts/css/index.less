@@ -115,6 +115,7 @@ header {
     }
   }
   .no {
+    position: relative;
     padding: .234375rem;
     background: rgba(101, 132, 226, .1);
     .no-hd {
@@ -130,6 +131,67 @@ header {
           font-family: 'electronicFont';
         }
       }
+      &::before {
+        position: absolute;
+        top: 0;
+        left: 0;
+        content: '';
+        width: 30px;
+        height: 15px;
+        border-top: 2px solid #02a6b5;
+        border-left: 2px solid #02a6b5;
+      }
+      &::after {
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        width: 30px;
+        height: 15px;
+        content: '';
+        border-bottom: 2px solid #02a6b5;
+        border-right: 2px solid #02a6b5;
+      }
+    }
+    .no-bd {
+      // height: .625rem;
+      ul {
+        display: flex;
+        align-items: center;
+        li {
+          flex: 1;
+          padding-top: .15625rem;
+          height: .625rem;
+          line-height: .625rem;
+          color: rgba(255, 255, 255, .7);
+          font-size: .3125rem;
+          text-align: center;
+        }
+      }
+    }
+  }
+  .map {
+    position: relative;
+    height: 12.65625rem;
+    .map-bg {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 8.125rem;
+      height: 8.125rem;
+      background: url(../images/map.png);
+      background-size: 100%;
+      opacity: .3;
+    }
+    .map-animation {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 10.046875rem;
+      height: 10.046875rem;
+      background: url(../images/lbx.png);
+      background-size: 100%;
     }
   }
 }

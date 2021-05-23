@@ -115,6 +115,7 @@ header .show-time {
   background-color: pink;
 }
 .main-box .no {
+  position: relative;
   padding: 0.234375rem;
   background: rgba(101, 132, 226, 0.1);
 }
@@ -131,4 +132,62 @@ header .show-time {
   color: #ffeb7b;
   text-align: center;
   font-family: 'electronicFont';
+}
+.main-box .no .no-hd::before {
+  position: absolute;
+  top: 0;
+  left: 0;
+  content: '';
+  width: 30px;
+  height: 15px;
+  border-top: 2px solid #02a6b5;
+  border-left: 2px solid #02a6b5;
+}
+.main-box .no .no-hd::after {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 30px;
+  height: 15px;
+  content: '';
+  border-bottom: 2px solid #02a6b5;
+  border-right: 2px solid #02a6b5;
+}
+.main-box .no .no-bd ul {
+  display: flex;
+  align-items: center;
+}
+.main-box .no .no-bd ul li {
+  flex: 1;
+  padding-top: 0.15625rem;
+  height: 0.625rem;
+  line-height: 0.625rem;
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 0.3125rem;
+  text-align: center;
+}
+.main-box .map {
+  position: relative;
+  height: 12.65625rem;
+}
+.main-box .map .map-bg {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 8.125rem;
+  height: 8.125rem;
+  background: url(../images/map.png);
+  background-size: 100%;
+  opacity: 0.3;
+}
+.main-box .map .map-animation {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 10.046875rem;
+  height: 10.046875rem;
+  background: url(../images/lbx.png);
+  background-size: 100%;
 }
