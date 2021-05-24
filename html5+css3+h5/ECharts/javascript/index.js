@@ -19,9 +19,24 @@ const option = {
         },
         textAlign: 'auto'
     },
+    color: ['#2f89cf'],
+    grid: {
+      left: '0%',
+      top: '10px',
+      right: '0%',
+      bottom: '4%',
+      containLabel: true
+    },
     tooltip: {},
     xAxis: {
-        data: ["衬衫","羊毛衫","雪纺衫","裤子","高跟鞋","袜子"]
+        data: ["衬衫","羊毛衫","雪纺衫","裤子","高跟鞋","袜子"],
+        axisLabel: {
+          color: 'rgba(255,255,255, .6)',
+          fontSize: '12px'
+        },
+        axisLine: {
+          show: false
+        }
     },
     yAxis: {},
     series: [{
