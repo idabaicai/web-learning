@@ -48,4 +48,13 @@ const p1: Pointer = {
   x: 12.2,
   y: 10.6
 }
-console.log(p1);
+// console.log(p1);
+
+interface Backpack<Type> {
+  add: (obj: Type) => void;
+  get: () => Type;
+}
+declare const backpack: Backpack<string>;
+const object = backpack.get();
+
+backpack.add('23')
