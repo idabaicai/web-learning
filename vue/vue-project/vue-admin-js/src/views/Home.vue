@@ -5,15 +5,18 @@
 </template>
 <script>
 import '../mock/home'
-import axios from 'axios'
-// import { getMockData } from '../api/home'
+import { getUserList, test } from '../api/user'
+
 export default {
   created () {
-    axios.get('api/home')
+    test()
       .then(res => {
         console.log(res)
       })
-    // getMockData('api/home')
+    getUserList()
+      .then(res => {
+        console.log(res)
+      })
   }
 }
 </script>

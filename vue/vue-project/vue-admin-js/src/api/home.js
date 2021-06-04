@@ -4,7 +4,7 @@ import request from '@/utils/request'
 export function getPeopleInfo () {
   request.get('/people')
     .then(res => {
-      return res
+      return res.data
     })
 }
 
