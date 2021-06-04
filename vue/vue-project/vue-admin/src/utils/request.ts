@@ -1,18 +1,23 @@
 import axios from 'axios'
-import { Message } from 'element-ui';
-import store from '@/store'
+import { Message } from 'element-ui'
+// import store from '@/store'
 
 const instance = axios.create({
   baseURL: process.env.BASE_URL,
-  timeout: 5000,
+  timeout: 5000
   // headers: { 'c-header': 'value' }
 })
 
 // 请求拦截
-instance.interceptors.request.use( config => {
+instance.interceptors.request.use(config => {
   config.headers['C-Token'] = 'sesxvxeh'
   return config
 }, error => {
+  Message({
+    type: 'error',
+    message: error.message || 'error',
+    duration: 3 * 1000
+  })
   return Promise.reject(error)
 })
 
@@ -20,7 +25,7 @@ instance.interceptors.request.use( config => {
 
 instance.interceptors.response.use(response => {
   console.log(response.data)
-  if(response.data.code !== 200) {
+  if (response.data.code !== 200) {
     Message({
       message: response.data.message || 'Error',
       type: 'error',
@@ -31,7 +36,6 @@ instance.interceptors.response.use(response => {
   }
   return response
 }, error => {
-  console.log(error)
   Message({
     message: error.message || 'Error',
     type: 'error',
