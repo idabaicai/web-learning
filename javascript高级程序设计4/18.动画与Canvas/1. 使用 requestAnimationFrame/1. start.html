@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      body {
+        height: 8000px;
+      }
+    </style>
+  </head>
+  <body>
+    <script>
+      let times = 1;
+      function expensiveOperation() {
+        console.log("Invoked at", Date.now(), `times: ${times++}`);
+      }
+      window.addEventListener("scroll", () => {
+        expensiveOperation();
+      });
+
+      // 节流
+      let times1 = 1; // 调用次数
+      let enabled = true;
+      function expensiveOperation1() {
+        console.log("Invoked at", Date.now(), `times1: ${times1++}`);
+      }
+      window.addEventListener("scroll", () => {
+        if (enabled) {
+          enabled = false;
+          window.requestAnimationFrame(expensiveOperation1);
+          setTimeout(() => (enabled = true), 50);
+        }
+      });
+    </script>
+  </body>
+</html>
