@@ -1,13 +1,20 @@
 import React from "react";
 import logo from "./logo.svg";
 import styles from "./App.module.css";
-import { Button } from "antd";
+import { Layout } from "antd";
+const { Header, Footer, Sider, Content } = Layout;
 
 function App() {
   return (
-    <div>
-      <Button>button </Button>
-    </div>
+    <>
+      <Layout>
+        <Header>
+          <img src={logo} alt="" />
+        </Header>
+        <Content>Content</Content>
+        <Footer>Footer</Footer>
+      </Layout>
+    </>
   );
 }
 
