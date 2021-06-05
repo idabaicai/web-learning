@@ -44,3 +44,20 @@ You don’t have to ever use `eject`. The curated feature set is suitable for sm
 You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
 To learn React, check out the [React documentation](https://reactjs.org/).
+
+## 配置 tsconfig
+
+```
+"noImplicitAny": true, // 不需要声明 any
+```
+
+## 新建 custom.d.ts
+
+```
+declare module "*.css" {
+  const css: {
+    [key: string]: string;
+  };
+  export default css;
+}
+```
