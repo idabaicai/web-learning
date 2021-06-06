@@ -5,7 +5,8 @@
 </template>
 <script>
 import '../mock/home'
-import { getUserList, test } from '../api/user'
+// import { getUserList, test } from '../api/user'
+import { getUserList, test } from '@/api/user'
 
 export default {
   created () {
