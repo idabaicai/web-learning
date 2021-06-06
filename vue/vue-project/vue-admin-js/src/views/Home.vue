@@ -9,7 +9,13 @@ import '../mock/home'
 import { getUserList, test } from '@/api/user'
 
 export default {
+  methods: {
+    getBaseUrl () {
+      console.log(process.env)
+    }
+  },
   created () {
+    this.getBaseUrl()
     test()
       .then(res => {
         console.log(res)
