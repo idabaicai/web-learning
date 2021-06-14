@@ -11,7 +11,6 @@ nextBtn.addEventListener('click', () => {
     curActive += 1;
   }
   update();
-  console.log(curActive);
 });
 
 preBtn.addEventListener('click', () => {
@@ -19,7 +18,6 @@ preBtn.addEventListener('click', () => {
     curActive -= 1;
   }
   update();
-  console.log(curActive);
 });
 
 const update = () => {
@@ -32,7 +30,15 @@ const update = () => {
   })
   // 设置进度条
   const actives = document.querySelectorAll('.active');
-  console.log(actives.length, circles.length);
   const width = ((actives.length - 1)/ (circles.length - 1)) * 100;
   progress.style.width = `${width}%`;
+  // button 禁启用
+  if(curActive === 0) {
+    preBtn.setAttribute('disabled', true);
+  } else if(curActive === length - 1) {
+    nextBtn.setAttribute('disabled', true);
+  } else {
+    preBtn.disabled = false;
+    nextBtn.disabled = false;
+  }
 }
