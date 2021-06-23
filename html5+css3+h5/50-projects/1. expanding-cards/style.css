@@ -1,0 +1,78 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  height: 100vh;
+  overflow: hidden;
+  font-family: 'Ubuntu', sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.container {
+  display: flex;
+  width: 90vw;
+}
+
+.panel {
+  position: relative;
+  flex: 0.5;
+  margin: 10px;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 80vh;
+  border-radius: 50px;
+  color: #fff;
+  cursor: pointer;
+  transition: flex .7s ease-in;
+}
+
+.panel:nth-child(1) {
+  background-image: url(./images/star.jpg);
+}
+
+.panel:nth-child(2) {
+  background-image: url(./images/flowers.jpg);
+}
+
+.panel:nth-child(3) {
+  background-image: url(./images/sea.jpg);
+}
+
+.panel:nth-child(4) {
+  background-image: url(./images/mountain.jpg);
+}
+
+.panel:nth-child(5) {
+  background-image: url(./images/desert.jpg);
+}
+
+.panel h3 {
+  position: absolute;
+  font-size: 24px;
+  bottom: 20px;
+  left: 20px;
+  margin: 0;
+  opacity: 0;
+  transition: opacity .3s ease-in .4s;
+}
+
+.panel.active {
+  flex: 5;
+}
+
+.panel.panel.active h3 {
+  opacity: 1;
+}
+
+@media (max-width: 500px) {
+  .container {
+    width: 100vw;
+  }
+  .panel:nth-child(4), .panel:nth-child(5) {
+    display: none;
+  }
+}

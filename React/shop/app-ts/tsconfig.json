@@ -1,0 +1,32 @@
+{
+  "compilerOptions": {
+    "noImplicitAny": false, // 加上不需要显式声明 any， 可以实现 ts与js混合编写
+    "target": "es5",
+    "lib": [ // 库文件列表
+      "dom", // document.getElementById('root')
+      "dom.iterable",
+      "esnext"
+    ],
+    "allowJs": true, // 允许混入js代码
+    "skipLibCheck": true,
+    "esModuleInterop": true, // 允许使用 commonjs 的方式 import 默认文件
+    "allowSyntheticDefaultImports": true,
+    "strict": true,
+    "forceConsistentCasingInFileNames": true,
+    "noFallthroughCasesInSwitch": true,
+    "module": "esnext", // 配置代码的模块系统, NodeJs的 CommonJS、 ES6标准的 esnext、 requirejs的AMD
+    "moduleResolution": "node", // 决定编译器的工作方式
+    "resolveJsonModule": true,
+    "isolatedModules": true, // 编译器会将每个文件作为单独的模块来使用
+    "noEmit": true, // ture: 当发生错误时， 编译器不要生成 JavaScript 代码
+    "jsx": "react-jsx", // 允许编译器支持编译 react 代码
+    "plugins": [
+      {
+        "name": "typescript-plugin-css-modules" // 配置插件
+      }
+    ]
+  },
+  "include": [
+    "src"
+  ]
+}

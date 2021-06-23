@@ -1,0 +1,51 @@
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8' />
+    <title>mapbox添加geoserver发布的矢量瓦片</title>
+    <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
+    <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v1.0.0/mapbox-gl.js'></script>
+    <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v1.0.0/mapbox-gl.css' rel='stylesheet' />
+    <style>
+        body { margin:0; padding:0; }
+        #map { position:absolute; top:0; bottom:0; width:100%; }
+    </style>
+</head>
+<body>
+
+<div id='map'></div>
+<script>
+    mapboxgl.accessToken = 'pk.eyJ1Ijoiam95ODMzIiwiYSI6ImNrbm9ldmRxMTE2azQybmxibDdhbG0ydjMifQ.psR81PaCaCWAwZmzAMA8fw';
+    var map = new mapboxgl.Map({
+        container: 'map',
+        style: 'mapbox://styles/mapbox/light-v10',
+        zoom: 12,
+        center: [113.21, 23.21]
+    });
+
+    map.on('load', function() {
+        map.addSource('rail_line',{
+            'type':'vector',
+            'scheme':'tms',
+            'tiles':['http://localhost:9999/geoserver/gwc/service/tms/1.0.0/GZS%3Arail_line@EPSG%3A900913@pbf/{z}/{x}/{y}.pbf']
+        });
+        map.addLayer({
+            'id':'rail_line',
+            'source':'rail_line',
+            'source-layer':'rail_line',
+            'type':'line',
+            'paint':{
+                'line-color':'#003688',
+                'line-width':1
+            }
+        });
+    });
+
+    map.addControl(new mapboxgl.NavigationControl());
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <canvas id="demo" width="500" height="500" style="background-color: aqua;"></canvas>
+  <script>
+    const cv = document.getElementById('demo');
+    // 获取 webGL
+    const gl = cv.getContext('webgl');
+    gl.drawArrays(gl.POINTS, 0, 1);
+  </script>
+</body>
+</html>
