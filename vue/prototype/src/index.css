@@ -1,0 +1,32 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+
+.app {
+  display: flex;
+  justify-content: space-around;
+  padding: 20px 50px;
+}
+.pre {
+  width: 600px;
+  height: 300px;
+  overflow: scroll;
+}
+.child {
+  text-indent: 1em;
+}
+.child_1 {
+  text-indent: 1em;
+}
+
+.child_2 {
+  text-indent: 2em;
+}
+.child_3 {
+  text-indent: 3em;
+}
+.child_4 {
+  text-indent: 4em;
+}
