@@ -7,7 +7,8 @@ const jsonView = Vue.component('json-view', {
     <div class="container">
       <div v-for="(val, name) in objData" :key="name">
         <p v-if="typeof val !== 'object'">
-         {{ name }}: {{ val }}
+         <span v-if="!Array.isArray(val)">{{ name }}: {{ val }}</span> 
+         <span v-else>{{ val }}</span> 
         </p>
         <div v-else>
           <p>{{ name }}:</p>
