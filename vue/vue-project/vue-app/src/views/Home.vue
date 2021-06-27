@@ -21,6 +21,9 @@ export default {
     say () {
       alert(this.word)
     }
+  },
+  created () {
+    console.log(process.env)
   }
 }
 </script>
