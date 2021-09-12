@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HomePage</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@200&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      color: #fff;
+      background-color: #1e232b;
+      font-family: 'Nunito', sans-serif;
+      overflow-x: hidden;
+    }
+    section {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-height: 400px;
+      padding: 100px 20vw;
+    }
+    .blue {
+      background-color: #3c3cdd;
+    }
+    .red {
+      background-color: #e45940;
+    }
+    .pink {
+      background-color: #ffb4d7;
+    }
+    .dark {
+      background-color: #070e1a;
+    }
+    .curve {
+      position: absolute;
+      height: 225px;
+      width: 100%;
+      bottom: 0;
+      /* background-color: pink; */
+    }
+    .curve::before {
+      content: '';
+      display: block;
+      position: absolute;
+      border-radius: 100% 50%;
+      width: 55%;
+      height: 100%;
+      background-color: #1e232b;
+      transform: translate(85%, 60%);
+    }
+    .curve::after {
+      content: '';
+      display: block;
+      position: absolute;
+      border-radius: 100% 50%;
+      width: 55%;
+      height: 100%;
+      background-color: #3c3cdd;
+      transform: translate(-4%, 40%);
+      z-index: -1;
+    }
+    section .wave {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      overflow: hidden;
+      line-height: 0;
+    }
+  </style>
+</head>
+<body>
+  <section class="blue">
+    <h1>Nice Curves</h1>
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Autem repellendus consequatur rerum qui vel deleniti eum veniam, dignissimos officiis accusantium provident culpa quo asperiores odio aliquam id praesentium atque. Non!</p>
+    <div class="curve"></div>
+  </section>
+  <section>
+    <h1>Nice Curves</h1>
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Autem repellendus consequatur rerum qui vel deleniti eum veniam, dignissimos officiis accusantium provident culpa quo asperiores odio aliquam id praesentium atque. Non!</p>
+  </section>
+  <section class="bubble">
+    <h1>Nice Curves</h1>
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Autem repellendus consequatur rerum qui vel deleniti eum veniam, dignissimos officiis accusantium provident culpa quo asperiores odio aliquam id praesentium atque. Non!</p>
+  </section>
+  <section class="dark">
+    <h1>Nice Curves</h1>
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Autem repellendus consequatur rerum qui vel deleniti eum veniam, dignissimos officiis accusantium provident culpa quo asperiores odio aliquam id praesentium atque. Non!</p>
+  </section>
+  <section class="red">
+    <h1>Nice Curves</h1>
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Autem repellendus consequatur rerum qui vel deleniti eum veniam, dignissimos officiis accusantium provident culpa quo asperiores odio aliquam id praesentium atque. Non!</p>
+    <div class="wave">
+      <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
+          <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z" class="shape-fill"></path>
+      </svg>
+    </div>
+  </section>
+  <section>
+    <h1>Nice Curves</h1>
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Autem repellendus consequatur rerum qui vel deleniti eum veniam, dignissimos officiis accusantium provident culpa quo asperiores odio aliquam id praesentium atque. Non!</p>
+  </section>
+  <section>
+    <h1>Nice Curves</h1>
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Autem repellendus consequatur rerum qui vel deleniti eum veniam, dignissimos officiis accusantium provident culpa quo asperiores odio aliquam id praesentium atque. Non!</p>
+  </section>
+  <section>
+    <h1>Nice Curves</h1>
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Autem repellendus consequatur rerum qui vel deleniti eum veniam, dignissimos officiis accusantium provident culpa quo asperiores odio aliquam id praesentium atque. Non!</p>
+  </section>
+  <section>
+    <h1>Nice Curves</h1>
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Autem repellendus consequatur rerum qui vel deleniti eum veniam, dignissimos officiis accusantium provident culpa quo asperiores odio aliquam id praesentium atque. Non!</p>
+  </section>
+</body>
+</html>
