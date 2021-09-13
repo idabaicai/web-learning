@@ -1,16 +1,11 @@
-import React from "react";
+import React from 'react';
 
-interface IHelloProps {
-  message: string;
-  count?: number;
-}
-
-const HelloWorld: React.FC<IHelloProps> = (props) => {
+function HelloWorld() {
   return (
     <div>
-      <h2>{props.message}</h2>
+      HelloWorld
     </div>
-  )
+  );
 }
 
 export default HelloWorld;
