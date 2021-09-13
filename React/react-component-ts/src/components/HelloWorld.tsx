@@ -1,8 +1,16 @@
-import React from 'react';
+import React, { useContext } from 'react';
 
-function HelloWorld() {
+import { ThemeContext } from '../App';
+
+
+
+const HelloWorld: React.FC = () =>  {
+const themes = useContext(ThemeContext);
+const style = {
+  color: themes.color
+}
   return (
-    <div>
+    <div style={style}>
       HelloWorld
     </div>
   );
