@@ -1,0 +1,25 @@
+.btn {
+  position: relative;
+  align-self: center;  
+  color: $body-color;
+  text-align: center;
+  text-align: center;
+  white-space: $btn-white-space;
+  vertical-align: middle;
+  cursor: if($enable-button-pointers, pointer, null);
+  user-select: none;
+  background-color: transparent;
+  border: $btn-border-width solid transparent;
+  &:hover {
+    color: $body-color;
+  }
+  &:focus {
+    outline: 0;
+  }
+  &:disabled,
+  &.disabled {
+    pointer-events: none;
+    opacity: $btn-disabled-opacity;
+    cursor: not-allowed;
+  }
+}

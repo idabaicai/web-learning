@@ -1,12 +1,16 @@
 import React from 'react';
-import './styles/index.scss'
+import Button, { ButtonType, ButtonSize } from './components/Button/Button';
 
-function App() {
+const App: React.FC = () => {
   return (
-    <div className="App">
-      <h1>Hello React</h1>
+    <div className="app">
+      <h3>button</h3>
+      <Button btnType={ButtonType.Primary}>Primary</Button>
+      <Button disabled btnType={ButtonType.Default}>Default</Button>
+      <Button btnType={ButtonType.Link}>Link</Button>
+      <Button btnType={ButtonType.Danger}>Danger</Button>
     </div>
-  );
+  )
 }
 
 export default App;
