@@ -1,6 +1,3 @@
 
-// @import './variables';
-// @import './normalize.scss';
-body {
-  margin: 0;
-}
+@import './_variables.scss';
+@import './normalize.scss';

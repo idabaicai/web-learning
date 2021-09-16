@@ -34,7 +34,7 @@ $success: $green !default;
 $info: $cyan !default;
 $waring: $yellow !default;
 $danger: $red !default;
-$light: $gran-2 !default;
+$light: $gray-2 !default;
 $dark: $gray-8 !default;
 
 // 主要字体
@@ -79,5 +79,5 @@ $link-hover-decoration:                   null !default;
 
 // body
 $body-bg:                   $white !default;
-$body-color:                $gray-900 !default;
+$body-color:                $gray-8 !default;
 $body-text-align:           null !default;
