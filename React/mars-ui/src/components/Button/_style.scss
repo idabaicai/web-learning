@@ -10,6 +10,8 @@
   user-select: none;
   background-color: transparent;
   border: $btn-border-width solid transparent;
+  border-radius: $border-radius;
+  padding: 6px 8px;
   &:hover {
     color: $body-color;
   }
@@ -21,5 +23,11 @@
     pointer-events: none;
     opacity: $btn-disabled-opacity;
     cursor: not-allowed;
+  }
+  &.btn-primary {
+    background-color: $primary;
+  }
+  &.btn-danger {
+    background-color: $danger;
   }
 }
