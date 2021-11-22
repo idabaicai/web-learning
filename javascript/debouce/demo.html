@@ -13,22 +13,28 @@
 </head>
 <body>
   <script>
-    let i = 0;
-      document.addEventListener('scroll', () => {
-        debounce(() => {
-          i++;
-          console.log(i);
-        })
-      }, 1000);
+    function sayHello() {
+      console.log('hello');
+    }
+    document.addEventListener('scroll', debounce(sayHello, 2000));
     function debounce(fn, delay){
+      // console.log(fn, 'fn');
+      // console.log(delay, 'delay');
       var timer = null; // 声明计时器
+      // return function() {
+      //   var context = this;
+      //   console.log(this);
+      //   var args = arguments;
+      //   console.log(arguments);
+      //   clearTimeout(timer);
+      //   timer = setTimeout(function () {
+      //     fn.apply(context, args);
+      //   }, delay);
+      // };
       return function() {
-        var context = this;
-        console.log(this);
-        var args = arguments;
         clearTimeout(timer);
         timer = setTimeout(function () {
-          fn.apply(context, args);
+          fn();
         }, delay);
       };
     }
