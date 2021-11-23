@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>debounce</title>
+  <style>
+    body {
+      height: 2000px;
+    }
+  </style>
+</head>
+<body>
+  <script>
+    function sayHello() {
+      console.log('hello');
+    }
+    document.addEventListener('scroll', debounce(sayHello, 2000));
+    function debounce(fn, delay){
+      // console.log(fn, 'fn');
+      // console.log(delay, 'delay');
+      var timer = null; // 声明计时器
+      // return function() {
+      //   var context = this;
+      //   console.log(this);
+      //   var args = arguments;
+      //   console.log(arguments);
+      //   clearTimeout(timer);
+      //   timer = setTimeout(function () {
+      //     fn.apply(context, args);
+      //   }, delay);
+      // };
+      return function() {
+        clearTimeout(timer);
+        timer = setTimeout(function () {
+          fn();
+        }, delay);
+      };
+    }
+
+  </script>
+</body>
+</html>

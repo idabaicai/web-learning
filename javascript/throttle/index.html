@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>throttle</title>
+  <style>
+    body {
+      height: 2000px;
+    }
+  </style>
+</head>
+<body>
+  <script>
+    function add(a, b) {
+      return a + b;
+    }
+    function sayHello() {
+      console.log('hello');
+    }
+    document.addEventListener('scroll', throttle(sayHello, 1000 * 3));
+
+    function throttle(fn, delay) {
+      let last, timer;
+      return function() {
+        const now = +new Date();
+          if(last && now < last + delay) {
+            clearTimeout(timer);
+            timer = setTimeout(function() {
+              last = now;
+              fn();
+            }, delay);
+          } else {
+            last = now;
+            fn();        
+          }
+      }
+    }
+  </script>
+</body>
+</html>
