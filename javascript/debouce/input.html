@@ -19,7 +19,7 @@
     const submitBtn3 = document.getElementById('submitBtn3')
     submitBtn.addEventListener('click', debounce(submit, 2000), false)
     submitBtn2.addEventListener('click', submit, false)
-    submitBtn3.addEventListener('click', throttle(submit, 2000), false)
+    submitBtn3.addEventListener('click', throttle1(submit, 3000), false)
     function submit(e) {
       console.log(this, 'this in submit');
       console.log(e, 'e');
@@ -67,6 +67,19 @@
         }
       }
     }
+
+    function throttle1(fn, delay) {
+      let last = 0;
+      return function() {
+        const now = +new Date();
+        if(now > last + delay) {
+          fn.apply(this, arguments);
+          last = now;
+        }
+      }
+    }
+    
+
   </script>
 </body>
 </html>
