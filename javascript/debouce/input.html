@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>debounce</title>
+</head>
+<body>
+  <h2>防抖: </h2>
+  <p>利用 setTimeout 控制函数在一段时间内只执行一次</p>
+  <input type="text">
+  <input type="submit" id="submitBtn" value="submit with debounce">
+  <input type="submit" id="submitBtn2" value="submit2 without debounce">
+  <input type="submit" id="submitBtn3" value="submit3 with throttle ">
+  <script>
+    const submitBtn = document.getElementById('submitBtn')
+    const submitBtn2 = document.getElementById('submitBtn2')
+    const submitBtn3 = document.getElementById('submitBtn3')
+    submitBtn.addEventListener('click', debounce(submit, 2000), false)
+    submitBtn2.addEventListener('click', submit, false)
+    submitBtn3.addEventListener('click', throttle(submit, 2000), false)
+    function submit(e) {
+      console.log(this, 'this in submit');
+      console.log(e, 'e');
+    }
+    function submit2(e) {
+      console.log(this, 'this in submit2');
+      console.log(e);
+    }
+    function debounce(fn, delay) {
+      console.log(this, 'this in debounce');
+      let timer = null; // 计时器 id
+      return function(e) { // window 执行的是返回的函数, this指向window 并传参数e
+        // console.log(this, 'this in return function');
+        // console.log(arguments, 'arguments in return function');
+        const this_ = this;
+        const args_ = arguments;
+        if(timer) {
+          clearTimeout(timer);
+        }
+        timer = setTimeout(function() {
+          // fn(); // 直接调用不能绑定正确的this
+          fn.apply(this_, args_)
+        }, delay);
+      }
+    }
+
+    function throttle(fn, delay) {
+      let timer;
+      let last; // 最近执行的一次时间
+      return function() {
+        const now = +new Date() // now 是每次调用生成的， 所以放在 return 函数中， 获取点击时的时间
+        const this_ = this;
+        const arts_ = arguments;
+        if(last && now < last + delay) {
+          clearTimeout(timer);
+          timer = setTimeout(function() {
+            last = now;
+            // fn();
+            fn.apply(this, arguments);
+          }, delay)
+        } else {
+          // fn();
+          fn.apply(this_, arguments);
+          last = now;
+        }
+      }
+    }
+  </script>
+</body>
+</html>
