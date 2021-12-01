@@ -14,12 +14,14 @@
 <body>
   <script>
     function add(a, b) {
+      console.log(a, b);
       return a + b;
     }
     function sayHello() {
       console.log('hello');
     }
-    document.addEventListener('scroll', throttle(sayHello, 1000 * 3));
+    // document.addEventListener('scroll', throttle(sayHello, 1000));
+    document.addEventListener('scroll', throttle1(add, 1000, 2, 3));
 
     function throttle(fn, delay) {
       let last, timer;
@@ -37,6 +39,26 @@
           }
       }
     }
+
+    function throttle1 (fn, delay) {
+      let lastTime; let timer;
+        return function () {
+          const _args = arguments;
+          const context = this;
+          const now = +new Date();
+          if (lastTime && lastTime < lastTime + delay) {
+            clearTimeout(timer);
+            timer = setTimeout(function() {
+              lastTime = now;
+              // console.log(_args, 'args in timeout');
+              fn.apply(context, _args);
+            }, delay);
+          } else {
+            lastTime = now;
+            fn.apply(context, _args);
+          }
+        };
+    };
   </script>
 </body>
 </html>
