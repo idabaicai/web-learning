@@ -14,6 +14,13 @@
 <body>
   <script>
     function add(a, b) {
+      if(a === b) {
+        console.log('after set font ligature is true:');
+        console.log(a === b);
+      } else {
+        console.log('fontLigature' !== 'fontligature');
+        console.log(a !== b);
+      }
       console.log(a, b);
       return a + b;
     }
