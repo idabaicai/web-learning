@@ -1,5 +1,6 @@
-
-//  Unknown
+/**
+ * Unknown
+ */
 declare const maybe: unknown;
 
 // Type 'unknown' is not assignable to type 'number'
@@ -18,3 +19,9 @@ if(typeof maybe === 'string') {
   // Type 'string' is not assignable to type 'boolean'
   // const aBoolean: boolean = maybe;
 }
+
+
+/**
+ * any
+ */
+

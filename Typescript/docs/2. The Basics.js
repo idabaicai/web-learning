@@ -12,3 +12,6 @@ if (typeof maybe === 'string') {
     // Type 'string' is not assignable to type 'boolean'
     // const aBoolean: boolean = maybe;
 }
+/**
+ * any
+ */

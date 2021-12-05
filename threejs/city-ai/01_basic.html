@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>three js first step</title>
+  <link rel="stylesheet" href="./src/style/style.css">
+  <!-- <script src="./libs/three.js"></script> -->
+  <script src="./src/three.js"></script>
+</head>
+<body>
+  <div id="webgl-container"></div>
+  <script>
+    function init() {
+      console.log(THREE);
+
+      // 创建场景
+      const scene = new THREE.Scene();
+      // 创建相机
+      const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 100000);
+      // 创建渲染器
+      const renderer = new THREE.WebGLRenderer();
+      document.body.appendChild( renderer.domElement );
+
+      // 创建立方体
+      const geometry = new THREE.BoxGeometry();
+      // 添加材质
+      const material = new THREE.MeshBasicMaterial({ color: 0x00ff00 });
+      const cube = new THREE.Mesh(geometry, material);
+      scene.add(cube);
+      camera.position.z = 5;
+      const animate = () => {
+        requestAnimationFrame(animate);
+        cube.rotation.x += 0.1;
+        cube.rotation.y += 0.1;
+        renderer.render(scene, camera);
+      }
+      animate();
+    }
+    window.onload = init();
+  </script>
+</body>
+</html>
