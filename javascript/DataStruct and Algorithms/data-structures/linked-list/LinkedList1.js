@@ -8,7 +8,4 @@ var ListNode = /** @class */ (function () {
 var list1 = new ListNode(1);
 var list2 = new ListNode(2);
 var list3 = new ListNode(3);
-
-list1.next = list2;
-list2.next = list3;
 console.log(list1);

@@ -1,4 +1,3 @@
-"use strict";
 var openBtn = document.getElementById('open');
 var closeBtn = document.getElementById('close');
 var container = document.querySelector('.container');
