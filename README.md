@@ -5,6 +5,7 @@
 
 
 ## Table of Contents
+- freeCodeCamp
 - html5
 - css3
 - javascript高级程序设计第四版
@@ -15,7 +16,6 @@
     - real world vue
 - vue3
 - nuxt
-- freeCodeCamp key lesson
 - Map: 腾讯地图
 - LeetCode
 - TypeScript
