@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Liu+Jian+Mao+Cao&display=swap" rel="stylesheet">
+  <title>Flex Panel Gallery</title>
+  <style>
+    * {
+      padding: 0;
+      margin: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: 'Liu Jian Mao Cao', cursive;
+    }
+    .container {
+      display: flex;
+      width: 100%;
+      height: 100vh;
+      min-height: 500px;
+      color: #fff;
+      background-color: pink;
+    }
+    .container .panel {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      align-items: center;
+      transition: flex .5s ease-in;
+      padding: 4rem 0;
+    }
+    .container .panel h2 {
+      transition: transform .5s ease-in, font-size .5s ease-in;
+    }
+    .container .panel.open {
+      flex: 3;
+    }
+    .container .panel.active {
+      font-size: 4em;
+    }
+    .container .panel > *:first-child {
+      transform: translateY(-6rem);
+    }
+    .container .panel > *:last-child {
+      transform: translateY(6rem);
+    }
+    .container .panel.active > *{
+      transform: translateY(0);
+    }
+    .panel1 {
+      flex: 1;
+      background-color:#eea2a4;
+    }
+    .panel2 {
+      flex: 1;
+      background-color:#5c2223;
+    }
+    .panel3 {
+      flex: 1;
+      background-color:#346c9c;
+    }
+    .panel4 {
+      flex: 1;
+      background-color:#12aa9c;
+    }
+    .panel5 {
+      flex: 1;
+      background-color:#f4a83a;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="panel panel1">
+      <h2>牡</h2>
+      <h2>丹</h2>
+      <h2>红</h2>
+    </div>
+    <div class="panel panel2">
+      <h2>暗</h2>
+      <h2>玉</h2>
+      <h2>紫</h2>
+    </div>
+    <div class="panel panel3">
+      <h2>海</h2>
+      <h2>军</h2>
+      <h2>蓝</h2>
+    </div>
+    <div class="panel panel4">
+      <h2>美</h2>
+      <h2>蝶</h2>
+      <h2>绿</h2>
+    </div>
+    <div class="panel panel5">
+      <h2>金</h2>
+      <h2>莺</h2>
+      <h2>黄</h2>
+    </div>
+  </div>
+  <script>
+    function toggleOpen() {
+      this.classList.toggle('open')
+    }
+    function toggleActive(e) {
+      if(e.propertyName.includes('flex')) {
+        this.classList.toggle('active')
+      }
+    }
+    const panels = document.querySelectorAll('.container .panel')
+    panels.forEach((panel) => {
+      panel.addEventListener('click',toggleOpen)
+      panel.addEventListener('transitionend', toggleActive)
+    })
+  </script>
+</body>
+</html>
