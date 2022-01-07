@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Css Variable</title>
+  <style>
+    :root {
+      --base-color: #fca94a;
+      --spacing: 20px;
+      --blur: 5px;
+    }
+    body {
+      background-color: rgb(241, 137, 137);
+      text-align: center;
+      font-family: 'helvetica neue', sans-serif;
+    }
+    .container {
+      width: 100%;
+    }
+    .container h2 {
+      font-size: 5em;
+      color: #fff;
+    }
+    .container span {
+      color: var(--base-color);
+    }
+    img {
+      background-color: var(--base-color);
+      filter: blur(var(--blur));
+      padding: var(--spacing);
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>Css Variables with <span>JS</span></h2>
+    <div class="control">
+      <label for="spacing">Spacing: </label>
+      <input id="spacing" type="range" name="spacing" min="10" max="100" value="6" data-sizing="px">
+      <label for="blur">Blur:</label>
+      <input id="blur" type="range" name="blur" min="0" max="12" value="2" data-sizing="px">
+      <label for="base-color">BaseColor:</label>
+      <input id="base-color" type="color" name="base-color" value="#fca94a">
+    </div>
+    <img src="https://source.unsplash.com/7bwQXzbF6KE/800x500" alt="">
+  </div>
+  <script>
+    function updateData() {
+      console.log(this.dataset);
+      console.log(this.name);
+      const suffix = this.dataset.sizing || ''
+      document.documentElement.style.setProperty(`--${this.name}`, `${this.value}${suffix}`)
+    }
+    // document.documentElement.style.setProperty('--base-color', '#f0f')
+    const inputs = document.querySelectorAll('input')
+    console.log(inputs);
+    inputs.forEach((input) => {
+      input.addEventListener('change', updateData)
+      input.addEventListener('mousemove', updateData)
+    })
+  </script>
+</body>
+</html>
