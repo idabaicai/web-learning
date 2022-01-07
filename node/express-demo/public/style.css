@@ -1,0 +1,14 @@
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+.express {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 50vh;
+  width: 100%;
+  margin: 0 auto;
+}
