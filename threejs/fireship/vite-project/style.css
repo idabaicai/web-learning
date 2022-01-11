@@ -3,4 +3,37 @@ canvas {
   position: fixed;
   top: 0;
   left: 0;
+  z-index: -1;
+}
+
+:root {
+  --dark-bg: rgba(15,15,15,0.95);
+  --spacing: 350px;
+}
+
+main {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  margin: 0 auto;
+  padding: 2em 5em;
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  font-size: 1.5em;
+  color: #fff;
+}
+
+header {
+  background-color: var(--dark-bg);
+  grid-column: 2 / span 6;
+  font-size: 3em;
+  padding: 1em;
+  margin-bottom: var(--spacing);
+}
+
+section {
+  grid-column: 4 / 10;
+  background-color: var(--dark-bg);
+  margin-bottom: var(--spacing);
 }
