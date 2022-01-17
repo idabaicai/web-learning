@@ -6,7 +6,53 @@ const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 const { MongoClient } = require('mongodb');
 
+
 mongoose.connect(process.env.MONGO_URI, { useNewUrlParser: true, useUnifiedTopology: true });
+
+const Schema = mongoose.Schema;
+
+const personSchema = new Schema({
+  name: { type: String, required: true },
+  age: Number,
+  favoriteFoods: [ String ],
+})
+
+const Person = mongoose.model("Person", personSchema);
+
+const createAndSavePerson = function(done) {
+  const user1 = new Person({
+    name: 'AAA',
+    age: 22,
+    favoriteFoods: [ 'apple', 'orange' ]
+  });
+
+  user1.save((err, data) => {
+    if (err) return console.error(err);
+    // done(null, data)
+  });
+}
+// createAndSavePerson()
+
+const users = [{
+  name: 'AAB', 
+  age: 18,
+  favoriteFoods: [ '苹果', '香蕉' ]
+}, {
+  name: 'AAC', 
+  age: 20,
+  favoriteFoods: [ '苹果1', '香蕉1' ]
+}]
+
+const createUsers = (users, done) => {
+  Person.create(users, (err, people) => {
+    if(err) return console.log(err)
+    done(null, people)
+  })
+}
+createUsers(users)
+
+
+// express
 const app = express();
 
 app.use(bodyParser.urlencoded({extended: false}))
