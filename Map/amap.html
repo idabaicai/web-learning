@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>高德地图API</title>
+  <script type="text/javascript">
+    window._AMapSecurityConfig = {
+        securityJsCode:'3e6efbf1cedb090b24962b750ef5e14e',
+    }
+</script>
+<script type="text/javascript" src="https://webapi.amap.com/maps?v=1.4.15&key=4bc2bc6fb8b0a5d06bef948896bc0119"></script> 
+  <style>
+    #container {
+      width: 900px;
+      height: 600px;
+      margin: 0 auto;
+    }
+  </style>
+</head>
+<body>
+  <div id="container"></div>
+  <script>
+      var map = new AMap.Map('container', {
+        zoom:17,//级别
+        center: [103.826902,30.695365],//中心点坐标
+        viewMode:'3D'//使用3D视图
+      });
+
+  </script>
+</body>
+</html>
