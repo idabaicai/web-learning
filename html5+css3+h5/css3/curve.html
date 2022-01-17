@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .ball {
+      position: absolute;
+      width: 5em;
+      height: 5em;
+      border-radius: 50%;
+      background: linear-gradient(35deg, #cff, #fcc);
+      animation-name: drop;
+      animation-duration: 2s;
+      animation-iteration-count: infinite;
+    }
+    .ball1 {
+      top: 2em;
+      left: 30%;
+      animation-timing-function: ease-out;
+    }
+    .ball2 {
+      top: 2em;
+      left: 60%;
+      animation-timing-function: ease-out;
+      animation-timing-function: cubic-bezier();
+    }
+    @keyframes drop {
+      50% {
+        top: 20em;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="ball ball1"></div>
+  <div class="ball ball2"></div>
+</body>
+</html>
