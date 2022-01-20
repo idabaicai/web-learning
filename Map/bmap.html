@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bmap</title>
+  <!-- <script type="text/javascript" src="https://api.map.baidu.com/api?v=1.0&type=webgl&ak=sqskSnsDkGNNlPAyk6voFCDYkk3aGeOb"></script> -->
+  <script type="text/javascript" src="https://api.map.baidu.com/api?v=3.0&ak=sqskSnsDkGNNlPAyk6voFCDYkk3aGeOb"></script>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      display: flex;
+      width: 100%;
+      height: 100vh;
+    }
+    .bar {
+      width: 500px;
+    }
+    #container {
+      margin-top: 2em;
+      width: 100%;
+      height: 70vh;
+    }
+  </style>
+</head>
+<body>
+  <div class="bar"></div>
+  <div id="container"></div>
+  <script type="text/javascript">
+    var map = new BMap.Map("container");
+    // 创建地图实例 
+    var point = new BMap.Point(103.826902,30.695365);
+    // 创建点坐标 
+    map.centerAndZoom(point, 18);
+    map.enableScrollWheelZoom();
+    // 初始化地图，设置中心点坐标和地图级别 
+    // 路径
+    const path = [
+      {long: 103.826471, lat: 30.694829}, 
+      {long: 103.826408, lat: 30.69538},
+      {long: 103.826192, lat: 30.695784},
+      {long: 103.826062, lat: 30.695788},
+      {long: 103.826031, lat: 30.695575},
+      {long: 103.825626, lat: 30.695373},
+    ]
+    const path2 = [
+      {long: 103.824454, lat: 30.694457},
+      {long: 103.824463, lat: 30.694449},
+      {long: 103.823807, lat: 30.695571},
+      {long: 103.823318, lat: 30.695365},
+      {long: 103.823982, lat: 30.694297},
+    ]
+    // 添加公交站点
+    const point1 = new BMap.Point(103.826471, 30.694829);
+    const label1 = new BMap.Label('label', {       // 创建文本标注
+        position: point,                          // 设置标注的地理位置
+        // offset: new BMap.Size(10, 20)           // 设置标注的偏移量
+    })
+    map.addOverlay(label1)
+    // 新建 symbol
+    const sy = new BMap.Symbol(BMap_Symbol_SHAPE_FORWARD_OPEN_ARROW, {
+      fillColor: '#f0f',
+      scale: 0.8,
+      strokeColor: '#ff0'
+    })
+    // 绘制 icon
+    let icons = new BMap.IconSequence(sy, '100px', '10%', false)
+    // 添加折线
+    const pointArr = []
+    path2.forEach((item) => {
+      pointArr.push(new BMap.Point(item.long, item.lat))
+    })
+    const polyline = new BMap.Polyline(pointArr, {
+      strokeColor: 'blue',
+      strokeWeight: 4,
+      strokeOpacity: 0.5,
+      // enableEditing: true,
+      geodesic: true,
+      icons: [ icons ]
+    })
+    map.addOverlay(polyline)
+  </script> 
+</body>
+</html>
