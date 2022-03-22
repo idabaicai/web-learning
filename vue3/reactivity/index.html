@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Reactivity</title>
+</head>
+<body>
+  <div class="demo" id="root"></div>
+  <script>
+    let data = {
+      value: 'hello'
+    }
+    const effect = () => {
+      document.getElementById('root').innerHTML = obj.value
+    }
+    const dep = new Set()
+    const obj = new Proxy(data, {
+      get(target, key) {
+        console.log('call getter')
+        dep.add(effect)
+        return target[key]
+      },
+      set(target, key, value) {
+        console.log('call setter')
+          target[key] = value
+          dep.forEach((fn) => fn())
+          return true
+      }
+    })
+    console.log(obj.value, obj)
+    effect()
+    setTimeout(() => {
+      obj.value = 'world'
+    }, 1500);
+  </script>
+</body>
+</html>
