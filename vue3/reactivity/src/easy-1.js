@@ -34,9 +34,19 @@ const obj = new Proxy(data, {
 })
 
 effect(() => {
+  console.log('call effect');
   console.log('current value is ', obj.value)
 })
 
+// setTimeout(() => {
+//   obj.value = 'world'
+// }, 1000)
+
 setTimeout(() => {
-  obj.value = 'world'
-}, 1000)
+  obj.noExist = 'awesome'
+}, 2000)
+
+// 问题
+/**
+ * 没有在副作用函数和被操作的字段之间建立联系，无论读取哪一个属性，都会收集副作用函数，无论设置哪一个属性，都会将副作用函数取出并执行
+ */
