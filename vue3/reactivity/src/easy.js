@@ -6,17 +6,17 @@ const data = {
   value: 'hello'
 }
 // 收集依赖
-const dep = new Set()
+const bucket = new Set()
 const obj = new Proxy(data, {
   get(target, key) {
     console.log('call getter');
-    dep.add(effect)
+    bucket.add(effect)
     return target[key]
   },
   set(target, key, value) {
     console.log('call setter');
     target[key] = value
-    dep.forEach(fn => fn())
+    bucket.forEach(fn => fn())
     return true
   }
 })

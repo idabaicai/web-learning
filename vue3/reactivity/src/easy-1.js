@@ -16,19 +16,19 @@ let data = {
 
 
 
-const dep = new Set()
+const bucket = new Set()
 const obj = new Proxy(data, {
   get(target, key) {
     console.log('call getter');
     if(activeEffect) {
-      dep.add(activeEffect)
+      bucket.add(activeEffect)
     }
     return target[key]
   },
   set(target, key, value) {
     target[key] = value
     console.log('call setter')
-    dep.forEach(fn => fn())
+    bucket.forEach(fn => fn())
     return true
   }
 })
