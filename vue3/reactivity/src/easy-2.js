@@ -21,7 +21,7 @@ const obj = new Proxy(data, {
       return
     }
     let depsMap = bucket.get(target)
-    // 如果不存才 depsMap, 则新建一个 Map 与 target 关联
+    // 如果不存在 depsMap, 则新建一个 Map 与 target 关联
     if(!depsMap) {
       bucket.set(target, (depsMap = newMap()))
     }
