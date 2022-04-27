@@ -1,0 +1,13 @@
+{
+  "name": "SSR",
+  "version": "1.0.0",
+  "main": "index.js",
+  "type": "module",
+  "license": "MIT",
+  "scripts": {
+    "dev": "node example.js"
+  },
+  "dependencies": {
+    "vue": "^3.2.33"
+  }
+}
