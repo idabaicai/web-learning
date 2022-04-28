@@ -8,6 +8,7 @@
     "dev": "node example.js"
   },
   "dependencies": {
+    "express": "^4.18.0",
     "vue": "^3.2.33"
   }
 }
