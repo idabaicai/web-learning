@@ -6,6 +6,8 @@ interface Todo {
   completed: boolean;
   desc?: string;
 }
+type KeyOf = keyof Todo;
+const keys: KeyOf = 'desc';
 /**
  * PICK UP
  */
@@ -56,3 +58,17 @@ const res: Result = {
 };
 
 type T = typeof tuple;
+
+/**
+ * First of Array
+ */
+
+type arr1 = ['a', 'b', 'c'];
+type arr2 = [1, 2, 3];
+
+// const a1: arr1 = ['a', 'b', 'c'];
+type First<T extends any[]> = T extends [infer First, ...any[]] ? First : never;
+
+type Head1 = First<arr1>;
+
+const str: Head1 = 'a';
