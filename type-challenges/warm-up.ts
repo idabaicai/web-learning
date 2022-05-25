@@ -6,6 +6,10 @@ interface Todo {
   completed: boolean;
   desc?: string;
 }
+/**
+ * PICK UP
+ */
+
 type MyPick<T, K extends keyof T> = {
   [P in K]: T[P];
 };
@@ -18,6 +22,9 @@ const todo: TodoPreview = {
   completed: true,
 };
 
+/**
+ * Read Only
+ */
 type MyReadOnly<T> = {
   readonly [P in keyof T]: T[P];
 };
@@ -29,3 +36,23 @@ const todo1: MyReadOnly<Todo> = {
 };
 
 // todo1.title = 'change title'
+
+/**
+ * Tuple to Object
+ */
+
+const tuple = ['tesla', 'model3', 'model X', 'model Y'] as const;
+
+type TupleToObject<T extends readonly string[]> = {
+  [P in T[number]]: P;
+};
+
+type Result = TupleToObject<typeof tuple>;
+const res: Result = {
+  'model X': 'model X',
+  'model Y': 'model Y',
+  model3: 'model3',
+  tesla: 'tesla',
+};
+
+type T = typeof tuple;
