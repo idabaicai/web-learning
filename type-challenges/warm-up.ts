@@ -68,7 +68,9 @@ type arr2 = [1, 2, 3];
 
 // const a1: arr1 = ['a', 'b', 'c'];
 type First<T extends any[]> = T extends [infer First, ...any[]] ? First : never;
+type First2<T extends any[]> = T extends [] ? never : T[0];
 
 type Head1 = First<arr1>;
+type Head2 = First2<arr1>;
 
 const str: Head1 = 'a';
