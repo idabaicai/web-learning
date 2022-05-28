@@ -85,3 +85,11 @@ type Length<T extends readonly any[]> = T['length'];
 
 type teslaLen = Length<tesla>;
 type spaceXLen = Length<spaceX>;
+
+type T0 = Exclude<'a' | 'b' | 'c', 'a'>;
+
+type MyExclude<T, U> = T extends U ? never : T;
+
+type T1 = MyExclude<1 | 2 | 3, 2>;
+
+const num: T1 = 1;
