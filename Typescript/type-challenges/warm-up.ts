@@ -74,3 +74,14 @@ type Head1 = First<arr1>;
 type Head2 = First2<arr1>;
 
 const str: Head1 = 'a';
+
+// Length of tuple
+
+type tesla = ['tesla', 'model 3', 'model X', 'model Y'];
+type spaceX = ['F9', 'FH', 'DN'];
+
+// type Length<T extends { length: number }> = T['length'];
+type Length<T extends readonly any[]> = T['length'];
+
+type teslaLen = Length<tesla>;
+type spaceXLen = Length<spaceX>;
