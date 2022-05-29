@@ -1,0 +1,15 @@
+lockfileVersion: 5.4
+
+specifiers:
+  '@type-challenges/utils': ^0.1.1
+
+devDependencies:
+  '@type-challenges/utils': registry.npmmirror.com/@type-challenges/utils/0.1.1
+
+packages:
+
+  registry.npmmirror.com/@type-challenges/utils/0.1.1:
+    resolution: {integrity: sha512-A7ljYfBM+FLw+NDyuYvGBJiCEV9c0lPWEAdzfOAkb3JFqfLl0Iv/WhWMMARHiRKlmmiD1g8gz/507yVvHdQUYA==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/@type-challenges/utils/-/utils-0.1.1.tgz}
+    name: '@type-challenges/utils'
+    version: 0.1.1
+    dev: true

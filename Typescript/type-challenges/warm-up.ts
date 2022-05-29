@@ -1,4 +1,4 @@
-type HelloWorld = string;
+// type HelloWorld = string;
 
 interface Todo {
   title: string;
