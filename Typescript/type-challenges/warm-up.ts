@@ -27,15 +27,15 @@ const todo: TodoPreview = {
 /**
  * Read Only
  */
-type MyReadOnly<T> = {
-  readonly [P in keyof T]: T[P];
-};
+// type MyReadOnly<T> = {
+//   readonly [P in keyof T]: T[P];
+// };
 
-const todo1: MyReadOnly<Todo> = {
-  title: 'title',
-  description: 'this is a todo',
-  completed: true,
-};
+// const todo1: MyReadOnly<Todo> = {
+//   title: 'title',
+//   description: 'this is a todo',
+//   completed: true,
+// };
 
 // todo1.title = 'change title'
 
