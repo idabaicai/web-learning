@@ -8,7 +8,7 @@ type First<T extends any[]> = T extends [infer First, ...infer Rest]
   ? First
   : never;
 
-type T1 = First<arr1>;
+type T0 = First<arr1>;
 
 type T2 = First<[]>; // undefined
 

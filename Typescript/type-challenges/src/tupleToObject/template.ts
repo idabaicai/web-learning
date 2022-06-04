@@ -8,4 +8,4 @@ type TupleToObject<T extends readonly any[]> = {
 
 // T[number] 遍历数组
 
-type T = TupleToObject<typeof tuple>;
+type T6 = TupleToObject<typeof tuple>;
