@@ -17,12 +17,12 @@ type MyPick<T, K extends keyof T> = {
 };
 // type TodoPreview = Pick<Todo, 'title' | 'completed'>;
 
-type TodoPreview = MyPick<Todo, 'title' | 'completed'>;
+// type TodoPreview = MyPick<Todo, 'title' | 'completed'>;
 
-const todo: TodoPreview = {
-  title: '',
-  completed: true,
-};
+// const todo: TodoPreview = {
+//   title: '',
+//   completed: true,
+// };
 
 /**
  * Read Only
