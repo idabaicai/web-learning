@@ -1,7 +1,5 @@
-type MyReadonly2<T, K extends keyof T> = {
-  readonly [P in K]: T[P];
-};
-
+type MyReadonly2<T, K extends keyof T = keyof T> = Readonly<Pick<T, K>> &
+  Omit<T, K>;
 interface IUser {
   name: string;
   age: number;
@@ -10,6 +8,6 @@ interface IUser {
 type T70 = MyReadonly2<IUser, 'age'>;
 
 const user1: T70 = {
-  // name: 'AAA',
+  name: 'AAA',
   age: 20,
 };
