@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Input</title>
+  <style>
+    .container {
+      width: 100%;
+      height: 100%;
+      border: 1px solid #ccc;
+    }
+
+    .preview {
+      width: 300px;
+      height: 187px;
+      margin-top: 20px;
+      border: 1px solid #ccc;
+    }
+
+  </style>
+</head>
+
+<body>
+  <div class="conteiner">
+    <input id="file-upload" type="file" accept=".png,.jpg;">
+  </div>
+  <div class="preview-container">
+    <p>preview</p>
+    <div class="preview" id="preview">
+      <p>preview container</p>
+    </div>
+  </div>
+  <script>
+    const fileDom = document.querySelector('#file-upload')
+    // 处理预览
+    const previewDom = document.querySelector('#preview')
+    fileDom.addEventListener('change', (e) => {
+      // remove preview first child
+      while (previewDom.firstChild) {
+        previewDom.removeChild(previewDom.firstChild)
+      }
+
+      // console.log(e, 'file')
+      const files = fileDom.files;
+      console.log(files, 'files')
+      if (files.length === 0) {
+        const p = document.createElement('p')
+        p.textContent = 'No file chose'
+        previewDom.appendChild(p)
+      } else {
+        const img = document.createElement('img')
+        const file = files[0]
+        const url = URL.createObjectURL(file)
+        // file name
+        const fileName = file.name
+        const nameWrap = document.createElement('p')
+        nameWrap.textContent = fileName || '未知文件'
+
+        console.log({ img, url })
+        img.src = url
+        img.width = 300
+        previewDom.appendChild(img)
+        previewDom.appendChild(nameWrap)
+      }
+    })
+    // fileDom.style.opacity = 0
+
+
+  </script>
+</body>
+
+</html>
