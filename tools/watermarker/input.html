@@ -15,9 +15,16 @@
 
     .preview {
       width: 300px;
-      height: 187px;
+      height: 300px;
       margin-top: 20px;
       border: 1px solid #ccc;
+    }
+
+    .preview-watermark {
+      width: 300px;
+      height: 300px;
+      margin-top: 20px;
+      border: 1px solid pink;
     }
 
   </style>
@@ -33,14 +40,21 @@
       <p>preview container</p>
     </div>
   </div>
+  <div class="preview-watermark" id="watermark"></div>
   <script>
     const fileDom = document.querySelector('#file-upload')
     // 处理预览
     const previewDom = document.querySelector('#preview')
-    fileDom.addEventListener('change', (e) => {
+    // watermark preview
+    const watermarkDom = document.querySelector('#watermark')
+
+    fileDom.addEventListener('change', async (e) => {
       // remove preview first child
       while (previewDom.firstChild) {
         previewDom.removeChild(previewDom.firstChild)
+      }
+      while (watermarkDom.firstChild) {
+        watermarkDom.removeChild(watermarkDom.firstChild)
       }
 
       // console.log(e, 'file')
@@ -52,7 +66,9 @@
         previewDom.appendChild(p)
       } else {
         const img = document.createElement('img')
-        const file = files[0]
+        img.width = 200;
+        img.height = 200;
+        const file = files[0];
         const url = URL.createObjectURL(file)
         // file name
         const fileName = file.name
@@ -60,14 +76,89 @@
         nameWrap.textContent = fileName || '未知文件'
 
         console.log({ img, url })
-        img.src = url
-        img.width = 300
-        previewDom.appendChild(img)
-        previewDom.appendChild(nameWrap)
+        // img.src = url
+        img.src = await fileToDataUri(file)
+        // img.width = 300
+        console.log(img.width, 'width')
+        img.addEventListener('load', async () => {
+          // add watermark
+          const watermarkImg = document.createElement('img')
+          // watermarkImg.width = 300;
+          watermarkImg.src = watermarkImageWithText(img, 'Good')
+          watermarkImg.width = 200;
+          watermarkImg.height = 200;
+          // watermarkImg.style.visibility = 'visible'
+          watermarkDom.appendChild(watermarkImg)
+
+          previewDom.appendChild(img)
+          previewDom.appendChild(nameWrap)
+        })
+        // fileToDataUrl
+        // const fileDataUrl = 
+        // fileTo
+        return false
       }
     })
     // fileDom.style.opacity = 0
 
+    function watermarkImageWithText(originalImage, watermarkText) {
+      const canvas = document.createElement('canvas');
+      const ctx = canvas.getContext('2d');
+      console.log(originalImage.width, 'originalImage')
+      console.log(originalImage.height, 'originalImage')
+      const canvasWidth = originalImage.width;
+      const canvasHeight = originalImage.height;
+      canvas.width = canvasWidth
+      canvas.height = canvasHeight
+
+      // init the canvas with original image
+      ctx.drawImage(originalImage, 0, 0, canvasWidth, canvasHeight);
+
+      // adding a blue watermark text in the bottom left corner
+
+      ctx.fillStyle = 'pink';
+      ctx.textBaseline = 'middle';
+      ctx.font = 'bold 24px serif';
+      ctx.fillText(watermarkText, 20, canvasHeight - 10);
+      // ctx.fillText(watermarkText, 20, 10);
+      return canvas.toDataURL();
+    }
+
+
+
+    function watermarkImageWithText1(originalImage, watermarkText) {
+      const canvas = document.createElement('canvas')
+      const context = canvas.getContext('2d')
+
+      const canvasWidth = originalImage.width
+      const canvasHeight = originalImage.height
+
+      canvas.width = canvasWidth
+      canvas.height = canvasHeight
+
+      // initializing the canvas with the original image
+      context.drawImage(originalImage, 0, 0, canvasWidth, canvasHeight)
+
+      // adding a blue watermark text in the bottom right corner
+      context.fillStyle = 'blue'
+      context.textBaseline = 'middle'
+      context.font = 'bold 25px serif'
+      context.fillText(watermarkText, canvasWidth - 100, canvasHeight - 20)
+
+      return canvas.toDataURL()
+    }
+
+    function fileToDataUri(field) {
+      return new Promise((resolve) => {
+        const reader = new FileReader();
+
+        reader.addEventListener("load", () => {
+          resolve(reader.result);
+        });
+
+        reader.readAsDataURL(field);
+      });
+    }
 
   </script>
 </body>
