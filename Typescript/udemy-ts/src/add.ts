@@ -13,3 +13,9 @@ btn1?.addEventListener('click', () => {
   console.log('hello');
   
 })
+// 写一个网络请求
+
+const add = (a, b) => {
+  return a + b
+}
+
