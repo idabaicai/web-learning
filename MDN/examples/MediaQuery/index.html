@@ -1,0 +1,42 @@
+<!--
+ * @Author: liuhui
+ * @Date: 2025-01-01 10:19:00
+ * @LastEditors: liuhui
+ * @LastEditTime: 2025-01-01 10:24:29
+ * @Description: media query
+-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MediaQuery</title>
+</head>
+
+<body>
+  <p id="info"></p>
+  <script>
+    const change = (flag) => {
+      if (flag) {
+        p.textContent = 'less 600px'
+        document.body.style.backgroundColor = 'red'
+      } else {
+        p.textContent = 'more than 600px'
+        document.body.style.backgroundColor = 'green'
+      }
+    }
+    const p = document.getElementById('info')
+    const mediaQuery = window.matchMedia('(max-width: 600px)')
+    mediaQuery.addEventListener('change', (e) => {
+      change(e.matches)
+    })
+    window.addEventListener('load', () => {
+      console.log(mediaQuery.matches);
+      change(mediaQuery.matches)
+
+    })
+  </script>
+</body>
+
+</html>
