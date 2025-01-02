@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>鼠标点击处的动画</title>
+    <style>
+        #animation {
+            position: fixed;
+            width: 50px;
+            height: 50px;
+            background-color: red;
+            border-radius: 50%;
+            animation: expand 1s ease-out;
+            display: none; /* 初始时隐藏动画元素 */
+        }
+
+        @keyframes expand {
+            0% {
+                transform: scale(1);
+                opacity: 1;
+            }
+            100% {
+                transform: scale(3);
+                opacity: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div id="animation"></div>
+    <script>
+        document.addEventListener('click', function(event) {
+            let animation = document.getElementById('animation');
+            // 将动画元素的位置设置为鼠标点击的位置
+            animation.style.left = event.clientX - 25 + 'px';
+            animation.style.top = event.clientY - 25 + 'px';
+            animation.style.display = 'block'; // 显示动画元素
+            // 为动画添加结束事件，动画结束后隐藏元素
+            animation.addEventListener('animationend', function() {
+                animation.style.display = 'none';
+            });
+        });
+    </script>
+</body>
+</html>
