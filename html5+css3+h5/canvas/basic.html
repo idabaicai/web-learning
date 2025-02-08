@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Canvas</title>
+  </head>
+  <body>
+    <canvas id="demo" width="600" height="600"></canvas>
+  </body>
+  <script>
+    const canvas = document.getElementById('demo')
+    if (canvas.getContext) {
+      const ctx = canvas.getContext('2d') // 渲染上下文
+      // 绘制一个背景
+      ctx.fillStyle = '#ccc'
+      ctx.fillRect(0, 0, canvas.width, canvas.height)
+      // 绘制长方形
+      ctx.fillStyle = 'rgb(200, 0, 0)'
+      ctx.fillRect(10, 10, 55, 50)
+
+      // 绘制长方形 2
+      ctx.fillStyle = 'rgba(0, 200, 0, .5)'
+      ctx.fillRect(30, 30, 55, 50)
+
+      // 矩形边框
+      ctx.strokeRect(100, 100, 30, 70)
+
+      // 擦除一部分
+      ctx.clearRect(0, 0, 10, 10)
+
+      // 绘制三角形
+      ctx.beginPath()
+      ctx.moveTo(100, 100)
+      ctx.lineTo(100, 300)
+      ctx.lineTo(300, 100)
+      ctx.closePath() // 手动闭合路径
+      ctx.stroke()
+
+      // 绘制圆弧
+    }
+  </script>
+</html>
