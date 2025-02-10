@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>图像标注工具</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/fabric.js/5.3.0/fabric.min.js"></script>
+  <style>
+    canvas { border: 1px solid #ccc; margin: 10px; }
+    .tools { margin: 10px; }
+    button { padding: 8px 15px; margin-right: 5px; }
+  </style>
+</head>
+<body>
+  <div class="tools">
+    <button id="brushBtn">画笔</button>
+    <button id="downloadBtn">下载蒙版</button>
+  </div>
+  <canvas id="mainCanvas"></canvas>
+  <canvas id="maskCanvas" style="display: none;"></canvas>
+
+  <script>
+    // 初始化画布
+    const mainCanvas = new fabric.Canvas('mainCanvas');
+    const maskCanvas = new fabric.Canvas('maskCanvas');
+    
+    // 示例图片URL和标记坐标
+    const IMAGE_URL = 'https://storage.googleapis.com/ai-resource-bucket/art_photo_editor_ios/upload_file/1739163157.511525-40b992a516259dc42b89cbdb89505eb2.jpg';
+    const MARKERS = [
+      { x1: 100, y1: 100, x2: 200, y2: 200 }, // 示例坐标
+      // 添加更多标记坐标...
+    ];
+
+    // 加载主图片
+    fabric.Image.fromURL(IMAGE_URL, img => {
+      // 设置画布尺寸
+      mainCanvas.setDimensions({ width: img.width, height: img.height });
+      maskCanvas.setDimensions({ width: img.width, height: img.height });
+      
+      // 设置蒙版画布背景为黑色
+      maskCanvas.setBackgroundColor('black', () => maskCanvas.renderAll());
+      
+      // 添加图片到主画布
+      img.set({ left: 0, top: 0, selectable: false });
+      mainCanvas.add(img);
+      
+      // 添加标记形状
+      addMarkers();
+    });
+
+    // 添加标记形状函数
+    function addMarkers() {
+      MARKERS.forEach(coord => {
+        const rect = new fabric.Rect({
+          left: coord.x1,
+          top: coord.y1,
+          width: coord.x2 - coord.x1,
+          height: coord.y2 - coord.y1,
+          fill: 'transparent',
+          stroke: 'red',
+          strokeWidth: 5,
+          selectable: false
+        });
+        mainCanvas.add(rect);
+      });
+    }
+
+    // 画笔功能
+    document.getElementById('brushBtn').addEventListener('click', () => {
+      mainCanvas.isDrawingMode = true;
+      mainCanvas.freeDrawingBrush.color = 'rgba(255,0,0,0.5)'; // 半透明红色
+      mainCanvas.freeDrawingBrush.width = 50;
+    });
+
+    // 同步绘制路径到蒙版画布
+    mainCanvas.on('path:created', e => {
+      const pathData = e.path.toObject();
+      fabric.util.enlivenObjects([pathData], cloned => {
+        cloned[0].set({
+          stroke: 'white',        // 蒙版颜色设为黑色
+          selectable: false,
+          evented: false
+        });
+        maskCanvas.add(cloned[0]);
+      });
+    });
+
+    // 下载蒙版功能
+    document.getElementById('downloadBtn').addEventListener('click', () => {
+      const dataURL = maskCanvas.toDataURL({
+        format: 'png',
+        multiplier: 1
+      });
+      
+      const link = document.createElement('a');
+      link.download = 'mask.png';
+      link.href = dataURL;
+      link.click();
+    });
+  </script>
+</body>
+</html>
