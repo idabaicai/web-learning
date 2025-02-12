@@ -8,6 +8,14 @@
     canvas { border: 1px solid #ccc; margin: 10px; }
     .tools { margin: 10px; }
     button { padding: 8px 15px; margin-right: 5px; }
+    .canvas-container {
+      border: 1px solid #ccc;
+    }
+    .canvas-container:nth-child(2) {
+      /* display: none !important; */
+      position: absolute;
+      /* left: 9000px; */
+    }
   </style>
 </head>
 <body>
@@ -22,6 +30,9 @@
     // 初始化画布
     const mainCanvas = new fabric.Canvas('mainCanvas');
     const maskCanvas = new fabric.Canvas('maskCanvas');
+
+     // 使用 Fabric.js API 隐藏蒙版画布
+     maskCanvas.getElement().parentNode.style.display = 'none';
     
     // 示例图片URL和标记坐标
     const IMAGE_URL = 'https://storage.googleapis.com/ai-resource-bucket/art_photo_editor_ios/upload_file/1739163157.511525-40b992a516259dc42b89cbdb89505eb2.jpg';
