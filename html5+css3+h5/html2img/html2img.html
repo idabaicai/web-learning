@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <div id="content" style="background: pink; padding: 20px;">
+    <h1>导出此内容</h1>
+    <p>这是一个示例文本</p>
+  </div>
+  <button onclick="exportDOM()">导出DOM为图片</button>
+
+  <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
+  <script>
+    function exportDOM() {
+      html2canvas(document.querySelector("#content")).then(canvas => {
+        const link = document.createElement('a');
+        link.download = 'dom-screenshot.png';
+        link.href = canvas.toDataURL();
+        link.click();
+      });
+    }
+  </script>
+</body>
+
+</html>
