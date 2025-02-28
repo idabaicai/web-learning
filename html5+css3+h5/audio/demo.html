@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>录音保存 Demo</title>
+    <style>
+        body { font-family: Arial, sans-serif; padding: 20px; }
+        button { padding: 10px 20px; margin: 5px; cursor: pointer; }
+        #status { color: #666; margin: 10px 0; }
+    </style>
+</head>
+<body>
+    <h1>录音保存演示</h1>
+    <button id="startBtn">开始录音</button>
+    <button id="stopBtn" disabled>停止录音</button>
+    <div id="status">点击「开始录音」按钮</div>
+    <div id="recordings"></div>
+
+    <script>
+        const startBtn = document.getElementById('startBtn');
+        const stopBtn = document.getElementById('stopBtn');
+        const statusDiv = document.getElementById('status');
+        const recordingsDiv = document.getElementById('recordings');
+        let mediaRecorder;
+        let audioChunks = [];
+
+        // 请求麦克风权限
+        navigator.mediaDevices.getUserMedia({ audio: true })
+            .then(stream => {
+                // 创建 MediaRecorder 实例
+                mediaRecorder = new MediaRecorder(stream);
+
+                // 录音数据收集
+                mediaRecorder.ondataavailable = (event) => {
+                    audioChunks.push(event.data);
+                };
+
+                // 录音停止时的处理
+                mediaRecorder.onstop = () => {
+                    const audioBlob = new Blob(audioChunks, { type: 'audio/webm' });
+                    const audioUrl = URL.createObjectURL(audioBlob);
+                    
+                    // 创建播放器和下载链接
+                    const audioElement = new Audio(audioUrl);
+                    const downloadLink = document.createElement('a');
+                    downloadLink.href = audioUrl;
+                    downloadLink.download = `recording-${new Date().toISOString()}.webm`;
+                    downloadLink.textContent = '下载录音';
+
+                    // 添加到页面
+                    const container = document.createElement('div');
+                    container.style.margin = '10px 0';
+                    container.appendChild(audioElement);
+                    container.appendChild(downloadLink);
+                    recordingsDiv.appendChild(container);
+
+                    // 重置状态
+                    audioChunks = [];
+                    statusDiv.textContent = '录音已保存';
+                };
+
+                // 按钮事件
+                startBtn.onclick = () => {
+                    mediaRecorder.start();
+                    startBtn.disabled = true;
+                    stopBtn.disabled = false;
+                    statusDiv.textContent = '录音中...';
+                };
+
+                stopBtn.onclick = () => {
+                    mediaRecorder.stop();
+                    startBtn.disabled = false;
+                    stopBtn.disabled = true;
+                };
+            })
+            .catch(err => {
+                statusDiv.textContent = '错误: ' + err.message;
+                startBtn.disabled = true;
+            });
+    </script>
+</body>
+</html>
