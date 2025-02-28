@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>实时语音转文字 Demo</title>
+    <style>
+        body { font-family: Arial, sans-serif; padding: 20px; max-width: 800px; margin: 0 auto; }
+        #result { border: 1px solid #ccc; padding: 15px; min-height: 200px; margin: 20px 0; white-space: pre-wrap; }
+        button { padding: 10px 20px; cursor: pointer; background: #007bff; color: white; border: none; border-radius: 4px; }
+        button:disabled { background: #6c757d; }
+        .status { color: #666; margin: 10px 0; }
+    </style>
+</head>
+<body>
+    <h1>实时语音转文字演示</h1>
+    <button id="startBtn">开始录音</button>
+    <button id="stopBtn" disabled>停止录音</button>
+    <div class="status" id="status">状态：等待开始</div>
+    <div id="result"></div>
+
+    <script>
+        const startBtn = document.getElementById('startBtn');
+        const stopBtn = document.getElementById('stopBtn');
+        const statusDiv = document.getElementById('status');
+        const resultDiv = document.getElementById('result');
+        
+        // 兼容性检测（参考网页2）
+        const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+        if (!SpeechRecognition) {
+            statusDiv.textContent = "当前浏览器不支持语音识别，请使用最新版 Chrome/Edge 浏览器";
+            startBtn.disabled = true;
+        } else {
+            const recognition = new SpeechRecognition();
+            
+            // 配置参数（参考网页9的本地处理思路）
+            recognition.continuous = true;    // 持续录音直到手动停止
+            recognition.interimResults = true; // 获取临时识别结果
+            recognition.lang = 'zh-CN';       // 设置中文识别
+
+            // 录音控制
+            startBtn.onclick = () => {
+                recognition.start();
+                startBtn.disabled = true;
+                stopBtn.disabled = false;
+                statusDiv.textContent = "状态：录音中...";
+            };
+
+            stopBtn.onclick = () => {
+                recognition.stop();
+                startBtn.disabled = false;
+                stopBtn.disabled = true;
+                statusDiv.textContent = "状态：已停止";
+            };
+
+            // 实时结果处理（参考网页2的事件监听）
+            recognition.onresult = (event) => {
+                let transcript = '';
+                for (let i = event.resultIndex; i < event.results.length; i++) {
+                    const result = event.results[i];
+                    transcript += result[0].transcript;
+                    // 临时结果添加特殊标记
+                    if (!result.isFinal) transcript += ' 🔍（识别中）';
+                }
+                resultDiv.textContent = transcript;
+            };
+
+            // 错误处理（综合网页2和网页9的异常处理）
+            recognition.onerror = (event) => {
+                statusDiv.textContent = `错误：${event.error}`;
+                startBtn.disabled = false;
+                stopBtn.disabled = true;
+            };
+
+            // 录音结束事件
+            recognition.onend = () => {
+                if (stopBtn.disabled === false) {
+                    statusDiv.textContent = "状态：异常终止";
+                }
+            };
+        }
+    </script>
+</body>
+</html>
