@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>截图粘贴 Demo</title>
+  <style>
+    body {
+      max-width: 800px;
+      margin: 20px auto;
+      padding: 20px;
+    }
+
+    #container {
+      border: 2px dashed #ccc;
+      min-height: 300px;
+      padding: 20px;
+      text-align: center;
+    }
+
+    #preview {
+      max-width: 100%;
+      max-height: 400px;
+    }
+
+    .tip {
+      color: #666;
+      margin: 50px 0;
+    }
+  </style>
+</head>
+
+<body>
+  <h2>截图粘贴演示</h2>
+  <p>操作步骤：</p>
+  <ol>
+    <li>使用截图工具截图（微信截图/Windows截图工具等）</li>
+    <li>复制截图（Ctrl+C）</li>
+    <li>点击下方区域，按 Ctrl+V 粘贴</li>
+  </ol>
+
+  <div id="container">
+    <div class="tip">请在此处粘贴截图</div>
+    <img id="preview" />
+  </div>
+
+  <script>
+    // 获取页面元素
+    const container = document.getElementById('container');
+    const preview = document.getElementById('preview');
+    const tip = document.querySelector('.tip');
+
+    // 监听粘贴事件
+    container.addEventListener('paste', async (event) => {
+      event.preventDefault();
+
+      // 获取剪贴板数据
+      const clipboardItems = event.clipboardData?.items;
+
+      if (!clipboardItems) return;
+
+      // 遍历剪贴板内容
+      for (const item of clipboardItems) {
+        if (item.type.startsWith('image/')) {
+          tip.style.display = 'none';
+          const blob = item.getAsFile();
+          const reader = new FileReader();
+
+          // 读取图片数据
+          reader.onload = function (e) {
+            preview.src = e.target.result;
+            preview.style.display = 'block';
+
+            // 自动上传示例（需要后端支持）
+            // uploadImage(e.target.result);
+          };
+
+          reader.readAsDataURL(blob);
+          break; // 只处理第一个图片
+        }
+      }
+    });
+
+    // 示例上传函数
+    function uploadImage(dataURL) {
+      fetch(dataURL)
+        .then(res => res.blob())
+        .then(blob => {
+          const formData = new FormData();
+          formData.append('file', blob, 'screenshot.png');
+
+          fetch('/upload', {
+            method: 'POST',
+            body: formData
+          });
+        });
+    }
+
+    // 点击容器触发粘贴（移动端兼容）
+    container.addEventListener('click', () => {
+      container.focus();
+    });
+  </script>
+</body>
+
+</html>
