@@ -5,18 +5,20 @@
   <title>语音转文字 Demo</title>
   <style>
     .wave-container {
-      width: 100px;
-      height: 40px;
+      width: 32px;
+      height: 32px;
       display: flex;
       align-items: center;
-      justify-content: space-between;
-      margin: 20px 0;
-    }
-
+      justify-content: center;
+      border-radius: 12px;
+      gap: 2.5px;
+      background-color: #c9d3ff;
+    } 
     .wave-bar {
-      width: 8px;
-      height: 20px;
-      background: #4CAF50;
+      width: 2px;
+      height: 4px;
+      border-radius: 2px;
+      background: #3038ff;
       transition: height 0.2s;
     }
 
@@ -35,7 +37,6 @@
 
 <body>
   <div class="wave-container">
-    <div class="wave-bar"></div>
     <div class="wave-bar"></div>
     <div class="wave-bar"></div>
     <div class="wave-bar"></div>
@@ -76,19 +77,23 @@
     // 更新波形显示
     function updateWave() {
       if (!analyser) return;
-
       const bufferLength = analyser.frequencyBinCount;
       const dataArray = new Uint8Array(bufferLength);
       analyser.getByteFrequencyData(dataArray);
 
       const average = dataArray.reduce((a, b) => a + b) / bufferLength;
+      console.log(dataArray, average, 'average');
       isSpeaking = average > 10; // 音量阈值
 
       waveBars.forEach((bar, index) => {
         const height = isSpeaking
-          ? 10 + (dataArray[index] / 255 * 20)
-          : 20;
-        bar.style.height = `${height}px`;
+          ? 2 + (dataArray[index] / 255 * 9)
+          : 2;
+        if(index === 0 || index === 3) {
+          bar.style.height = `${height - 2}px`;
+        } else {
+          bar.style.height = `${height}px`;
+        }
       });
 
       animationFrameId = requestAnimationFrame(updateWave);
@@ -123,11 +128,12 @@
         outputDiv.innerHTML = finalTranscript;
       };
     }
-
+    // 音频流
+    let stream = null;
     // 开始录音
     startBtn.addEventListener('click', async () => {
       try {
-        const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+        stream = await navigator.mediaDevices.getUserMedia({ audio: true });
         mediaRecorder = new MediaRecorder(stream);
 
         await initAudio(stream);
@@ -165,13 +171,15 @@
       mediaRecorder.stop();
       recognition.stop();
       cancelAnimationFrame(animationFrameId);
+      // 停止音频流
+      stream?.getTracks().forEach(track => track.stop());
 
       startBtn.disabled = false;
       pauseBtn.disabled = true;
       stopBtn.disabled = true;
       pauseBtn.textContent = '暂停录音';
 
-      waveBars.forEach(bar => bar.style.height = '20px');
+      waveBars.forEach(bar => bar.style.height = '4px');
     });
 
     // 设置初始按钮状态
