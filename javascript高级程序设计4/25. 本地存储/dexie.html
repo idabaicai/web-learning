@@ -1,0 +1,56 @@
+<!--
+ * @Author: liuhui
+ * @Date: 2025-05-06 16:42:17
+ * @LastEditors: liuhui
+ * @LastEditTime: 2025-05-06 17:03:20
+ * @Description: 
+-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dexie</title>
+  <script src="https://unpkg.com/dexie/dist/dexie.js"></script>
+</head>
+
+<body>
+  <script type="module">
+    const db = new Dexie('db-dexie');
+    db.version(1).stores({
+      friends: '++id, age',
+
+    });
+    db.friends.add({ name: 'lisi', age: 18 }).then(() => {
+      return db.friends.where('age').below(30).toArray();
+    }).then((res) => {
+      console.log(res, 'res');
+    })
+
+    // db.friends.delete(3);
+
+    try {
+      const imgUrl = 'https://images.pexels.com/photos/31892796/pexels-photo-31892796/free-photo-of-elegant-black-and-white-cherry-blossom-art.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1';
+      console.log(imgUrl, 'imgUrl');
+      const res = await fetch(imgUrl);
+      const blob = await res.blob();
+      console.log(blob, 'blob');
+      await db.friends.put({
+        name: 'wangwu',
+        img: blob,
+      });
+    } catch (error) {
+      console.log(error, 'error');
+    }
+    const imgObj = await db.friends.get(12);
+    console.log(imgObj, 'imgObj');
+    const url = URL.createObjectURL(imgObj.img);
+    console.log(url, 'url');
+    const img = document.createElement('img');
+    img.src = url;
+    document.body.appendChild(img);
+  </script>
+</body>
+
+</html>
